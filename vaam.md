@@ -1,11 +1,12 @@
 # VAAM Import Export Trading - Veb Layihə Təklifi
-
-
 ---
 
 ## 📑 İcra Xülasəsi
 
 Bu sənəd **Vaam Import Export Trading** şirkəti üçün tam funksional korporativ veb platformasının hazırlanması layihəsini təsvir edir. Layihə müasir veb texnologiyaları əsasında qurulacaq və şirkətin rəqəmsal mövcudluğunu gücləndirməyə yönəlmişdir.
+
+## 🎯 Layihə üçün hazırlanan demo
+- [Demo Linki](https://karimovsdev.github.io/vaam/index.html)
 
 ### Layihənin Əsas Məqsədləri
 
