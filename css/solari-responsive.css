@@ -1,0 +1,439 @@
+/* ============================================
+   SOLARI RESPONSIVE STYLES
+   Mobile First Approach
+   ============================================ */
+
+/* ============ MOBILE STYLES (Default - up to 767px) ============ */
+
+/* Mobile Navigation */
+@media (max-width: 991px) {
+    .mobile-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background-color: var(--bg-white);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 80px 30px 30px;
+        box-shadow: -2px 0 20px rgba(0, 0, 0, 0.1);
+        transition: right var(--transition-base);
+        z-index: 999;
+    }
+    
+    .nav-menu.active {
+        right: 0;
+    }
+    
+    .header-cta, .header-right {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+    
+    /* Language Switcher Mobile */
+    .language-switcher {
+        margin-bottom: 15px;
+    }
+    
+    .lang-btn {
+        border-color: var(--border-color);
+        color: var(--text-dark);
+    }
+    
+    .lang-dropdown {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        margin-top: 10px;
+        border: 1px solid var(--border-color);
+    }
+    
+    .mobile-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .mobile-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+}
+
+/* ============ TABLET & BELOW (max-width: 991px) ============ */
+@media (max-width: 991px) {
+    /* Typography */
+    h1 { font-size: 42px; }
+    h2 { font-size: 36px; }
+    h3 { font-size: 28px; }
+    h4 { font-size: 22px; }
+    
+    /* Hero Slider */
+    .hero-slider,
+    .hero-slide {
+        height: 600px;
+    }
+    
+    .hero-slide h1 {
+        font-size: 42px;
+    }
+    
+    .hero-content {
+        max-width: 650px;
+    }
+    
+    /* Page Header */
+    .page-header {
+        height: 350px;
+    }
+    
+    .page-header h1 {
+        font-size: 42px;
+    }
+    
+    .page-header-content {
+        max-width: 700px;
+    }
+    
+    .hero-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+    
+    .hero-prev {
+        left: 20px;
+    }
+    
+    .hero-next {
+        right: 20px;
+    }
+    
+    /* Old Hero */
+    .hero {
+        height: 600px;
+    }
+    
+    .hero h1 {
+        font-size: 42px;
+    }
+    
+    /* Grid Adjustments */
+    .feature-boxes {
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 0;
+    }
+    
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+    
+    .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+    
+    .footer-widgets {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Sections */
+    .section {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .section-lg {
+        padding: 60px 0;
+    }
+}
+
+/* ============ TABLET (768px - 991px) ============ */
+@media (min-width: 768px) and (max-width: 991px) {
+    .col-md-6 { flex: 0 0 50%; max-width: 50%; }
+    .col-md-4 { flex: 0 0 33.333%; max-width: 33.333%; }
+    .col-md-3 { flex: 0 0 25%; max-width: 25%; }
+}
+
+/* ============ MOBILE (max-width: 767px) ============ */
+@media (max-width: 767px) {
+    /* Typography */
+    :root {
+        --fs-h1: 36px;
+        --fs-h2: 30px;
+        --fs-h3: 24px;
+        --fs-h4: 20px;
+        --fs-h5: 18px;
+        --fs-h6: 16px;
+    }
+    
+    h1 { font-size: 32px; }
+    h2 { font-size: 28px; }
+    h3 { font-size: 24px; }
+    h4 { font-size: 20px; }
+    
+    /* Top Bar */
+    .top-bar {
+        display: none;
+    }
+    
+    /* Hero Slider Mobile */
+    .hero-slider,
+    .hero-slide {
+        height: 500px;
+    }
+    
+    .hero-slide h1 {
+        font-size: 32px;
+    }
+    
+    .hero-slide p {
+        font-size: var(--fs-base);
+    }
+    
+    .hero-content {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    
+    .hero-badge {
+        padding: 6px 16px;
+        font-size: 11px;
+    }
+    
+    /* Page Header Mobile */
+    .page-header {
+        height: 300px;
+    }
+    
+    .page-header h1 {
+        font-size: 32px;
+    }
+    
+    .page-header-content {
+        max-width: 100%;
+    }
+    
+    .page-badge {
+        padding: 6px 16px;
+        font-size: 11px;
+    }
+    
+    .breadcrumb {
+        font-size: 14px;
+    }
+    
+    .hero-nav {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+    
+    .hero-prev {
+        left: 10px;
+    }
+    
+    .hero-next {
+        right: 10px;
+    }
+    
+    .hero-indicators {
+        bottom: 20px;
+    }
+    
+    .hero-indicator {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .hero-indicator.active {
+        width: 30px;
+    }
+    
+    /* Old Hero */
+    .hero {
+        height: 500px;
+        padding: 0 20px;
+    }
+    
+    .hero::before {
+        width: 100%;
+        clip-path: none;
+        opacity: 0.2;
+    }
+    
+    .hero h1 {
+        font-size: 32px;
+    }
+    
+    .hero p {
+        font-size: var(--fs-base);
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    /* Buttons */
+    .btn {
+        padding: 12px 24px;
+        font-size: var(--fs-small);
+    }
+    
+    .btn-lg {
+        padding: 14px 30px;
+        font-size: var(--fs-base);
+    }
+    
+    /* Grids */
+    .feature-boxes {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .stats-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .blog-image {
+        height: 200px;
+    }
+    
+    .blog-content {
+        padding: 20px;
+    }
+    
+    .blog-content h3 {
+        font-size: 18px;
+    }
+    
+    .footer-widgets {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    /* All columns stack on mobile */
+    [class*="col-"] {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    /* Cards */
+    .card-body {
+        padding: var(--spacing-md);
+    }
+    
+    /* Service Cards */
+    .service-card-img img {
+        height: 200px;
+    }
+    
+    /* Sections */
+    .section {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .section-sm {
+        padding: var(--spacing-md) 0;
+    }
+    
+    .section-lg {
+        padding: 40px 0;
+    }
+    
+    /* Section Title */
+    .section-title {
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .section-title h2 {
+        font-size: var(--fs-h3);
+    }
+    
+    .section-title p {
+        font-size: var(--fs-base);
+    }
+    
+    /* Logo */
+    .logo img {
+        height: 40px;
+    }
+    
+    /* Navbar */
+    .navbar {
+        padding: 15px 0;
+    }
+}
+
+/* ============ SMALL MOBILE (max-width: 575px) ============ */
+@media (max-width: 575px) {
+    :root {
+        --container-padding: 20px;
+    }
+    
+    .hero {
+        height: 450px;
+    }
+    
+    .hero h1 {
+        font-size: 28px;
+    }
+    
+    .section-title h2 {
+        font-size: var(--fs-h4);
+    }
+    
+    .btn {
+        width: 100%;
+    }
+    
+    .hero-buttons .btn {
+        width: auto;
+    }
+}
+
+/* ============ LARGE DESKTOP (min-width: 1200px) ============ */
+@media (min-width: 1200px) {
+    :root {
+        --container-width: 1200px;
+    }
+}
+
+/* ============ EXTRA LARGE DESKTOP (min-width: 1400px) ============ */
+@media (min-width: 1400px) {
+    :root {
+        --container-width: 1320px;
+    }
+}
+
+/* ============ PRINT STYLES ============ */
+@media print {
+    .top-bar,
+    .header,
+    .footer,
+    .mobile-toggle,
+    .btn {
+        display: none;
+    }
+    
+    body {
+        font-size: 12pt;
+        color: #000;
+    }
+}
