@@ -64,7 +64,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             {% for art in related_articles %}
             <div class="group">
-                <div class="relative overflow-hidden rounded-2xl mb-5 h-48">{% if art.image %}<img src="{{ art.image.url }}" alt="{{ art.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">{% endif %}</div>
+                <div class="relative overflow-hidden rounded-2xl mb-5 h-48">{% if art.image %}<img src="{{ art.image.url }}" alt="{{ art.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">{% else %}<div class="w-full h-full bg-gradient-to-br from-primary-100 to-primary-50 flex items-center justify-center"><i class="fas fa-image text-4xl text-primary-300"></i></div>{% endif %}</div>
                 <div class="flex gap-4 mb-2 text-xs text-slate-400"><span><i class="far fa-calendar mr-1"></i> {{ art.published_at|date:"M d, Y" }}</span></div>
                 <h4 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary-700 transition">{{ art.title }}</h4>
                 <a href="{% url 'core:news_detail' art.slug %}" class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold">{% trans "Read More" %} <i class="fas fa-arrow-right text-[10px]"></i></a>

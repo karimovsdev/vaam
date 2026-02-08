@@ -1,6 +1,8 @@
 {% load static %}
+{% load i18n %}
+{% get_current_language as CURRENT_LANGUAGE %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ CURRENT_LANGUAGE }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +34,7 @@
     <div class="w-full max-w-lg">
         <!-- Logo -->
         <div class="text-center mb-5 pt-5">
-            <a href="#" class="flex items-center justify-center gap-2 mb-2">
+            <a href="{% url 'core:home' %}" class="flex items-center justify-center gap-2 mb-2">
                 <span class="text-3xl font-extrabold text-heading" style="font-family:'Nunito',sans-serif;">VAAM</span>
                 <span class="text-[10px] bg-primary text-white px-2 py-0.5 rounded font-bold tracking-wide">ADMIN</span>
             </a>
@@ -80,10 +82,10 @@
         </div>
 
         <div class="text-center mt-5 pb-5">
-            <p class="text-sm text-[#899bbd]">&copy; 2026 <span class="font-semibold text-heading" style="font-family:'Nunito',sans-serif;">VAAM</span> Import and Export Trading</p>
+            <p class="text-sm text-[#899bbd]">&copy; {% now "Y" %} <span class="font-semibold text-heading" style="font-family:'Nunito',sans-serif;">VAAM</span> Import and Export Trading</p>
         </div>
     </div>
 
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"></script>
 </body>
 </html>
