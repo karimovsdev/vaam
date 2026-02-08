@@ -1,0 +1,74 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{% trans "Projects" %} - {{ settings.site_name }}{% endblock %}
+{% block meta_description %}{% trans "Explore our completed projects and success stories." %}{% endblock %}
+
+{% block content %}
+<!-- PAGE HEADER -->
+<section class="relative py-24 md:py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-dark-900"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-primary-900/40 via-dark-900 to-dark-800"></div>
+    <div class="absolute inset-0 dot-pattern opacity-[0.03]"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+        <div class="flex items-center justify-center gap-3 mb-4">
+            <span class="w-8 h-[2px] bg-primary-400"></span>
+            <span class="text-primary-400 text-sm font-semibold tracking-[0.2em] uppercase">{% trans "Portfolio" %}</span>
+            <span class="w-8 h-[2px] bg-primary-400"></span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">{% trans "Our Projects" %}</h1>
+        <p class="text-white/60 text-lg max-w-2xl mx-auto">{% trans "Showcasing our solar installations worldwide" %}</p>
+        <div class="flex justify-center gap-2 mt-8 text-sm">
+            <a href="{% url 'core:home' %}" class="text-white/60 hover:text-white transition">{% trans "Home" %}</a>
+            <span class="text-white/30">/</span>
+            <span class="text-primary-400">{% trans "Projects" %}</span>
+        </div>
+    </div>
+</section>
+
+<!-- CATEGORY FILTER -->
+{% if categories %}
+<section class="py-8 border-b border-slate-100">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-wrap justify-center gap-2">
+            <a href="{% url 'core:projects' %}" class="px-5 py-2 rounded-full text-sm font-medium transition-all {% if not active_category %}bg-primary-600 text-white{% else %}bg-slate-100 text-slate-600 hover:bg-primary-50{% endif %}">{% trans "All" %}</a>
+            {% for cat in categories %}
+            <a href="{% url 'core:projects' %}?category={{ cat.slug }}" class="px-5 py-2 rounded-full text-sm font-medium transition-all {% if active_category == cat.slug %}bg-primary-600 text-white{% else %}bg-slate-100 text-slate-600 hover:bg-primary-50{% endif %}">{{ cat.name }}</a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- PROJECTS GRID -->
+<section class="section-padding">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for project in projects %}
+            <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-primary-200 transition-all duration-500 hover:shadow-xl hover:shadow-primary-100/30">
+                <div class="relative overflow-hidden h-56">
+                    {% if project.image %}<img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">{% endif %}
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-4 left-4"><span class="px-3 py-1 bg-white/90 backdrop-blur-sm text-primary-700 rounded-full text-xs font-semibold">{{ project.category.name }}</span></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary-700 transition-colors">{{ project.title }}</h3>
+                    <p class="text-slate-500 text-sm mb-3">{{ project.short_description|truncatewords:15 }}</p>
+                    <div class="flex flex-wrap gap-3 text-xs text-slate-400">
+                        {% if project.client %}<span><i class="fas fa-user mr-1"></i> {{ project.client }}</span>{% endif %}
+                        {% if project.location %}<span><i class="fas fa-location-dot mr-1"></i> {{ project.location }}</span>{% endif %}
+                        {% if project.date_completed %}<span><i class="far fa-calendar mr-1"></i> {{ project.date_completed|date:"M Y" }}</span>{% endif %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-span-full text-center py-20">
+                <i class="fas fa-folder-open text-5xl text-slate-200 mb-4"></i>
+                <h3 class="text-xl font-bold text-slate-400">{% trans "No projects found" %}</h3>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

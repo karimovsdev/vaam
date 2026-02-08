@@ -1,0 +1,274 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+{% block page_title %}Dashboard{% endblock %}
+
+{% block content %}
+<!-- Stats Cards - NiceAdmin style with colored left border -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-6">
+
+    <!-- Products Card -->
+    <div class="bg-white rounded-md shadow-sm overflow-hidden">
+        <div class="p-5 border-l-4 border-primary">
+            <div class="flex items-center justify-between mb-1">
+                <h5 class="text-sm font-semibold text-[#899bbd] uppercase">Products</h5>
+                <div x-data="{open:false}" class="relative">
+                    <button @click="open=!open" class="text-[#899bbd] hover:text-heading transition"><i class="bi bi-three-dots"></i></button>
+                    <div x-show="open" @click.away="open=false" x-transition class="absolute right-0 top-6 w-28 bg-white rounded shadow-lg border border-[#e6e9f4] text-xs z-10">
+                        <a href="{% url 'dashboard:product_list' %}" class="block px-3 py-2 hover:bg-[#f6f9ff] text-body">View All</a>
+                        <a href="{% url 'dashboard:product_create' %}" class="block px-3 py-2 hover:bg-[#f6f9ff] text-body">Add New</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="flex-1">
+                    <h2 class="text-[28px] font-bold text-primary font-heading">{{ stats.products }}</h2>
+                    <p class="text-xs text-success font-semibold mt-1"><i class="bi bi-arrow-up-short"></i> Total items</p>
+                </div>
+                <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i class="bi bi-box-seam text-2xl text-primary"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Card -->
+    <div class="bg-white rounded-md shadow-sm overflow-hidden">
+        <div class="p-5 border-l-4 border-success">
+            <div class="flex items-center justify-between mb-1">
+                <h5 class="text-sm font-semibold text-[#899bbd] uppercase">Services</h5>
+                <div x-data="{open:false}" class="relative">
+                    <button @click="open=!open" class="text-[#899bbd] hover:text-heading transition"><i class="bi bi-three-dots"></i></button>
+                    <div x-show="open" @click.away="open=false" x-transition class="absolute right-0 top-6 w-28 bg-white rounded shadow-lg border border-[#e6e9f4] text-xs z-10">
+                        <a href="{% url 'dashboard:service_list' %}" class="block px-3 py-2 hover:bg-[#f6f9ff] text-body">View All</a>
+                        <a href="{% url 'dashboard:service_create' %}" class="block px-3 py-2 hover:bg-[#f6f9ff] text-body">Add New</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="flex-1">
+                    <h2 class="text-[28px] font-bold text-success font-heading">{{ stats.services }}</h2>
+                    <p class="text-xs text-success font-semibold mt-1"><i class="bi bi-arrow-up-short"></i> Total items</p>
+                </div>
+                <div class="w-14 h-14 bg-success/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i class="bi bi-wrench text-2xl text-success"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Projects Card -->
+    <div class="bg-white rounded-md shadow-sm overflow-hidden">
+        <div class="p-5 border-l-4 border-warning">
+            <div class="flex items-center justify-between mb-1">
+                <h5 class="text-sm font-semibold text-[#899bbd] uppercase">Projects</h5>
+                <div x-data="{open:false}" class="relative">
+                    <button @click="open=!open" class="text-[#899bbd] hover:text-heading transition"><i class="bi bi-three-dots"></i></button>
+                    <div x-show="open" @click.away="open=false" x-transition class="absolute right-0 top-6 w-28 bg-white rounded shadow-lg border border-[#e6e9f4] text-xs z-10">
+                        <a href="{% url 'dashboard:project_list' %}" class="block px-3 py-2 hover:bg-[#f6f9ff] text-body">View All</a>
+                        <a href="{% url 'dashboard:project_create' %}" class="block px-3 py-2 hover:bg-[#f6f9ff] text-body">Add New</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="flex-1">
+                    <h2 class="text-[28px] font-bold text-warning font-heading">{{ stats.projects }}</h2>
+                    <p class="text-xs text-warning font-semibold mt-1"><i class="bi bi-arrow-up-short"></i> Total items</p>
+                </div>
+                <div class="w-14 h-14 bg-warning/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i class="bi bi-journal-text text-2xl text-warning"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Messages Card -->
+    <div class="bg-white rounded-md shadow-sm overflow-hidden">
+        <div class="p-5 border-l-4 border-danger">
+            <div class="flex items-center justify-between mb-1">
+                <h5 class="text-sm font-semibold text-[#899bbd] uppercase">Messages</h5>
+                <div x-data="{open:false}" class="relative">
+                    <button @click="open=!open" class="text-[#899bbd] hover:text-heading transition"><i class="bi bi-three-dots"></i></button>
+                    <div x-show="open" @click.away="open=false" x-transition class="absolute right-0 top-6 w-28 bg-white rounded shadow-lg border border-[#e6e9f4] text-xs z-10">
+                        <a href="{% url 'dashboard:message_list' %}" class="block px-3 py-2 hover:bg-[#f6f9ff] text-body">View All</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="flex-1">
+                    <h2 class="text-[28px] font-bold text-danger font-heading">{{ stats.messages }}</h2>
+                    {% if stats.new_messages > 0 %}
+                    <p class="text-xs text-danger font-semibold mt-1"><i class="bi bi-exclamation-circle"></i> {{ stats.new_messages }} new</p>
+                    {% else %}
+                    <p class="text-xs text-success font-semibold mt-1"><i class="bi bi-check-circle"></i> All read</p>
+                    {% endif %}
+                </div>
+                <div class="w-14 h-14 bg-danger/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i class="bi bi-envelope text-2xl text-danger"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Main Content Row -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+    <!-- Recent Messages Table -->
+    <div class="lg:col-span-8">
+        <div class="bg-white rounded-md shadow-sm">
+            <div class="flex items-center justify-between px-5 py-4 border-b border-[#e6e9f4]">
+                <div class="flex items-center gap-3">
+                    <h5 class="text-lg font-bold text-heading font-heading">Recent Messages</h5>
+                    <span class="text-[#899bbd] text-sm">| Today</span>
+                </div>
+                <a href="{% url 'dashboard:message_list' %}" class="text-sm text-primary font-semibold hover:underline transition">View All <i class="bi bi-arrow-right text-xs"></i></a>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b border-[#e6e9f4]">
+                            <th class="text-left px-5 py-3 text-sm font-semibold text-heading">Sender</th>
+                            <th class="text-left px-5 py-3 text-sm font-semibold text-heading">Subject</th>
+                            <th class="text-left px-5 py-3 text-sm font-semibold text-heading">Status</th>
+                            <th class="text-left px-5 py-3 text-sm font-semibold text-heading">Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for msg in recent_messages %}
+                        <tr class="border-b border-[#f0f0f0] hover:bg-[#f6f9ff] transition cursor-pointer" onclick="window.location='{% url 'dashboard:message_detail' msg.pk %}'">
+                            <td class="px-5 py-3">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 {% if msg.status == 'new' %}bg-primary{% elif msg.status == 'read' %}bg-gray-400{% else %}bg-success{% endif %}">
+                                        {{ msg.full_name|first }}
+                                    </div>
+                                    <span class="text-sm font-semibold text-heading truncate max-w-[140px]">{{ msg.full_name }}</span>
+                                </div>
+                            </td>
+                            <td class="px-5 py-3">
+                                <p class="text-sm text-body truncate max-w-[200px]">{{ msg.subject }}</p>
+                            </td>
+                            <td class="px-5 py-3">
+                                {% if msg.status == 'new' %}
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-primary/10 text-primary">New</span>
+                                {% elif msg.status == 'read' %}
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-gray-100 text-gray-500">Read</span>
+                                {% else %}
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-success/10 text-success">Replied</span>
+                                {% endif %}
+                            </td>
+                            <td class="px-5 py-3">
+                                <span class="text-xs text-[#899bbd]">{{ msg.created_at|timesince }} ago</span>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="4" class="px-5 py-12 text-center">
+                                <i class="bi bi-inbox text-4xl text-[#e6e9f4] block mb-2"></i>
+                                <p class="text-sm text-[#899bbd]">No messages yet</p>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Sidebar Column -->
+    <div class="lg:col-span-4 space-y-6">
+
+        <!-- Quick Actions Card -->
+        <div class="bg-white rounded-md shadow-sm">
+            <div class="px-5 py-4 border-b border-[#e6e9f4]">
+                <h5 class="text-lg font-bold text-heading font-heading">Quick Actions</h5>
+            </div>
+            <div class="p-4 space-y-1">
+                <a href="{% url 'dashboard:product_create' %}" class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-[#f6f9ff] group transition">
+                    <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="bi bi-plus-lg text-primary text-sm"></i>
+                    </div>
+                    <span class="text-sm font-medium text-heading group-hover:text-primary transition">Add Product</span>
+                </a>
+                <a href="{% url 'dashboard:service_create' %}" class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-[#f6f9ff] group transition">
+                    <div class="w-8 h-8 bg-success/10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="bi bi-plus-lg text-success text-sm"></i>
+                    </div>
+                    <span class="text-sm font-medium text-heading group-hover:text-success transition">Add Service</span>
+                </a>
+                <a href="{% url 'dashboard:project_create' %}" class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-[#f6f9ff] group transition">
+                    <div class="w-8 h-8 bg-warning/10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="bi bi-plus-lg text-warning text-sm"></i>
+                    </div>
+                    <span class="text-sm font-medium text-heading group-hover:text-warning transition">Add Project</span>
+                </a>
+                <a href="{% url 'dashboard:news_create' %}" class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-[#f6f9ff] group transition">
+                    <div class="w-8 h-8 bg-info/10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="bi bi-plus-lg text-info text-sm"></i>
+                    </div>
+                    <span class="text-sm font-medium text-heading group-hover:text-info transition">Add News Article</span>
+                </a>
+                <a href="{% url 'dashboard:hero_slide_create' %}" class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-[#f6f9ff] group transition">
+                    <div class="w-8 h-8 bg-danger/10 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="bi bi-image text-danger text-sm"></i>
+                    </div>
+                    <span class="text-sm font-medium text-heading group-hover:text-danger transition">Add Hero Slide</span>
+                </a>
+                <a href="{% url 'dashboard:site_settings' %}" class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-[#f6f9ff] group transition">
+                    <div class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="bi bi-gear text-gray-500 text-sm"></i>
+                    </div>
+                    <span class="text-sm font-medium text-heading group-hover:text-primary transition">Site Settings</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Content Overview Card -->
+        <div class="bg-white rounded-md shadow-sm">
+            <div class="px-5 py-4 border-b border-[#e6e9f4]">
+                <h5 class="text-lg font-bold text-heading font-heading">Content Overview</h5>
+            </div>
+            <div class="p-5 space-y-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                            <i class="bi bi-newspaper text-primary text-sm"></i>
+                        </div>
+                        <span class="text-sm text-body">News Articles</span>
+                    </div>
+                    <span class="text-sm font-bold text-heading bg-[#f6f9ff] px-3 py-1 rounded">{{ stats.news }}</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-success/10 rounded-full flex items-center justify-center">
+                            <i class="bi bi-images text-success text-sm"></i>
+                        </div>
+                        <span class="text-sm text-body">Hero Slides</span>
+                    </div>
+                    <span class="text-sm font-bold text-heading bg-[#f6f9ff] px-3 py-1 rounded">{{ stats.slides }}</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-warning/10 rounded-full flex items-center justify-center">
+                            <i class="bi bi-question-circle text-warning text-sm"></i>
+                        </div>
+                        <span class="text-sm text-body">FAQs</span>
+                    </div>
+                    <span class="text-sm font-bold text-heading bg-[#f6f9ff] px-3 py-1 rounded">{{ stats.faqs }}</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-danger/10 rounded-full flex items-center justify-center">
+                            <i class="bi bi-chat-quote text-danger text-sm"></i>
+                        </div>
+                        <span class="text-sm text-body">Testimonials</span>
+                    </div>
+                    <span class="text-sm font-bold text-heading bg-[#f6f9ff] px-3 py-1 rounded">{{ stats.testimonials }}</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

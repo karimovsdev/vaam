@@ -1,0 +1,15 @@
+{% extends "dashboard/includes/form_base.html" %}
+{% load static %}
+
+{% block title %}{% if form.instance.pk %}Edit{% else %}Add{% endif %} Statistic{% endblock %}
+{% block page_title %}{% if form.instance.pk %}Edit{% else %}Add{% endif %} Statistic{% endblock %}
+
+{% block breadcrumb %}
+<span class="text-[#899bbd]">/</span>
+<a href="{% url 'dashboard:statistic_list' %}" class="text-[#899bbd] hover:text-primary transition">Statistics</a>
+<span class="text-[#899bbd]">/</span>
+<span class="text-[#899bbd]">{% if form.instance.pk %}Edit{% else %}Add{% endif %}</span>
+{% endblock %}
+
+{% block form_title %}{% if form.instance.pk %}Edit{% else %}Add{% endif %} Statistic{% endblock %}
+{% block cancel_url %}{% url 'dashboard:statistic_list' %}{% endblock %}

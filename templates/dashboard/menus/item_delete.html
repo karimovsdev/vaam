@@ -1,0 +1,3 @@
+{% extends "dashboard/includes/delete_confirm.html" %}
+
+{% block cancel_url %}{% url 'dashboard:menu_item_list' menu_pk=menu_obj.pk %}{% endblock %}

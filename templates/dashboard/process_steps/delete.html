@@ -1,0 +1,13 @@
+{% extends "dashboard/includes/delete_confirm.html" %}
+
+{% block title %}Delete Process Step{% endblock %}
+{% block page_title %}Delete Process Step{% endblock %}
+
+{% block breadcrumb %}
+<span class="text-[#899bbd]">/</span>
+<a href="{% url 'dashboard:process_step_list' %}" class="text-[#899bbd] hover:text-primary transition">Process Steps</a>
+<span class="text-[#899bbd]">/</span>
+<span class="text-[#899bbd]">Delete</span>
+{% endblock %}
+
+{% block cancel_url %}{% url 'dashboard:process_step_list' %}{% endblock %}

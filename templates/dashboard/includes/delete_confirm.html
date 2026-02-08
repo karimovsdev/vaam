@@ -1,0 +1,32 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Delete {{ item }}{% endblock %}
+{% block page_title %}Confirm Delete{% endblock %}
+
+{% block breadcrumb %}
+<span class="text-[#899bbd]">/</span>
+<a href="{{ back_url }}" class="text-[#899bbd] hover:text-primary transition">{{ parent_title }}</a>
+<span class="text-[#899bbd]">/</span>
+<span class="text-[#899bbd]">Delete</span>
+{% endblock %}
+
+{% block content %}
+<div class="max-w-lg mx-auto">
+    <div class="bg-white rounded-md p-8 text-center" style="box-shadow:0px 0px 30px rgba(1,41,112,.05);">
+        <div class="w-16 h-16 bg-danger/10 rounded-full flex items-center justify-center mx-auto mb-5">
+            <i class="bi bi-trash text-danger text-xl"></i>
+        </div>
+        <h3 class="text-xl font-bold text-heading font-heading mb-2">Delete Confirmation</h3>
+        <p class="text-[#899bbd] text-sm mb-6">Are you sure you want to delete <strong class="text-heading">"{{ item }}"</strong>? This action cannot be undone.</p>
+        <form method="post">
+            {% csrf_token %}
+            <div class="flex items-center justify-center gap-3">
+                <a href="{% block cancel_url %}{{ back_url }}{% endblock %}" class="px-6 py-2.5 rounded border border-[#e6e9f4] text-sm font-semibold text-body hover:bg-[#f6f9ff] transition">Cancel</a>
+                <button type="submit" class="px-6 py-2.5 rounded bg-danger text-white text-sm font-semibold hover:bg-red-700 transition-all duration-200">
+                    <i class="bi bi-trash text-xs mr-1.5"></i> Delete
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

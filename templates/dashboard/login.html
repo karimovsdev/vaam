@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | VAAM Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT:'#4154f1', light:'#717ff5', dark:'#2a3cdb', 50:'#eef0fe' },
+                        heading: '#012970',
+                    },
+                    fontFamily: {
+                        heading: ['Nunito', 'sans-serif'],
+                        body: ['"Open Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+</head>
+<body class="min-h-screen bg-[#f6f9ff] flex items-center justify-center p-4" style="font-family:'Open Sans',sans-serif;">
+
+    <div class="w-full max-w-lg">
+        <!-- Logo -->
+        <div class="text-center mb-5 pt-5">
+            <a href="#" class="flex items-center justify-center gap-2 mb-2">
+                <span class="text-3xl font-extrabold text-heading" style="font-family:'Nunito',sans-serif;">VAAM</span>
+                <span class="text-[10px] bg-primary text-white px-2 py-0.5 rounded font-bold tracking-wide">ADMIN</span>
+            </a>
+        </div>
+
+        <!-- Login Card -->
+        <div class="bg-white rounded-md shadow-sm p-8 pb-10" style="box-shadow:0px 0px 20px rgba(1,41,112,.1);">
+            <div class="text-center mb-6">
+                <h5 class="text-2xl font-bold text-heading mb-1" style="font-family:'Nunito',sans-serif;">Login to Your Account</h5>
+                <p class="text-sm text-[#899bbd]">Enter your username &amp; password to login</p>
+            </div>
+
+            {% if form.errors %}
+            <div class="mb-5 p-3.5 bg-red-50 border border-red-200 rounded text-sm text-red-700 flex items-center gap-2">
+                <i class="bi bi-exclamation-circle-fill"></i>
+                <span>Invalid username or password. Please try again.</span>
+            </div>
+            {% endif %}
+
+            <form method="post" class="space-y-5">
+                {% csrf_token %}
+                <div>
+                    <label class="block text-sm font-semibold text-heading mb-2" style="font-family:'Nunito',sans-serif;">Username</label>
+                    <input type="text" name="username" value="{{ form.username.value|default:'' }}" required
+                           class="w-full px-4 py-3 rounded border border-[#e6e9f4] focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition text-sm text-body"
+                           placeholder="Enter your username">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-heading mb-2" style="font-family:'Nunito',sans-serif;">Password</label>
+                    <div class="relative" x-data="{show:false}">
+                        <input :type="show?'text':'password'" name="password" required
+                               class="w-full px-4 py-3 rounded border border-[#e6e9f4] focus:border-primary focus:ring-1 focus:ring-primary/20 outline-none transition text-sm text-body pr-11"
+                               placeholder="Enter your password">
+                        <button type="button" @click="show=!show" class="absolute right-3 top-1/2 -translate-y-1/2 text-[#899bbd] hover:text-heading transition">
+                            <i class="bi" :class="show?'bi-eye-slash':'bi-eye'" style="font-size:16px;"></i>
+                        </button>
+                    </div>
+                </div>
+                <button type="submit"
+                        class="w-full bg-primary text-white py-3 rounded font-semibold text-sm hover:bg-primary-dark transition-all duration-200"
+                        style="font-family:'Nunito',sans-serif;">
+                    Login
+                </button>
+            </form>
+        </div>
+
+        <div class="text-center mt-5 pb-5">
+            <p class="text-sm text-[#899bbd]">&copy; 2026 <span class="font-semibold text-heading" style="font-family:'Nunito',sans-serif;">VAAM</span> Import and Export Trading</p>
+        </div>
+    </div>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</body>
+</html>

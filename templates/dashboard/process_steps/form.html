@@ -1,0 +1,15 @@
+{% extends "dashboard/includes/form_base.html" %}
+{% load static %}
+
+{% block title %}{% if form.instance.pk %}Edit{% else %}Add{% endif %} Process Step{% endblock %}
+{% block page_title %}{% if form.instance.pk %}Edit{% else %}Add{% endif %} Process Step{% endblock %}
+
+{% block breadcrumb %}
+<span class="text-[#899bbd]">/</span>
+<a href="{% url 'dashboard:process_step_list' %}" class="text-[#899bbd] hover:text-primary transition">Process Steps</a>
+<span class="text-[#899bbd]">/</span>
+<span class="text-[#899bbd]">{% if form.instance.pk %}Edit{% else %}Add{% endif %}</span>
+{% endblock %}
+
+{% block form_title %}{% if form.instance.pk %}Edit{% else %}Add{% endif %} Process Step{% endblock %}
+{% block cancel_url %}{% url 'dashboard:process_step_list' %}{% endblock %}

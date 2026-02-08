@@ -1,0 +1,131 @@
+{% extends "dashboard/base.html" %}
+{% load i18n_form %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block page_title %}{{ title }}{% endblock %}
+
+{% block breadcrumb %}
+<span class="text-[#899bbd]">/</span>
+<a href="{{ back_url }}" class="text-primary hover:underline">{{ parent_title }}</a>
+<span class="text-[#899bbd]">/</span>
+<span class="text-[#899bbd]">{{ title }}</span>
+{% endblock %}
+
+{% block content %}
+{% get_languages as languages %}
+
+<div class="max-w-5xl" x-data="{ langTab: 'en' }">
+    <div class="bg-white rounded-md shadow-sm" style="box-shadow:0px 0px 30px rgba(1,41,112,.05);">
+        <div class="px-5 py-4 border-b border-[#e6e9f4]">
+            <h5 class="text-lg font-bold text-heading font-heading">{{ title }}</h5>
+        </div>
+        <form method="post" enctype="multipart/form-data" class="p-6">
+            {% csrf_token %}
+
+            {% if form.errors %}
+            <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded text-sm">
+                <div class="flex items-center gap-2 text-red-700 font-semibold mb-2">
+                    <i class="bi bi-exclamation-circle-fill"></i>
+                    <span>Please correct the errors below.</span>
+                </div>
+                <ul class="text-red-600 ml-5 list-disc">
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                        <li>{{ field.label }}: {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                    {% for error in form.non_field_errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+
+            <!-- ═══ NON-TRANSLATION FIELDS ═══ -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+                {% for field in form %}
+                    {% if not field.name|is_translation_field %}
+                    <div class="{% if field|is_wide_field %}md:col-span-2{% endif %}">
+                        <label class="block text-sm font-semibold text-heading mb-2 font-heading" for="{{ field.id_for_label }}">
+                            {{ field.label }}
+                            {% if field.field.required %}<span class="text-danger">*</span>{% endif %}
+                        </label>
+                        {{ field }}
+                        {% if field.help_text %}<p class="text-xs text-[#899bbd] mt-1.5">{{ field.help_text }}</p>{% endif %}
+                        {% if field.errors %}<p class="text-xs text-danger mt-1">{{ field.errors.0 }}</p>{% endif %}
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <!-- ═══ TRANSLATION FIELDS (Language Tabs) ═══ -->
+            <div class="mt-2">
+                <div class="flex items-center gap-2 mb-4">
+                    <i class="bi bi-translate text-primary text-lg"></i>
+                    <h6 class="text-sm font-bold text-heading font-heading">Translations</h6>
+                </div>
+
+                <!-- Language Tab Buttons -->
+                <div class="flex gap-2 mb-5">
+                    {% for code, name, flag in languages %}
+                    <button type="button" @click="langTab = '{{ code }}'"
+                            :class="langTab === '{{ code }}'
+                                ? 'bg-primary text-white shadow-md shadow-primary/20'
+                                : 'bg-white text-[#899bbd] border border-[#e6e9f4] hover:border-primary/30 hover:text-heading'"
+                            class="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 whitespace-nowrap">
+                        <img src="https://flagcdn.com/w20/{{ flag }}.png" alt="{{ name }}" class="w-5 h-3.5 object-cover rounded-[2px]">
+                        <span>{{ name }}</span>
+                    </button>
+                    {% endfor %}
+                </div>
+
+                <!-- Language Tab Content -->
+                {% for code, name, flag in languages %}
+                <div x-show="langTab === '{{ code }}'" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" {% if code != 'en' %}x-cloak{% endif %}
+                     class="bg-[#f8faff] border border-[#e6e9f4] rounded-xl p-5">
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="flex items-center gap-2.5">
+                            <img src="https://flagcdn.com/w40/{{ flag }}.png" alt="{{ name }}" class="w-7 h-5 object-cover rounded shadow-sm">
+                            <h6 class="text-sm font-bold text-heading font-heading">{{ name }}</h6>
+                            {% if code == 'en' %}<span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded-full font-bold">Default</span>{% endif %}
+                        </div>
+                        {% if code != 'en' %}
+                        <span class="text-[11px] text-[#899bbd] italic">Leave empty to use English value</span>
+                        {% endif %}
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        {% for field in form %}
+                            {% if field.name|is_translation_field and field.name|field_lang == code %}
+                            <div class="{% if field|is_wide_field %}md:col-span-2{% endif %}">
+                                <label class="block text-sm font-semibold text-heading mb-2 font-heading" for="{{ field.id_for_label }}">
+                                    {{ field.name|field_base_name|title }}
+                                    {% if field.field.required %}<span class="text-danger">*</span>{% endif %}
+                                </label>
+                                {{ field }}
+                                {% if field.help_text %}<p class="text-xs text-[#899bbd] mt-1.5">{{ field.help_text }}</p>{% endif %}
+                                {% if field.errors %}<p class="text-xs text-danger mt-1">{{ field.errors.0 }}</p>{% endif %}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            {% block extra_form_fields %}{% endblock %}
+
+            <div class="flex items-center justify-between mt-8 pt-5 border-t border-[#e6e9f4]">
+                <a href="{{ back_url }}" class="inline-flex items-center gap-2 text-[#899bbd] hover:text-heading text-sm font-semibold transition">
+                    <i class="bi bi-arrow-left"></i> Back
+                </a>
+                <div class="flex gap-3">
+                    <a href="{{ back_url }}" class="px-5 py-2.5 rounded border border-[#e6e9f4] text-sm font-semibold text-body hover:bg-[#f6f9ff] transition">Cancel</a>
+                    <button type="submit" class="px-6 py-2.5 rounded bg-primary text-white text-sm font-semibold hover:bg-primary-dark transition-all duration-200">
+                        <i class="bi bi-save mr-1.5"></i> Save
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

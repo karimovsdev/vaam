@@ -1,0 +1,59 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block page_title %}{{ title }}{% endblock %}
+
+{% block breadcrumb %}
+<span class="text-[#899bbd]">/</span>
+<span class="text-[#899bbd]">{{ title }}</span>
+{% endblock %}
+
+{% block content %}
+<div class="bg-white rounded-md shadow-sm" style="box-shadow:0px 0px 30px rgba(1,41,112,.05);">
+    <!-- Card Header -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-5 py-4 border-b border-[#e6e9f4]">
+        <div class="flex items-center gap-3">
+            <h5 class="text-lg font-bold text-heading font-heading">{{ title }}</h5>
+            <span class="text-sm text-[#899bbd]">| {{ items|length }} item{{ items|length|pluralize }}</span>
+        </div>
+        {% if create_url %}
+        <a href="{{ create_url }}" class="inline-flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded text-sm font-semibold hover:bg-primary-dark transition-all duration-200">
+            <i class="bi bi-plus-lg text-xs"></i> Add New
+        </a>
+        {% endif %}
+    </div>
+
+    <!-- Table -->
+    <div class="overflow-x-auto">
+        <table class="w-full">
+            <thead>
+                <tr class="border-b border-[#e6e9f4]">
+                    {% for col in columns %}
+                    <th class="text-left px-5 py-3 text-sm font-semibold text-heading font-heading">{{ col }}</th>
+                    {% endfor %}
+                    <th class="text-right px-5 py-3 text-sm font-semibold text-heading font-heading">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr class="border-b border-[#f0f0f0] hover:bg-[#f6f9ff] transition">
+                    {% block table_row %}{% endblock %}
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="{{ columns|length|add:1 }}" class="px-5 py-14 text-center">
+                        <i class="bi bi-inbox text-5xl text-[#e6e9f4] block mb-3"></i>
+                        <p class="text-[#899bbd] text-sm mb-2">No items found</p>
+                        {% if create_url %}
+                        <a href="{{ create_url }}" class="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:underline transition">
+                            <i class="bi bi-plus-lg text-xs"></i> Create your first item
+                        </a>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

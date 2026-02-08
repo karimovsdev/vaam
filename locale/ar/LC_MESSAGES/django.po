@@ -1,0 +1,411 @@
+# VAAM Trading Translations
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5);\n"
+
+#: templates/core/base.html
+msgid "Home"
+msgstr "الرئيسية"
+
+#: templates/core/base.html
+msgid "About"
+msgstr "من نحن"
+
+#: templates/core/base.html
+msgid "Services"
+msgstr "الخدمات"
+
+#: templates/core/base.html
+msgid "Products"
+msgstr "المنتجات"
+
+#: templates/core/base.html
+msgid "Projects"
+msgstr "المشاريع"
+
+#: templates/core/base.html
+msgid "News"
+msgstr "الأخبار"
+
+#: templates/core/base.html
+msgid "Contact"
+msgstr "اتصل بنا"
+
+#: templates/core/base.html
+msgid "Get A Quote"
+msgstr "احصل على عرض"
+
+#: templates/core/base.html
+msgid "Language"
+msgstr "اللغة"
+
+#: templates/core/base.html
+msgid "Quick Links"
+msgstr "روابط سريعة"
+
+#: templates/core/base.html
+msgid "About Us"
+msgstr "من نحن"
+
+#: templates/core/base.html
+msgid "Our Services"
+msgstr "خدماتنا"
+
+#: templates/core/base.html
+msgid "Panel Manufacturing"
+msgstr "تصنيع الألواح"
+
+#: templates/core/base.html
+msgid "Wholesale Distribution"
+msgstr "التوزيع بالجملة"
+
+#: templates/core/base.html
+msgid "Technical Consultation"
+msgstr "الاستشارات الفنية"
+
+#: templates/core/base.html
+msgid "Contact Us"
+msgstr "اتصل بنا"
+
+#: templates/core/base.html
+msgid "Email us anytime"
+msgstr "راسلنا في أي وقت"
+
+#: templates/core/base.html
+msgid "Our headquarters"
+msgstr "مقرنا الرئيسي"
+
+#: templates/core/base.html
+msgid "All rights reserved."
+msgstr "جميع الحقوق محفوظة."
+
+#: templates/core/base.html
+msgid "Privacy Policy"
+msgstr "سياسة الخصوصية"
+
+#: templates/core/base.html
+msgid "Terms"
+msgstr "الشروط"
+
+#: templates/core/home.html
+msgid "Solar Panel Manufacturing & Wholesale"
+msgstr "تصنيع وبيع الألواح الشمسية بالجملة"
+
+#: templates/core/home.html
+msgid "Engineering the Future of Solar Energy"
+msgstr "هندسة مستقبل الطاقة الشمسية"
+
+#: templates/core/home.html
+msgid "Premium solar panels for global markets."
+msgstr "ألواح شمسية متميزة للأسواق العالمية."
+
+#: templates/core/home.html
+msgid "Explore Products"
+msgstr "استكشف المنتجات"
+
+#: templates/core/home.html
+msgid "Eco Friendly"
+msgstr "صديق للبيئة"
+
+#: templates/core/home.html
+msgid "Sustainable solar energy for a greener future"
+msgstr "طاقة شمسية مستدامة لمستقبل أخضر"
+
+#: templates/core/home.html
+msgid "Years Warranty"
+msgstr "سنوات ضمان"
+
+#: templates/core/home.html
+msgid "About VAAM"
+msgstr "حول VAAM"
+
+#: templates/core/home.html
+msgid "accessible to all"
+msgstr "في متناول الجميع"
+
+#: templates/core/home.html
+msgid "Learn More"
+msgstr "اعرف المزيد"
+
+#: templates/core/home.html
+msgid "Call Us 24/7"
+msgstr "اتصل بنا 24/7"
+
+#: templates/core/home.html
+msgid "What We Offer"
+msgstr "ما نقدمه"
+
+#: templates/core/home.html
+msgid "Comprehensive Solar Solutions"
+msgstr "حلول شمسية شاملة"
+
+#: templates/core/home.html
+msgid "End-to-end services from manufacturing to installation and long-term support"
+msgstr "خدمات شاملة من التصنيع إلى التركيب والدعم طويل الأمد"
+
+#: templates/core/home.html
+msgid "How It Works"
+msgstr "كيف يعمل"
+
+#: templates/core/home.html
+msgid "From Concept to Clean Energy"
+msgstr "من الفكرة إلى الطاقة النظيفة"
+
+#: templates/core/home.html
+msgid "Get Free Consultancy"
+msgstr "احصل على استشارة مجانية"
+
+#: templates/core/home.html
+msgid "or call us at"
+msgstr "أو اتصل بنا على"
+
+#: templates/core/home.html
+msgid "Get It Now"
+msgstr "احصل عليه الآن"
+
+#: templates/core/home.html
+msgid "Portfolio"
+msgstr "معرض الأعمال"
+
+#: templates/core/home.html
+msgid "Our Latest Projects"
+msgstr "أحدث مشاريعنا"
+
+#: templates/core/home.html
+msgid "Showcasing solar installations across residential and commercial sectors"
+msgstr "عرض تركيبات الطاقة الشمسية في القطاعين السكني والتجاري"
+
+#: templates/core/home.html
+msgid "View Project"
+msgstr "عرض المشروع"
+
+#: templates/core/home.html
+msgid "View All Projects"
+msgstr "عرض جميع المشاريع"
+
+#: templates/core/home.html
+msgid "Insights"
+msgstr "رؤى"
+
+#: templates/core/home.html
+msgid "Latest News & Updates"
+msgstr "آخر الأخبار والتحديثات"
+
+#: templates/core/home.html
+msgid "Stay informed about solar energy trends"
+msgstr "ابق على اطلاع بأحدث اتجاهات الطاقة الشمسية"
+
+#: templates/core/home.html
+msgid "View All Articles"
+msgstr "عرض جميع المقالات"
+
+#: templates/core/home.html templates/core/news.html templates/core/news_detail.html
+msgid "min read"
+msgstr "دقيقة قراءة"
+
+#: templates/core/home.html templates/core/news.html templates/core/news_detail.html
+msgid "Read More"
+msgstr "اقرأ المزيد"
+
+#: templates/core/about.html
+msgid "About VAAM Trading"
+msgstr "حول VAAM Trading"
+
+#: templates/core/about.html
+msgid "Learn about our journey powering sustainable energy solutions"
+msgstr "تعرف على رحلتنا في تقديم حلول الطاقة المستدامة"
+
+#: templates/core/about.html
+msgid "Who We Are"
+msgstr "من نحن"
+
+#: templates/core/about.html
+msgid "Our Mission"
+msgstr "مهمتنا"
+
+#: templates/core/about.html
+msgid "Our Vision"
+msgstr "رؤيتنا"
+
+#: templates/core/about.html
+msgid "Why Choose VAAM"
+msgstr "لماذا VAAM"
+
+#: templates/core/about.html
+msgid "Meet Our Team"
+msgstr "تعرف على فريقنا"
+
+#: templates/core/about.html
+msgid "Trusted By Industry Leaders"
+msgstr "موثوق من قبل رواد الصناعة"
+
+#: templates/core/products.html
+msgid "Our Products"
+msgstr "منتجاتنا"
+
+#: templates/core/products.html
+msgid "Solar Panel Products"
+msgstr "منتجات الألواح الشمسية"
+
+#: templates/core/products.html
+msgid "Premium quality solar panels for every application"
+msgstr "ألواح شمسية عالية الجودة لكل تطبيق"
+
+#: templates/core/products.html
+msgid "All Products"
+msgstr "جميع المنتجات"
+
+#: templates/core/products.html
+msgid "Featured"
+msgstr "مميز"
+
+#: templates/core/products.html templates/core/product_detail.html
+msgid "View Details"
+msgstr "عرض التفاصيل"
+
+#: templates/core/products.html
+msgid "No products found"
+msgstr "لم يتم العثور على منتجات"
+
+#: templates/core/product_detail.html
+msgid "Specifications"
+msgstr "المواصفات"
+
+#: templates/core/product_detail.html
+msgid "Order via WhatsApp"
+msgstr "اطلب عبر واتساب"
+
+#: templates/core/product_detail.html
+msgid "Product Description"
+msgstr "وصف المنتج"
+
+#: templates/core/product_detail.html
+msgid "Related Products"
+msgstr "منتجات ذات صلة"
+
+#: templates/core/services.html
+msgid "Comprehensive solar energy solutions from manufacturing to support"
+msgstr "حلول شاملة للطاقة الشمسية من التصنيع إلى الدعم"
+
+#: templates/core/services.html
+msgid "Request Quote"
+msgstr "طلب عرض أسعار"
+
+#: templates/core/services.html
+msgid "Our Working Process"
+msgstr "عملية العمل لدينا"
+
+#: templates/core/services.html
+msgid "Frequently Asked Questions"
+msgstr "الأسئلة الشائعة"
+
+#: templates/core/services.html
+msgid "Need a Custom Solution?"
+msgstr "هل تحتاج إلى حل مخصص؟"
+
+#: templates/core/services.html
+msgid "Contact us for a free consultation"
+msgstr "اتصل بنا للحصول على استشارة مجانية"
+
+#: templates/core/projects.html
+msgid "Our Projects"
+msgstr "مشاريعنا"
+
+#: templates/core/projects.html
+msgid "Showcasing our solar installations worldwide"
+msgstr "عرض تركيباتنا الشمسية حول العالم"
+
+#: templates/core/projects.html
+msgid "All"
+msgstr "الكل"
+
+#: templates/core/projects.html
+msgid "No projects found"
+msgstr "لم يتم العثور على مشاريع"
+
+#: templates/core/news.html
+msgid "News & Updates"
+msgstr "الأخبار والتحديثات"
+
+#: templates/core/news.html
+msgid "Stay informed about solar energy trends and innovations"
+msgstr "ابق على اطلاع بأحدث اتجاهات وابتكارات الطاقة الشمسية"
+
+#: templates/core/news.html
+msgid "No articles found"
+msgstr "لم يتم العثور على مقالات"
+
+#: templates/core/news_detail.html
+msgid "Back to News"
+msgstr "العودة إلى الأخبار"
+
+#: templates/core/news_detail.html
+msgid "Share:"
+msgstr "مشاركة:"
+
+#: templates/core/news_detail.html
+msgid "Related Articles"
+msgstr "مقالات ذات صلة"
+
+#: templates/core/contact.html
+msgid "Get In Touch"
+msgstr "تواصل معنا"
+
+#: templates/core/contact.html
+msgid "We'd love to hear from you. Get in touch and we'll respond as soon as possible."
+msgstr "يسعدنا سماعك. تواصل معنا وسنرد في أقرب وقت ممكن."
+
+#: templates/core/contact.html
+msgid "Phone"
+msgstr "الهاتف"
+
+#: templates/core/contact.html
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+#: templates/core/contact.html
+msgid "Address"
+msgstr "العنوان"
+
+#: templates/core/contact.html
+msgid "Working Hours"
+msgstr "ساعات العمل"
+
+#: templates/core/contact.html
+msgid "Send Us a Message"
+msgstr "أرسل لنا رسالة"
+
+#: templates/core/contact.html
+msgid "Fill out the form and our team will get back to you within 24 hours."
+msgstr "املأ النموذج وسيتواصل معك فريقنا خلال 24 ساعة."
+
+#: templates/core/contact.html
+msgid "First Name *"
+msgstr "الاسم الأول *"
+
+#: templates/core/contact.html
+msgid "Last Name"
+msgstr "اسم العائلة"
+
+#: templates/core/contact.html
+msgid "Email *"
+msgstr "البريد الإلكتروني *"
+
+#: templates/core/contact.html
+msgid "Subject *"
+msgstr "الموضوع *"
+
+#: templates/core/contact.html
+msgid "Message *"
+msgstr "الرسالة *"
+
+#: templates/core/contact.html
+msgid "Send Message"
+msgstr "إرسال الرسالة"
+
+#: templates/core/contact.html
+msgid "What Our Clients Say"
+msgstr "ماذا يقول عملاؤنا"

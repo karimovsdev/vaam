@@ -1,0 +1,86 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}Pages{% endblock %}
+{% block page_title %}Pages{% endblock %}
+
+{% block breadcrumb %}
+<span class="text-[#899bbd]">/</span>
+<span class="text-[#899bbd]">Pages</span>
+{% endblock %}
+
+{% block content %}
+<div class="bg-white rounded-md shadow-sm" style="box-shadow:0px 0px 30px rgba(1,41,112,.05);">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-5 py-4 border-b border-[#e6e9f4]">
+        <div class="flex items-center gap-3">
+            <h5 class="text-lg font-bold text-heading font-heading">Pages</h5>
+            <span class="text-sm text-[#899bbd]">| {{ items|length }} item{{ items|length|pluralize }}</span>
+        </div>
+        <a href="{{ create_url }}" class="inline-flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded text-sm font-semibold hover:bg-primary-dark transition-all duration-200">
+            <i class="bi bi-plus-lg text-xs"></i> Add New Page
+        </a>
+    </div>
+
+    <div class="overflow-x-auto">
+        <table class="w-full">
+            <thead>
+                <tr class="border-b border-[#e6e9f4]">
+                    <th class="text-left px-5 py-3 text-sm font-semibold text-heading font-heading">Title</th>
+                    <th class="text-left px-5 py-3 text-sm font-semibold text-heading font-heading">Slug</th>
+                    <th class="text-left px-5 py-3 text-sm font-semibold text-heading font-heading">Status</th>
+                    <th class="text-left px-5 py-3 text-sm font-semibold text-heading font-heading">Footer</th>
+                    <th class="text-left px-5 py-3 text-sm font-semibold text-heading font-heading">Created</th>
+                    <th class="text-right px-5 py-3 text-sm font-semibold text-heading font-heading">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr class="border-b border-[#f0f0f0] hover:bg-[#f6f9ff] transition">
+                    <td class="px-5 py-3 text-sm">
+                        <div class="flex items-center gap-3">
+                            {% if item.image %}
+                            <img src="{{ item.image.url }}" alt="" class="w-10 h-10 rounded object-cover flex-shrink-0">
+                            {% else %}
+                            <div class="w-10 h-10 bg-primary/10 rounded flex items-center justify-center flex-shrink-0"><i class="bi bi-file-earmark-text text-primary"></i></div>
+                            {% endif %}
+                            <span class="font-semibold text-heading">{{ item.title }}</span>
+                        </div>
+                    </td>
+                    <td class="px-5 py-3 text-sm text-[#899bbd]">{{ item.slug }}</td>
+                    <td class="px-5 py-3 text-sm">
+                        {% if item.is_published %}
+                        <span class="inline-flex items-center gap-1 text-success text-xs font-semibold"><i class="bi bi-check-circle-fill"></i> Published</span>
+                        {% else %}
+                        <span class="inline-flex items-center gap-1 text-warning text-xs font-semibold"><i class="bi bi-clock-fill"></i> Draft</span>
+                        {% endif %}
+                    </td>
+                    <td class="px-5 py-3 text-sm">
+                        {% if item.show_in_footer %}
+                        <span class="text-success"><i class="bi bi-check-lg"></i></span>
+                        {% else %}
+                        <span class="text-[#e6e9f4]">—</span>
+                        {% endif %}
+                    </td>
+                    <td class="px-5 py-3 text-sm text-[#899bbd]">{{ item.created_at|date:"M d, Y" }}</td>
+                    <td class="px-5 py-3 text-sm text-right">
+                        <div class="flex items-center justify-end gap-1">
+                            <a href="{% url 'dashboard:page_edit' pk=item.pk %}" class="w-8 h-8 rounded flex items-center justify-center text-warning hover:bg-amber-50 transition" title="Edit"><i class="bi bi-pencil"></i></a>
+                            <a href="{% url 'dashboard:page_delete' pk=item.pk %}" class="w-8 h-8 rounded flex items-center justify-center text-danger hover:bg-red-50 transition" title="Delete"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="px-5 py-14 text-center">
+                        <i class="bi bi-file-earmark-text text-5xl text-[#e6e9f4] block mb-3"></i>
+                        <p class="text-[#899bbd] text-sm mb-2">No pages found</p>
+                        <a href="{{ create_url }}" class="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:underline transition">
+                            <i class="bi bi-plus-lg text-xs"></i> Create your first page
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

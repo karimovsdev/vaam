@@ -1,0 +1,101 @@
+{% extends "dashboard/base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block page_title %}{{ title }}{% endblock %}
+
+{% block breadcrumb %}
+<span class="text-[#899bbd]">/</span>
+<a href="{% url 'dashboard:menu_list' %}" class="text-primary hover:underline">Menus</a>
+<span class="text-[#899bbd]">/</span>
+<span class="text-[#899bbd]">{{ menu_obj.title }}</span>
+{% endblock %}
+
+{% block content %}
+<div class="bg-white rounded-md shadow-sm" style="box-shadow:0px 0px 30px rgba(1,41,112,.05);">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-5 py-4 border-b border-[#e6e9f4]">
+        <div class="flex items-center gap-3">
+            <h5 class="text-lg font-bold text-heading font-heading">{{ menu_obj.title }} – Items</h5>
+            <span class="text-sm text-[#899bbd]">| {{ items|length }} item{{ items|length|pluralize }}</span>
+            <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-blue-50 text-blue-700">{{ menu_obj.get_location_display }}</span>
+        </div>
+        <div class="flex items-center gap-2">
+            <a href="{% url 'dashboard:menu_list' %}" class="inline-flex items-center gap-2 border border-[#e6e9f4] text-body px-4 py-2.5 rounded text-sm font-semibold hover:bg-[#f6f9ff] transition">
+                <i class="bi bi-arrow-left text-xs"></i> Back to Menus
+            </a>
+            <a href="{{ create_url }}" class="inline-flex items-center gap-2 bg-primary text-white px-5 py-2.5 rounded text-sm font-semibold hover:bg-primary-dark transition-all duration-200">
+                <i class="bi bi-plus-lg text-xs"></i> Add Item
+            </a>
+        </div>
+    </div>
+
+    <div class="overflow-x-auto">
+        <table class="w-full">
+            <thead>
+                <tr class="border-b border-[#e6e9f4]">
+                    <th class="text-left px-5 py-3 text-sm font-semibold text-heading font-heading">Order</th>
+                    <th class="text-left px-5 py-3 text-sm font-semibold text-heading font-heading">Title</th>
+                    <th class="text-left px-5 py-3 text-sm font-semibold text-heading font-heading">Parent</th>
+                    <th class="text-left px-5 py-3 text-sm font-semibold text-heading font-heading">Link Type</th>
+                    <th class="text-left px-5 py-3 text-sm font-semibold text-heading font-heading">URL / Page</th>
+                    <th class="text-left px-5 py-3 text-sm font-semibold text-heading font-heading">Status</th>
+                    <th class="text-right px-5 py-3 text-sm font-semibold text-heading font-heading">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr class="border-b border-[#f0f0f0] hover:bg-[#f6f9ff] transition">
+                    <td class="px-5 py-3 text-sm text-[#899bbd]">{{ item.order }}</td>
+                    <td class="px-5 py-3 text-sm">
+                        <div class="flex items-center gap-2">
+                            {% if item.parent %}
+                            <span class="text-[#e6e9f4]">└</span>
+                            {% endif %}
+                            {% if item.icon %}<i class="{{ item.icon }} text-primary text-xs"></i>{% endif %}
+                            <span class="font-semibold text-heading">{{ item.title }}</span>
+                        </div>
+                    </td>
+                    <td class="px-5 py-3 text-sm text-[#899bbd]">
+                        {% if item.parent %}{{ item.parent.title }}{% else %}<span class="text-xs">—</span>{% endif %}
+                    </td>
+                    <td class="px-5 py-3 text-sm">
+                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-slate-100 text-slate-600">{{ item.get_link_type_display }}</span>
+                    </td>
+                    <td class="px-5 py-3 text-sm text-[#899bbd] max-w-[200px] truncate">
+                        {% if item.link_type == 'page' and item.page %}
+                        {{ item.page.title }}
+                        {% elif item.link_type == 'url' %}
+                        {{ item.url|truncatechars:40 }}
+                        {% else %}
+                        <span class="text-xs italic">{{ item.get_link_type_display }}</span>
+                        {% endif %}
+                    </td>
+                    <td class="px-5 py-3 text-sm">
+                        {% if item.is_active %}
+                        <span class="inline-flex items-center gap-1 text-success text-xs font-semibold"><i class="bi bi-check-circle-fill"></i> Active</span>
+                        {% else %}
+                        <span class="inline-flex items-center gap-1 text-[#899bbd] text-xs font-semibold"><i class="bi bi-x-circle-fill"></i> Inactive</span>
+                        {% endif %}
+                    </td>
+                    <td class="px-5 py-3 text-sm text-right">
+                        <div class="flex items-center justify-end gap-1">
+                            <a href="{% url 'dashboard:menu_item_edit' menu_pk=menu_obj.pk pk=item.pk %}" class="w-8 h-8 rounded flex items-center justify-center text-warning hover:bg-amber-50 transition" title="Edit"><i class="bi bi-pencil"></i></a>
+                            <a href="{% url 'dashboard:menu_item_delete' menu_pk=menu_obj.pk pk=item.pk %}" class="w-8 h-8 rounded flex items-center justify-center text-danger hover:bg-red-50 transition" title="Delete"><i class="bi bi-trash"></i></a>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="px-5 py-14 text-center">
+                        <i class="bi bi-list text-5xl text-[#e6e9f4] block mb-3"></i>
+                        <p class="text-[#899bbd] text-sm mb-2">No menu items yet</p>
+                        <a href="{{ create_url }}" class="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:underline transition">
+                            <i class="bi bi-plus-lg text-xs"></i> Add your first item
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

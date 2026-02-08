@@ -1,0 +1,106 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{{ product.name }} - {{ settings.site_name }}{% endblock %}
+{% block meta_description %}{{ product.meta_description|default:product.short_description }}{% endblock %}
+{% block og_title %}{{ product.name }} - {{ settings.site_name }}{% endblock %}
+{% block og_description %}{{ product.meta_description|default:product.short_description }}{% endblock %}
+{% block og_image %}{% if product.image %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ product.image.url }}">{% endif %}{% endblock %}
+{% block og_type %}product{% endblock %}
+
+{% block content %}
+<!-- PAGE HEADER -->
+<section class="relative py-24 md:py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-dark-900"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-primary-900/40 via-dark-900 to-dark-800"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">{{ product.name }}</h1>
+        <div class="flex justify-center gap-2 mt-4 text-sm">
+            <a href="{% url 'core:home' %}" class="text-white/60 hover:text-white transition">{% trans "Home" %}</a>
+            <span class="text-white/30">/</span>
+            <a href="{% url 'core:products' %}" class="text-white/60 hover:text-white transition">{% trans "Products" %}</a>
+            <span class="text-white/30">/</span>
+            <span class="text-primary-400">{{ product.name }}</span>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCT DETAIL -->
+<section class="section-padding">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Gallery -->
+            <div>
+                <div class="rounded-2xl overflow-hidden mb-4 border border-slate-100">
+                    {% if product.image %}<img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-[450px] object-cover">{% endif %}
+                </div>
+                {% if product.images.all %}
+                <div class="grid grid-cols-4 gap-3">
+                    {% for img in product.images.all %}
+                    <div class="rounded-xl overflow-hidden border border-slate-100 cursor-pointer hover:border-primary-300 transition">
+                        <img src="{{ img.image.url }}" alt="{{ img.alt_text|default:product.name }}" class="w-full h-20 object-cover" loading="lazy">
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <!-- Info -->
+            <div>
+                <div class="mb-4"><span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-xs font-semibold">{{ product.category.name }}</span></div>
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">{{ product.name }}</h2>
+                {% if product.price %}<p class="text-2xl font-bold text-primary-600 mb-6">{{ product.price }}</p>{% endif %}
+                <p class="text-slate-500 text-lg leading-relaxed mb-8">{{ product.short_description }}</p>
+                
+                {% if product.specifications.all %}
+                <div class="mb-8">
+                    <h3 class="text-lg font-bold text-slate-900 mb-4">{% trans "Specifications" %}</h3>
+                    <div class="space-y-2">
+                        {% for spec in product.specifications.all %}
+                        <div class="flex justify-between py-3 px-4 rounded-xl {% if forloop.counter|divisibleby:2 %}bg-slate-50{% else %}bg-white{% endif %} border border-slate-100">
+                            <span class="font-medium text-slate-700 text-sm">{{ spec.key }}</span>
+                            <span class="text-slate-500 text-sm">{{ spec.value }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="flex gap-3">
+                    <a href="https://wa.me/{{ settings.whatsapp|default:'994501234567' }}?text=Hello!%20I'm%20interested%20in%20{{ product.name|urlencode }}" target="_blank" class="flex-1 inline-flex items-center justify-center gap-2 bg-emerald-500 text-white px-6 py-3.5 rounded-full font-semibold hover:bg-emerald-600 transition"><i class="fab fa-whatsapp text-lg"></i> {% trans "Order via WhatsApp" %}</a>
+                    <a href="{% url 'core:contact' %}" class="inline-flex items-center justify-center gap-2 border border-slate-200 text-slate-700 px-6 py-3.5 rounded-full font-semibold hover:border-primary-300 hover:text-primary-700 transition"><i class="fas fa-envelope text-xs"></i> {% trans "Contact Us" %}</a>
+                </div>
+            </div>
+        </div>
+
+        {% if product.description %}
+        <div class="mt-16 prose prose-slate max-w-none">
+            <h3 class="text-2xl font-bold text-slate-900 mb-6">{% trans "Product Description" %}</h3>
+            <div class="text-slate-500 leading-relaxed">{{ product.description|linebreaks }}</div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- RELATED PRODUCTS -->
+{% if related_products %}
+<section class="section-padding bg-slate-50/80">
+    <div class="max-w-7xl mx-auto px-6">
+        <h3 class="text-2xl font-bold text-slate-900 mb-8">{% trans "Related Products" %}</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for rp in related_products %}
+            <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-primary-200 transition-all duration-500 hover:shadow-xl">
+                <div class="relative overflow-hidden h-56">
+                    {% if rp.image %}<img src="{{ rp.image.url }}" alt="{{ rp.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">{% endif %}
+                </div>
+                <div class="p-6">
+                    <h4 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary-700 transition-colors">{{ rp.name }}</h4>
+                    <a href="{% url 'core:product_detail' rp.slug %}" class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold">{% trans "View Details" %} <i class="fas fa-arrow-right text-[10px]"></i></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

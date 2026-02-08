@@ -1,0 +1,295 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{{ settings.site_name }} - {% trans "Solar Panel Manufacturing & Wholesale" %}{% endblock %}
+
+{% block content %}
+<!-- HERO SLIDER -->
+<script>
+function heroSlider() {
+    return {
+        currentSlide: 0,
+        slides: {{ slides_json|safe }},
+        get totalSlides() { return this.slides.length },
+        autoplayInterval: null,
+        init() { if (this.slides.length > 0) this.startAutoplay(); },
+        startAutoplay() { this.autoplayInterval = setInterval(() => this.next(), 6000); },
+        resetAutoplay() { clearInterval(this.autoplayInterval); this.startAutoplay(); },
+        next() { this.currentSlide = (this.currentSlide + 1) % this.slides.length; },
+        prev() { this.currentSlide = (this.currentSlide - 1 + this.slides.length) % this.slides.length; this.resetAutoplay(); },
+        goTo(i) { this.currentSlide = i; this.resetAutoplay(); }
+    }
+}
+</script>
+<section x-data="heroSlider()" class="relative h-[92vh] min-h-[600px] max-h-[900px] overflow-hidden">
+    {% if slides %}
+    <template x-for="(slide,i) in slides" :key="i">
+        <div x-show="currentSlide===i"
+             x-transition:enter="transition-all duration-1000 ease-out"
+             x-transition:enter-start="opacity-0 scale-105"
+             x-transition:enter-end="opacity-100 scale-100"
+             x-transition:leave="transition-opacity duration-700"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0"
+             class="absolute inset-0">
+            <div class="absolute inset-0 bg-cover bg-center scale-105" :style="`background-image:url('${slide.img}')`"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-dark-900/90 via-dark-800/70 to-dark-800/40"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-dark-900/50 via-transparent to-transparent"></div>
+            <div class="relative z-10 h-full flex items-center">
+                <div class="max-w-7xl mx-auto px-6 w-full">
+                    <div class="max-w-2xl" x-show="currentSlide===i" x-transition:enter="transition duration-700 delay-300" x-transition:enter-start="opacity-0 translate-y-6" x-transition:enter-end="opacity-100 translate-y-0">
+                        <div class="flex items-center gap-3 mb-6">
+                            <span class="w-8 h-[2px] bg-primary-400"></span>
+                            <span class="text-primary-400 text-sm font-semibold tracking-[0.2em] uppercase" x-text="slide.sub"></span>
+                        </div>
+                        <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold text-white leading-[1.1] mb-6 tracking-tight" x-text="slide.title"></h1>
+                        <p class="text-white/70 text-lg md:text-xl mb-10 leading-relaxed max-w-xl font-light" x-text="slide.text"></p>
+                        <div class="flex flex-wrap gap-4">
+                            <a :href="slide.b1.h" class="group inline-flex items-center gap-3 bg-primary-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-primary-500 transition-all duration-300 shadow-xl shadow-primary-900/20">
+                                <span x-text="slide.b1.t"></span>
+                                <i class="fas fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                            <a :href="slide.b2.h" class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-full font-semibold hover:bg-white/20 transition-all duration-300" x-text="slide.b2.t"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    {% else %}
+    <!-- Fallback when no slides -->
+    <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1920&h=1080&fit=crop&q=80')"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-dark-900/90 via-dark-800/70 to-dark-800/40"></div>
+        <div class="relative z-10 h-full flex items-center">
+            <div class="max-w-7xl mx-auto px-6 w-full">
+                <div class="max-w-2xl">
+                    <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold text-white leading-[1.1] mb-6">{% trans "Engineering the Future of Solar Energy" %}</h1>
+                    <p class="text-white/70 text-lg mb-10">{% trans "Premium solar panels for global markets." %}</p>
+                    <a href="{% url 'core:products' %}" class="inline-flex items-center gap-3 bg-primary-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-primary-500 transition-all duration-300">{% trans "Explore Products" %} <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="absolute bottom-0 left-0 right-0 z-20">
+        <div class="max-w-7xl mx-auto px-6 pb-10 flex items-end justify-between">
+            <div class="flex items-center gap-3">
+                <template x-for="j in totalSlides"><button @click="goTo(j-1)" :aria-label="'{% trans "Go to slide" %} ' + j" class="transition-all duration-300 rounded-full" :class="currentSlide===j-1 ? 'w-10 h-2 bg-primary-400' : 'w-2 h-2 bg-white/30 hover:bg-white/60'"></button></template>
+            </div>
+            <div class="flex gap-2">
+                <button @click="prev()" aria-label="{% trans 'Previous slide' %}" class="w-11 h-11 rounded-full border border-white/20 text-white/70 flex items-center justify-center hover:bg-white/10 hover:text-white transition-all duration-300"><i class="fas fa-arrow-left text-sm"></i></button>
+                <button @click="next();resetAutoplay()" aria-label="{% trans 'Next slide' %}" class="w-11 h-11 rounded-full border border-white/20 text-white/70 flex items-center justify-center hover:bg-white/10 hover:text-white transition-all duration-300"><i class="fas fa-arrow-right text-sm"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURE BOXES -->
+<section class="relative -mt-16 z-30 pb-12">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {% for feature in features %}
+            <div x-data="scrollAnimate()" {% if forloop.counter0 > 0 %}data-delay="{{ forloop.counter0|add:'00' }}"{% endif %} :class="visible&&'animate-fade-up'" class="opacity-0 group bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 hover:border-primary-200 hover:shadow-primary-100/50 transition-all duration-500">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 flex-shrink-0 bg-{% cycle 'primary' 'accent' %}-50 text-{% cycle 'primary' 'accent' %}-600 rounded-xl flex items-center justify-center text-lg group-hover:bg-{% cycle 'primary' 'accent' %}-600 group-hover:text-white transition-all duration-300"><i class="{{ feature.icon }}"></i></div>
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-900 mb-1">{{ feature.title }}</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">{{ feature.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="opacity-0 group bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 animate-fade-up">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 flex-shrink-0 bg-primary-50 text-primary-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-leaf"></i></div>
+                    <div><h4 class="text-sm font-bold text-slate-900 mb-1">{% trans "Eco Friendly" %}</h4><p class="text-slate-500 text-xs leading-relaxed">{% trans "Sustainable solar energy for a greener future" %}</p></div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="section-padding">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div x-data="scrollAnimate()" :class="visible&&'animate-slide-left'" class="opacity-0 relative">
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl shadow-slate-300/30">
+                    {% if company_info.image %}
+                    <img src="{{ company_info.image.url }}" alt="{{ company_info.title }}" class="w-full h-[480px] object-cover" loading="lazy">
+                    {% else %}
+                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop&q=80" alt="VAAM Trading" class="w-full h-[480px] object-cover" loading="lazy">
+                    {% endif %}
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/30 to-transparent"></div>
+                </div>
+                <div class="absolute -bottom-6 -right-6 md:bottom-8 md:right-8 bg-gradient-to-br from-primary-600 to-primary-700 text-white p-6 rounded-2xl shadow-xl shadow-primary-700/30">
+                    {% if statistics %}
+                    <h3 class="text-4xl font-extrabold leading-none">{{ statistics.0.value }}{{ statistics.0.suffix }}</h3>
+                    <p class="mt-1 text-primary-100 text-sm font-medium tracking-wide">{{ statistics.0.title }}</p>
+                    {% else %}
+                    <h3 class="text-4xl font-extrabold leading-none">25+</h3>
+                    <p class="mt-1 text-primary-100 text-sm font-medium tracking-wide">{% trans "Years Warranty" %}</p>
+                    {% endif %}
+                </div>
+                <div class="absolute -top-4 -left-4 w-24 h-24 border-2 border-primary-200 rounded-3xl -z-10"></div>
+            </div>
+            <div x-data="scrollAnimate()" data-delay="200" :class="visible&&'animate-slide-right'" class="opacity-0">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="w-8 h-[2px] bg-primary-500"></span>
+                    <span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "About VAAM" %}</span>
+                </div>
+                <h2 class="text-3xl md:text-[2.5rem] font-bold text-slate-900 mb-6 leading-tight">{{ company_info.title|default:'Our mission is to make solar energy' }} <span class="text-gradient from-primary-600 to-primary-400">{% trans "accessible to all" %}</span></h2>
+                <p class="text-slate-500 mb-8 text-lg leading-relaxed">{{ company_info.description|default:'VAAM Import and Export Trading Co., LTD is a premier manufacturer and wholesale supplier of high-quality solar panels.' }}</p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="{% url 'core:about' %}" class="group inline-flex items-center gap-2 bg-primary-600 text-white px-7 py-3 rounded-full text-sm font-semibold hover:bg-primary-700 hover:shadow-lg hover:shadow-primary-600/25 transition-all duration-300">{% trans "Learn More" %} <i class="fas fa-arrow-right text-[11px] group-hover:translate-x-1 transition-transform"></i></a>
+                    <a href="tel:{{ settings.phone }}" class="inline-flex items-center gap-2 border border-slate-200 text-slate-700 px-7 py-3 rounded-full text-sm font-semibold hover:border-primary-300 hover:text-primary-700 transition-all duration-300"><i class="fas fa-phone text-primary-500 text-xs"></i> {% trans "Call Us 24/7" %}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SERVICES SECTION -->
+<section class="section-padding bg-slate-50/80 relative overflow-hidden">
+    <div class="absolute inset-0 dot-pattern opacity-30"></div>
+    <div class="relative max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16" x-data="scrollAnimate()" :class="visible&&'animate-fade-up'">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <span class="w-8 h-[2px] bg-primary-500"></span>
+                <span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "What We Offer" %}</span>
+                <span class="w-8 h-[2px] bg-primary-500"></span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{% trans "Comprehensive Solar Solutions" %}</h2>
+            <p class="text-slate-500 text-lg max-w-2xl mx-auto">{% trans "End-to-end services from manufacturing to installation and long-term support" %}</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for service in services %}
+            <div x-data="scrollAnimate()" {% if forloop.counter0 > 0 %}data-delay="{{ forloop.counter0 }}00"{% endif %} :class="visible&&'animate-fade-up'" class="opacity-0 group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-primary-200 transition-all duration-500 hover:shadow-xl hover:shadow-primary-100/30">
+                <div class="relative overflow-hidden h-52">
+                    {% if service.image %}<img src="{{ service.image.url }}" alt="{{ service.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">{% else %}<div class="w-full h-full bg-gradient-to-br from-primary-100 to-primary-50"></div>{% endif %}
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 w-11 h-11 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center text-primary-600"><i class="{{ service.icon|default:'fas fa-cog' }}"></i></div>
+                </div>
+                <div class="p-6"><h3 class="text-lg font-bold text-slate-900 mb-2">{{ service.title }}</h3><p class="text-slate-500 text-sm mb-4 leading-relaxed">{{ service.short_description|truncatewords:20 }}</p><a href="{% url 'core:services' %}" class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold hover:gap-3 transition-all">{% trans "Learn More" %} <i class="fas fa-arrow-right text-[10px]"></i></a></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- WORKING PROCESS -->
+{% if process_steps %}
+<section class="section-padding">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <span class="w-8 h-[2px] bg-primary-500"></span>
+                <span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "How It Works" %}</span>
+                <span class="w-8 h-[2px] bg-primary-500"></span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900">{% trans "From Concept to Clean Energy" %}</h2>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {% for step in process_steps %}
+            <div class="{% if not forloop.last %}relative{% endif %} text-center group">
+                <div class="w-20 h-20 mx-auto mb-6 bg-gradient-to-br from-{% cycle 'primary' 'accent' %}-500 to-{% cycle 'primary' 'accent' %}-600 text-white rounded-2xl flex items-center justify-center text-2xl font-extrabold shadow-lg group-hover:scale-110 group-hover:rounded-3xl transition-all duration-300">{{ step.order|stringformat:"02d" }}</div>
+                <h4 class="text-base font-bold text-slate-900 mb-2">{{ step.title }}</h4>
+                <p class="text-slate-500 text-sm leading-relaxed">{{ step.description }}</p>
+                {% if not forloop.last %}<div class="hidden lg:block absolute top-10 left-[60%] w-[calc(100%-20%)] h-[2px] bg-gradient-to-r from-primary-200 to-transparent"></div>{% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- CTA BANNER -->
+<section class="relative py-20 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-primary-900"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">{% trans "Get Free Consultancy" %}</h2>
+            <p class="text-white/60 text-lg">{% trans "or call us at" %} <a href="tel:{{ settings.phone }}" class="text-primary-400 font-semibold hover:text-primary-300 transition">{{ settings.phone }}</a></p>
+        </div>
+        <a href="https://wa.me/{{ settings.whatsapp|default:'994501234567' }}?text=Hello%20VAAM!%20I%20need%20a%20free%20consultancy." target="_blank" class="inline-flex items-center gap-3 bg-primary-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-primary-400 transition-all duration-300 shadow-xl shadow-primary-500/20 flex-shrink-0"><i class="fab fa-whatsapp text-xl"></i> {% trans "Get It Now" %}</a>
+    </div>
+</section>
+
+<!-- STATS COUNTER -->
+{% if statistics %}
+<section class="section-padding bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+            {% for stat in statistics %}
+            <div class="text-center" x-data="counter()" data-target="{{ stat.value }}">
+                <div class="w-14 h-14 mx-auto mb-4 bg-{% cycle 'primary' 'accent' %}-50 rounded-2xl flex items-center justify-center text-{% cycle 'primary' 'accent' %}-600 text-xl"><i class="{{ stat.icon }}"></i></div>
+                <span class="text-4xl md:text-5xl font-extrabold text-slate-900 block tracking-tight" x-text="count + '{{ stat.suffix }}'"></span>
+                <span class="text-slate-500 text-sm font-medium mt-2 block">{{ stat.title }}</span>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- PROJECTS SECTION -->
+{% if featured_projects %}
+<section class="section-padding bg-slate-50/80 relative overflow-hidden">
+    <div class="absolute inset-0 dot-pattern opacity-20"></div>
+    <div class="relative max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <span class="w-8 h-[2px] bg-primary-500"></span>
+                <span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "Portfolio" %}</span>
+                <span class="w-8 h-[2px] bg-primary-500"></span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{% trans "Our Latest Projects" %}</h2>
+            <p class="text-slate-500 text-lg max-w-2xl mx-auto">{% trans "Showcasing solar installations across residential and commercial sectors" %}</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for project in featured_projects %}
+            <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-primary-200 transition-all duration-500 hover:shadow-xl hover:shadow-primary-100/30">
+                <div class="relative overflow-hidden h-56">
+                    {% if project.image %}<img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">{% endif %}
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-4 left-4"><span class="px-3 py-1 bg-white/90 backdrop-blur-sm text-primary-700 rounded-full text-xs font-semibold">{{ project.category.name }}</span></div>
+                </div>
+                <div class="p-6"><h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary-700 transition-colors">{{ project.title }}</h3><p class="text-slate-500 text-sm mb-4">{{ project.short_description|truncatewords:15 }}</p><a href="{% url 'core:projects' %}" class="inline-flex items-center gap-2 text-sm font-semibold text-primary-600 hover:gap-3 transition-all">{% trans "View Project" %} <i class="fas fa-arrow-right text-[10px]"></i></a></div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-12"><a href="{% url 'core:projects' %}" class="group inline-flex items-center gap-2 bg-primary-600 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-primary-700 hover:shadow-lg transition-all duration-300">{% trans "View All Projects" %} <i class="fas fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i></a></div>
+    </div>
+</section>
+{% endif %}
+
+<!-- NEWS SECTION -->
+{% if latest_news %}
+<section class="section-padding">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+            <div>
+                <div class="flex items-center gap-3 mb-4"><span class="w-8 h-[2px] bg-primary-500"></span><span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "Insights" %}</span></div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-2">{% trans "Latest News & Updates" %}</h2>
+                <p class="text-slate-500 text-lg">{% trans "Stay informed about solar energy trends" %}</p>
+            </div>
+            <a href="{% url 'core:news' %}" class="inline-flex items-center gap-2 text-primary-600 font-semibold text-sm hover:gap-3 transition-all flex-shrink-0">{% trans "View All Articles" %} <i class="fas fa-arrow-right text-[10px]"></i></a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for article in latest_news %}
+            <div class="group">
+                <div class="relative overflow-hidden rounded-2xl mb-5 h-52">{% if article.image %}<img src="{{ article.image.url }}" alt="{{ article.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">{% endif %}</div>
+                <div class="flex gap-4 mb-3 text-xs text-slate-400 font-medium"><span><i class="far fa-calendar mr-1"></i> {{ article.published_at|date:"M d, Y" }}</span><span><i class="far fa-clock mr-1"></i> {{ article.reading_time }} {% trans "min read" %}</span></div>
+                <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary-700 transition-colors leading-snug">{{ article.title }}</h3>
+                <p class="text-slate-500 text-sm mb-4 leading-relaxed">{{ article.summary|truncatewords:20 }}</p>
+                <a href="{% url 'core:news_detail' article.slug %}" class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold hover:gap-3 transition-all">{% trans "Read More" %} <i class="fas fa-arrow-right text-[10px]"></i></a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}

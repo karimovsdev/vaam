@@ -1,478 +1,358 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Stay updated with the latest news, insights, and developments from VAAM - covering solar industry trends, company updates, and product innovations.">
-    <meta name="keywords" content="solar news, renewable energy updates, solar industry, VAAM news, solar technology">
-    <meta name="author" content="VAAM Import and Export Trading Co., LTD">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="News & Updates - VAAM Import and Export Trading Co., LTD">
-    <meta property="og:description" content="Latest news and insights from the solar energy industry">
-    <meta property="og:type" content="website">
-    
-    <title>News & Updates - VAAM Import and Export Trading Co., LTD</title>
-    
-    <!-- Google Fonts -->
+    <meta name="description" content="Stay up to date with the latest news, insights, and updates from VAAM Import and Export Trading Co., LTD on solar energy, renewable technologies, and market trends.">
+    <title>News &amp; Updates - VAAM Import and Export Trading</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { 50:'#ecfdf5',100:'#d1fae5',200:'#a7f3d0',300:'#6ee7b7',400:'#34d399',500:'#10b981',600:'#059669',700:'#047857',800:'#065f46',900:'#064e3b' },
+                        accent: { 50:'#fffbeb',100:'#fef3c7',200:'#fde68a',300:'#fcd34d',400:'#fbbf24',500:'#f59e0b',600:'#d97706',700:'#b45309',800:'#92400e',900:'#78350f' },
+                        dark: { 700:'#1e293b', 800:'#0f172a', 900:'#020617' }
+                    },
+                    fontFamily: {
+                        heading: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+                        body: ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-up': 'fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'fade-in': 'fadeIn 0.7s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'slide-left': 'slideLeft 0.7s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'slide-right': 'slideRight 0.7s cubic-bezier(0.16,1,0.3,1) forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeUp: { '0%': { opacity:'0', transform:'translateY(24px)' }, '100%': { opacity:'1', transform:'translateY(0)' } },
+                        fadeIn: { '0%': { opacity:'0' }, '100%': { opacity:'1' } },
+                        slideLeft: { '0%': { opacity:'0', transform:'translateX(-24px)' }, '100%': { opacity:'1', transform:'translateX(0)' } },
+                        slideRight: { '0%': { opacity:'0', transform:'translateX(24px)' }, '100%': { opacity:'1', transform:'translateX(0)' } },
+                        float: { '0%,100%': { transform:'translateY(0)' }, '50%': { transform:'translateY(-10px)' } },
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer base {
+            body { @apply font-body text-slate-600 leading-relaxed antialiased; }
+            h1,h2,h3,h4,h5,h6 { @apply font-heading font-bold text-slate-900; }
+        }
+        @layer utilities {
+            .text-gradient { @apply bg-clip-text text-transparent bg-gradient-to-r; }
+            .glass { @apply bg-white/70 backdrop-blur-xl border border-white/20; }
+            .glass-dark { @apply bg-slate-900/70 backdrop-blur-xl border border-white/10; }
+            .section-padding { @apply py-20 md:py-28; }
+            .dot-pattern { background-image: radial-gradient(circle, #e2e8f0 1px, transparent 1px); background-size: 24px 24px; }
+        }
+    </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/solari-style.css">
-    <link rel="stylesheet" href="css/solari-responsive.css">
-    
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="images/logo/vaam-logo.png">
 </head>
-<body>
+<body class="overflow-x-hidden" x-data>
 
     <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="top-bar-content">
-                <div class="top-bar-left">
-                    <div class="top-bar-item">
-                        <i class="fas fa-phone"></i>
-                        <a href="tel:+994501234567">+994 50 123 45 67</a>
-                    </div>
-                    <div class="top-bar-item">
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:info@vaamtrading.com">info@vaamtrading.com</a>
-                    </div>
-                    <div class="top-bar-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Baku, Azerbaijan</span>
-                    </div>
-                </div>
-                <div class="top-bar-right">
-                    <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-                    
-                    <div class="language-switcher">
-                        <button class="lang-btn">
-                            <i class="fas fa-globe"></i>
-                            <span>EN</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </button>
-                        <div class="lang-dropdown">
-                            <a href="#" class="lang-option active">
-                                <img src="https://flagcdn.com/w20/us.png" alt="English"> English
-                            </a>
-                            <a href="#" class="lang-option">
-                                <img src="https://flagcdn.com/w20/ru.png" alt="Russian"> Русский
-                            </a>
-                            <a href="#" class="lang-option">
-                                <img src="https://flagcdn.com/w20/tr.png" alt="Turkish"> Türkçe
-                            </a>
-                            <a href="#" class="lang-option">
-                                <img src="https://flagcdn.com/w20/sa.png" alt="Arabic"> العربية
-                            </a>
-                        </div>
+    <div class="bg-dark-900 text-white/80 py-2.5 text-[13px] hidden lg:block border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex gap-8 items-center">
+                <a href="tel:+994501234567" class="flex items-center gap-2 hover:text-white transition"><i class="fas fa-phone text-primary-400 text-[11px]"></i> +994 50 123 45 67</a>
+                <a href="mailto:info@vaamtrading.com" class="flex items-center gap-2 hover:text-white transition"><i class="fas fa-envelope text-primary-400 text-[11px]"></i> info@vaamtrading.com</a>
+                <span class="flex items-center gap-2"><i class="fas fa-location-dot text-primary-400 text-[11px]"></i> Baku, Azerbaijan</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="#" class="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center hover:bg-primary-600 hover:text-white transition-all duration-300"><i class="fab fa-facebook-f text-[10px]"></i></a>
+                <a href="#" class="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center hover:bg-primary-600 hover:text-white transition-all duration-300"><i class="fab fa-linkedin-in text-[10px]"></i></a>
+                <a href="#" class="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center hover:bg-primary-600 hover:text-white transition-all duration-300"><i class="fab fa-instagram text-[10px]"></i></a>
+                <a href="#" class="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center hover:bg-primary-600 hover:text-white transition-all duration-300"><i class="fab fa-youtube text-[10px]"></i></a>
+                <div class="ml-3 pl-3 border-l border-white/10" x-data="{open:false}">
+                    <button @click="open=!open" class="flex items-center gap-1.5 text-white/70 hover:text-white transition text-[12px]"><i class="fas fa-globe text-[10px]"></i> EN <i class="fas fa-chevron-down text-[8px] transition-transform" :class="open&&'rotate-180'"></i></button>
+                    <div x-show="open" @click.away="open=false" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" class="absolute top-full right-0 mt-3 bg-white rounded-xl shadow-2xl shadow-slate-200/50 min-w-[180px] overflow-hidden z-50 border border-slate-100">
+                        <a href="#" class="flex items-center gap-3 px-4 py-2.5 text-slate-800 hover:bg-primary-50 text-sm font-medium text-primary-700 bg-primary-50/50"><img src="https://flagcdn.com/w20/us.png" alt="EN" class="w-5 rounded-sm"> English</a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2.5 text-slate-600 hover:bg-primary-50 text-sm"><img src="https://flagcdn.com/w20/ru.png" alt="RU" class="w-5 rounded-sm"> Русский</a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2.5 text-slate-600 hover:bg-primary-50 text-sm"><img src="https://flagcdn.com/w20/tr.png" alt="TR" class="w-5 rounded-sm"> Türkçe</a>
+                        <a href="#" class="flex items-center gap-3 px-4 py-2.5 text-slate-600 hover:bg-primary-50 text-sm"><img src="https://flagcdn.com/w20/sa.png" alt="AR" class="w-5 rounded-sm"> العربية</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Header / Navigation -->
-    <header class="header">
-        <div class="container">
-            <nav class="navbar">
-                <a href="index.html" class="logo">
-                    <img src="images/logo/vaam-logo.png" alt="VAAM Import and Export Trading Co., LTD">
-                </a>
-                
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="about.html" class="nav-link">About Us</a></li>
-                    <li><a href="services.html" class="nav-link">Services</a></li>
-                    <li><a href="products.html" class="nav-link">Products</a></li>
-                    <li><a href="projects.html" class="nav-link">Projects</a></li>
-                    <li><a href="news.html" class="nav-link active">News</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+    <!-- Header -->
+    <header x-data="navbar()" :class="scrolled ? 'bg-white/80 backdrop-blur-xl shadow-lg shadow-slate-200/40 border-b border-slate-100' : 'bg-white'" class="sticky top-0 z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6">
+            <nav class="flex justify-between items-center h-[72px]">
+                <a href="index.html" class="flex-shrink-0"><img src="images/logo/vaam-logo.png" alt="VAAM" class="h-11 w-auto max-w-[180px] object-contain"></a>
+                <ul class="hidden lg:flex items-center gap-0.5">
+                    <li><a href="index.html" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-primary-700 transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-primary-600 after:rounded-full after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left">Home</a></li>
+                    <li><a href="about.html" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-primary-700 transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-primary-600 after:rounded-full after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left">About</a></li>
+                    <li><a href="services.html" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-primary-700 transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-primary-600 after:rounded-full after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left">Services</a></li>
+                    <li><a href="products.html" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-primary-700 transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-primary-600 after:rounded-full after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left">Products</a></li>
+                    <li><a href="projects.html" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-primary-700 transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-primary-600 after:rounded-full after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left">Projects</a></li>
+                    <li><a href="news.html" class="px-4 py-2 text-sm font-semibold text-primary-700 relative after:content-[''] after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-primary-600 after:rounded-full">News</a></li>
+                    <li><a href="contact.html" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-primary-700 transition-colors relative after:content-[''] after:absolute after:bottom-0 after:left-4 after:right-4 after:h-0.5 after:bg-primary-600 after:rounded-full after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:origin-left">Contact</a></li>
                 </ul>
-                
-                <div class="header-cta">
-                    <a href="contact.html" class="btn btn-primary">Get A Quote</a>
+                <div class="hidden lg:flex items-center gap-3">
+                    <a href="contact.html" class="inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-primary-700 hover:shadow-lg hover:shadow-primary-600/25 transition-all duration-300"><span>Get A Quote</span><i class="fas fa-arrow-right text-[11px]"></i></a>
                 </div>
-                
-                <button class="mobile-toggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
+                <button @click="toggleMobile()" class="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 z-50 rounded-lg hover:bg-slate-50 transition">
+                    <span class="w-5 h-[1.5px] bg-slate-700 transition-all duration-300" :class="mobileOpen&&'rotate-45 translate-y-[7px]'"></span>
+                    <span class="w-5 h-[1.5px] bg-slate-700 transition-all duration-300" :class="mobileOpen&&'opacity-0'"></span>
+                    <span class="w-5 h-[1.5px] bg-slate-700 transition-all duration-300" :class="mobileOpen&&'-rotate-45 -translate-y-[7px]'"></span>
                 </button>
+                <div x-show="mobileOpen" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200" class="fixed inset-0 top-[72px] bg-white z-40 lg:hidden overflow-y-auto">
+                    <div class="p-6 space-y-1">
+                        <a href="index.html" class="block px-4 py-3 text-[15px] font-medium text-slate-700 rounded-xl hover:bg-slate-50 transition">Home</a>
+                        <a href="about.html" class="block px-4 py-3 text-[15px] font-medium text-slate-700 rounded-xl hover:bg-slate-50 transition">About</a>
+                        <a href="services.html" class="block px-4 py-3 text-[15px] font-medium text-slate-700 rounded-xl hover:bg-slate-50 transition">Services</a>
+                        <a href="products.html" class="block px-4 py-3 text-[15px] font-medium text-slate-700 rounded-xl hover:bg-slate-50 transition">Products</a>
+                        <a href="projects.html" class="block px-4 py-3 text-[15px] font-medium text-slate-700 rounded-xl hover:bg-slate-50 transition">Projects</a>
+                        <a href="news.html" class="block px-4 py-3 text-[15px] font-semibold text-primary-700 bg-primary-50 rounded-xl">News</a>
+                        <a href="contact.html" class="block px-4 py-3 text-[15px] font-medium text-slate-700 rounded-xl hover:bg-slate-50 transition">Contact</a>
+                        <div class="pt-4"><a href="contact.html" class="block text-center bg-primary-600 text-white px-6 py-3 rounded-full font-semibold text-sm">Get A Quote</a></div>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
 
     <!-- Page Header -->
-    <section class="page-header" style="background-image: url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1920&h=600&fit=crop&q=80');">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="page-header-content">
-                <span class="page-badge" data-aos="fade-up">NEWS & INSIGHTS</span>
-                <h1 data-aos="fade-up" data-aos-delay="100">Stay Informed</h1>
-                <div class="breadcrumb" data-aos="fade-up" data-aos-delay="200">
-                    <a href="index.html">Home</a>
-                    <span>/</span>
-                    <span>News</span>
-                </div>
+    <section class="relative py-24 md:py-32 overflow-hidden">
+        <div class="absolute inset-0 bg-dark-900"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-900/40 via-dark-900 to-dark-800"></div>
+        <div class="absolute inset-0 dot-pattern opacity-[0.03]"></div>
+        <div class="absolute top-20 right-20 w-72 h-72 bg-primary-500/10 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 left-10 w-48 h-48 bg-accent-500/10 rounded-full blur-3xl"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+                <div class="w-1.5 h-1.5 rounded-full bg-primary-400"></div>
+                <span class="text-primary-300 text-sm font-medium tracking-wide">Latest News</span>
             </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-5 tracking-tight">News & <span class="text-gradient from-primary-400 to-accent-400">Updates</span></h1>
+            <p class="text-slate-400 text-lg max-w-xl mx-auto mb-8">Stay informed with the latest trends, innovations, and updates from the world of solar energy</p>
+            <nav class="inline-flex items-center gap-2 text-sm"><a href="index.html" class="text-slate-400 hover:text-white transition">Home</a><i class="fas fa-chevron-right text-[10px] text-slate-600"></i><span class="text-primary-400">News</span></nav>
         </div>
     </section>
 
-    <!-- News Section -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-badge" data-aos="fade-up">LATEST UPDATES</span>
-                <h2 data-aos="fade-up" data-aos-delay="100">Stay Informed</h2>
-                <p data-aos="fade-up" data-aos-delay="200">Discover the latest news, industry insights, and innovations in solar energy technology</p>
+    <!-- News Grid -->
+    <section class="bg-slate-50 section-padding">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Section Heading -->
+            <div class="text-center mb-14">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 border border-primary-100 mb-5">
+                    <div class="w-1.5 h-1.5 rounded-full bg-primary-500"></div>
+                    <span class="text-primary-600 text-sm font-semibold tracking-wide uppercase">Our Blog</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Latest Articles & Insights</h2>
+                <p class="text-slate-500 text-lg max-w-2xl mx-auto">Explore our latest articles covering solar technology advancements, installation guides, market trends, and company news</p>
             </div>
 
-            <!-- Blog Grid -->
-            <div class="blog-grid">
+            <!-- Articles Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
                 <!-- Article 1 -->
-                <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=600&h=400&fit=crop&q=80" alt="VAAM Expansion Announcement" style="box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <div class="blog-category" style="background: linear-gradient(135deg, #2E7D32 0%, #1B5E20 100%);">Company News</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">
-                                <i class="far fa-calendar"></i> February 1, 2026
-                            </span>
-                            <span class="blog-author">
-                                <i class="far fa-user"></i> VAAM Team
-                            </span>
+                <a href="news-detail.html" class="group">
+                    <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-slate-200 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-500">
+                        <div class="relative overflow-hidden h-52">
+                            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&h=350&fit=crop&q=80" alt="Future of Solar Energy Technology" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <span class="absolute top-4 left-4 inline px-3 py-1 bg-white/90 backdrop-blur-sm text-primary-700 text-xs font-semibold rounded-full">Technology</span>
                         </div>
-                        <h3>VAAM Announces Major Production Expansion</h3>
-                        <p>We are thrilled to announce the expansion of our manufacturing facilities in Azerbaijan, increasing our production capacity by 40% to meet growing demand for high-quality solar panels across the region.</p>
-                        <a href="news-detail.html?id=1" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
+                        <div class="p-6">
+                            <div class="flex gap-4 text-xs text-slate-400 font-medium mb-3">
+                                <span class="flex items-center gap-1.5"><i class="far fa-calendar"></i> Feb 1, 2026</span>
+                                <span class="flex items-center gap-1.5"><i class="far fa-clock"></i> 5 min read</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-primary-700 transition-colors leading-snug mb-2">Future of Solar Energy Technology</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-4 line-clamp-2">Discover the latest breakthroughs in photovoltaic technology and how next-generation solar cells are reshaping the renewable energy landscape.</p>
+                            <span class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold group-hover:gap-3 transition-all">Read More <i class="fas fa-arrow-right text-[11px]"></i></span>
+                        </div>
                     </div>
-                </article>
+                </a>
 
                 <!-- Article 2 -->
-                <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&h=400&fit=crop&q=80" alt="Solar Technology Trends" style="box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <div class="blog-category" style="background: linear-gradient(135deg, #FF8F00 0%, #FF6F00 100%);">Industry Updates</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">
-                                <i class="far fa-calendar"></i> January 28, 2026
-                            </span>
-                            <span class="blog-author">
-                                <i class="far fa-user"></i> Industry Analyst
-                            </span>
+                <a href="news-detail.html" class="group">
+                    <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-slate-200 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-500">
+                        <div class="relative overflow-hidden h-52">
+                            <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=600&h=350&fit=crop&q=80" alt="Solar Panel Efficiency Guide" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <span class="absolute top-4 left-4 inline px-3 py-1 bg-white/90 backdrop-blur-sm text-primary-700 text-xs font-semibold rounded-full">Guide</span>
                         </div>
-                        <h3>Solar Panel Efficiency Reaches New Heights in 2026</h3>
-                        <p>Recent advancements in photovoltaic technology have pushed solar panel efficiency beyond 25%, marking a significant milestone for the renewable energy industry and opening new possibilities for sustainable power generation.</p>
-                        <a href="news-detail.html?id=2" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
+                        <div class="p-6">
+                            <div class="flex gap-4 text-xs text-slate-400 font-medium mb-3">
+                                <span class="flex items-center gap-1.5"><i class="far fa-calendar"></i> Jan 28, 2026</span>
+                                <span class="flex items-center gap-1.5"><i class="far fa-clock"></i> 7 min read</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-primary-700 transition-colors leading-snug mb-2">Solar Panel Efficiency Guide</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-4 line-clamp-2">A comprehensive guide to understanding solar panel efficiency ratings, factors that affect performance, and how to maximize your energy output.</p>
+                            <span class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold group-hover:gap-3 transition-all">Read More <i class="fas fa-arrow-right text-[11px]"></i></span>
+                        </div>
                     </div>
-                </article>
+                </a>
 
                 <!-- Article 3 -->
-                <article class="blog-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=600&h=400&fit=crop&q=80" alt="New Bifacial Panel Series" style="box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <div class="blog-category" style="background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);">Product Launches</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">
-                                <i class="far fa-calendar"></i> January 25, 2026
-                            </span>
-                            <span class="blog-author">
-                                <i class="far fa-user"></i> Product Team
-                            </span>
+                <a href="news-detail.html" class="group">
+                    <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-slate-200 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-500">
+                        <div class="relative overflow-hidden h-52">
+                            <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=600&h=350&fit=crop&q=80" alt="VAAM Product Launch 2026" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <span class="absolute top-4 left-4 inline px-3 py-1 bg-white/90 backdrop-blur-sm text-primary-700 text-xs font-semibold rounded-full">Company</span>
                         </div>
-                        <h3>Introducing Our Premium Bifacial Panel Series</h3>
-                        <p>VAAM unveils its latest innovation - the Premium Bifacial Solar Panel Series, featuring cutting-edge technology that captures sunlight from both sides, delivering up to 30% more energy output compared to traditional panels.</p>
-                        <a href="news-detail.html?id=3" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
+                        <div class="p-6">
+                            <div class="flex gap-4 text-xs text-slate-400 font-medium mb-3">
+                                <span class="flex items-center gap-1.5"><i class="far fa-calendar"></i> Jan 25, 2026</span>
+                                <span class="flex items-center gap-1.5"><i class="far fa-clock"></i> 6 min read</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-primary-700 transition-colors leading-snug mb-2">VAAM Product Launch 2026</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-4 line-clamp-2">Introducing our newest line of high-efficiency solar panels designed for both commercial and residential applications with industry-leading warranties.</p>
+                            <span class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold group-hover:gap-3 transition-all">Read More <i class="fas fa-arrow-right text-[11px]"></i></span>
+                        </div>
                     </div>
-                </article>
+                </a>
 
                 <!-- Article 4 -->
-                <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=600&h=400&fit=crop&q=80" alt="Azerbaijan Solar Market Growth" style="box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <div class="blog-category" style="background: linear-gradient(135deg, #FF8F00 0%, #FF6F00 100%);">Industry Updates</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">
-                                <i class="far fa-calendar"></i> January 20, 2026
-                            </span>
-                            <span class="blog-author">
-                                <i class="far fa-user"></i> Market Analyst
-                            </span>
+                <a href="news-detail.html" class="group">
+                    <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-slate-200 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-500">
+                        <div class="relative overflow-hidden h-52">
+                            <img src="https://images.unsplash.com/photo-1532601224476-15c79f2f7a51?w=600&h=350&fit=crop&q=80" alt="Solar Energy Market Trends" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <span class="absolute top-4 left-4 inline px-3 py-1 bg-white/90 backdrop-blur-sm text-primary-700 text-xs font-semibold rounded-full">Market</span>
                         </div>
-                        <h3>Azerbaijan's Solar Energy Market Shows Robust Growth</h3>
-                        <p>The renewable energy sector in Azerbaijan continues its impressive expansion, with solar installations growing by 65% in 2025. Government incentives and increased private investment are driving this transformation.</p>
-                        <a href="news-detail.html?id=4" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
+                        <div class="p-6">
+                            <div class="flex gap-4 text-xs text-slate-400 font-medium mb-3">
+                                <span class="flex items-center gap-1.5"><i class="far fa-calendar"></i> Jan 20, 2026</span>
+                                <span class="flex items-center gap-1.5"><i class="far fa-clock"></i> 8 min read</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-primary-700 transition-colors leading-snug mb-2">Solar Energy Market Trends</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-4 line-clamp-2">An in-depth analysis of global solar energy market trends, pricing dynamics, and emerging opportunities for investors and businesses in 2026.</p>
+                            <span class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold group-hover:gap-3 transition-all">Read More <i class="fas fa-arrow-right text-[11px]"></i></span>
+                        </div>
                     </div>
-                </article>
+                </a>
 
                 <!-- Article 5 -->
-                <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=600&h=400&fit=crop&q=80" alt="Strategic Partnership" style="box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <div class="blog-category" style="background: linear-gradient(135deg, #2E7D32 0%, #1B5E20 100%);">Company News</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">
-                                <i class="far fa-calendar"></i> January 15, 2026
-                            </span>
-                            <span class="blog-author">
-                                <i class="far fa-user"></i> VAAM Team
-                            </span>
+                <a href="news-detail.html" class="group">
+                    <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-slate-200 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-500">
+                        <div class="relative overflow-hidden h-52">
+                            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=350&fit=crop&q=80" alt="Installation Best Practices" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <span class="absolute top-4 left-4 inline px-3 py-1 bg-white/90 backdrop-blur-sm text-primary-700 text-xs font-semibold rounded-full">Installation</span>
                         </div>
-                        <h3>VAAM Partners with Leading European Distributors</h3>
-                        <p>We are excited to announce strategic partnerships with major European distributors, expanding VAAM's reach into new markets and reinforcing our commitment to providing premium solar solutions globally.</p>
-                        <a href="news-detail.html?id=5" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
+                        <div class="p-6">
+                            <div class="flex gap-4 text-xs text-slate-400 font-medium mb-3">
+                                <span class="flex items-center gap-1.5"><i class="far fa-calendar"></i> Jan 15, 2026</span>
+                                <span class="flex items-center gap-1.5"><i class="far fa-clock"></i> 5 min read</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-primary-700 transition-colors leading-snug mb-2">Installation Best Practices</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-4 line-clamp-2">Essential tips and best practices for solar panel installation, from site assessment and mounting systems to wiring and commissioning procedures.</p>
+                            <span class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold group-hover:gap-3 transition-all">Read More <i class="fas fa-arrow-right text-[11px]"></i></span>
+                        </div>
                     </div>
-                </article>
+                </a>
 
                 <!-- Article 6 -->
-                <article class="blog-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=400&fit=crop&q=80" alt="Solar Panel Maintenance" style="box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <div class="blog-category" style="background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);">Industry Updates</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">
-                                <i class="far fa-calendar"></i> January 12, 2026
-                            </span>
-                            <span class="blog-author">
-                                <i class="far fa-user"></i> Technical Expert
-                            </span>
+                <a href="news-detail.html" class="group">
+                    <div class="bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-slate-200 hover:shadow-xl hover:shadow-slate-200/50 transition-all duration-500">
+                        <div class="relative overflow-hidden h-52">
+                            <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&h=350&fit=crop&q=80" alt="Renewable Energy in Azerbaijan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <span class="absolute top-4 left-4 inline px-3 py-1 bg-white/90 backdrop-blur-sm text-primary-700 text-xs font-semibold rounded-full">Industry</span>
                         </div>
-                        <h3>Essential Solar Panel Maintenance Tips for 2026</h3>
-                        <p>Proper maintenance is key to maximizing your solar investment. Learn expert tips and best practices to keep your solar panels operating at peak efficiency throughout their 25+ year lifespan.</p>
-                        <a href="news-detail.html?id=6" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Article 7 -->
-                <article class="blog-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop&q=80" alt="Quality Certifications" style="box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <div class="blog-category" style="background: linear-gradient(135deg, #2E7D32 0%, #1B5E20 100%);">Company News</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">
-                                <i class="far fa-calendar"></i> January 8, 2026
-                            </span>
-                            <span class="blog-author">
-                                <i class="far fa-user"></i> VAAM Team
-                            </span>
+                        <div class="p-6">
+                            <div class="flex gap-4 text-xs text-slate-400 font-medium mb-3">
+                                <span class="flex items-center gap-1.5"><i class="far fa-calendar"></i> Jan 10, 2026</span>
+                                <span class="flex items-center gap-1.5"><i class="far fa-clock"></i> 10 min read</span>
+                            </div>
+                            <h3 class="text-lg font-bold text-slate-900 group-hover:text-primary-700 transition-colors leading-snug mb-2">Renewable Energy in Azerbaijan</h3>
+                            <p class="text-slate-500 text-sm leading-relaxed mb-4 line-clamp-2">Exploring Azerbaijan's ambitious renewable energy goals, government incentives, and the growing role of solar power in the country's energy transition strategy.</p>
+                            <span class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold group-hover:gap-3 transition-all">Read More <i class="fas fa-arrow-right text-[11px]"></i></span>
                         </div>
-                        <h3>VAAM Achieves ISO 9001:2015 Certification</h3>
-                        <p>Our commitment to quality excellence has been recognized with the prestigious ISO 9001:2015 certification, affirming our dedication to maintaining the highest standards in solar panel manufacturing and customer service.</p>
-                        <a href="news-detail.html?id=7" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
                     </div>
-                </article>
+                </a>
 
-                <!-- Article 8 -->
-                <article class="blog-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&h=400&fit=crop&q=80" alt="Energy Storage Solutions" style="box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <div class="blog-category" style="background: linear-gradient(135deg, #FF8F00 0%, #FF6F00 100%);">Product Launches</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">
-                                <i class="far fa-calendar"></i> January 5, 2026
-                            </span>
-                            <span class="blog-author">
-                                <i class="far fa-user"></i> Product Team
-                            </span>
-                        </div>
-                        <h3>New Energy Storage Systems Now Available</h3>
-                        <p>Complement your solar panels with VAAM's advanced battery storage solutions. Store excess energy during the day and use it at night, achieving true energy independence and maximizing your solar investment.</p>
-                        <a href="news-detail.html?id=8" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </article>
-
-                <!-- Article 9 -->
-                <article class="blog-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="blog-image">
-                        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600&h=400&fit=crop&q=80" alt="Sustainability Report" style="box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <div class="blog-category" style="background: linear-gradient(135deg, #4CAF50 0%, #388E3C 100%);">Company News</div>
-                    </div>
-                    <div class="blog-content">
-                        <div class="blog-meta">
-                            <span class="blog-date">
-                                <i class="far fa-calendar"></i> January 1, 2026
-                            </span>
-                            <span class="blog-author">
-                                <i class="far fa-user"></i> VAAM Team
-                            </span>
-                        </div>
-                        <h3>VAAM Releases 2025 Sustainability Report</h3>
-                        <p>Discover how VAAM is leading the charge towards a sustainable future. Our 2025 Sustainability Report highlights our environmental impact, carbon reduction achievements, and commitment to green manufacturing practices.</p>
-                        <a href="news-detail.html?id=9" class="read-more">
-                            Read More <i class="fas fa-arrow-right"></i>
-                        </a>
-                    </div>
-                </article>
-            </div>
-
-            <!-- Pagination (Optional) -->
-            <div class="pagination" data-aos="fade-up">
-                <a href="#" class="page-link active">1</a>
-                <a href="#" class="page-link">2</a>
-                <a href="#" class="page-link">3</a>
-                <a href="#" class="page-link"><i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="section bg-light">
-        <div class="container">
-            <div class="newsletter-box" data-aos="fade-up">
-                <div class="newsletter-content">
-                    <i class="fas fa-envelope-open-text"></i>
-                    <h3>Subscribe to Our Newsletter</h3>
-                    <p>Stay updated with the latest news, product launches, and industry insights from VAAM</p>
-                </div>
-                <div class="newsletter-form">
-                    <form action="#" method="post">
-                        <div class="form-group-inline">
-                            <input type="email" placeholder="Enter your email address" required>
-                            <button type="submit" class="btn btn-primary">Subscribe</button>
-                        </div>
-                    </form>
-                </div>
+    <!-- Newsletter CTA -->
+    <section class="relative section-padding overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-primary-900/80"></div>
+        <div class="absolute inset-0 dot-pattern opacity-[0.03]"></div>
+        <div class="absolute top-20 right-20 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl"></div>
+        <div class="relative z-10 max-w-3xl mx-auto px-6 text-center">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+                <div class="w-1.5 h-1.5 rounded-full bg-primary-400"></div>
+                <span class="text-primary-300 text-sm font-medium">Stay Updated</span>
             </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-content" data-aos="fade-up">
-                <h2>Have Questions About Our Products?</h2>
-                <p>Our team of solar experts is ready to help you find the perfect solution for your energy needs</p>
-                <a href="contact.html" class="btn btn-white btn-lg">Contact Us Today</a>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Never Miss an Update</h2>
+            <p class="text-slate-400 text-lg mb-8">Get the latest news, product updates, and industry insights delivered directly to you</p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="https://wa.me/994501234567?text=Hello%20VAAM!%20I%20would%20like%20to%20stay%20updated." target="_blank" class="inline-flex items-center justify-center gap-2.5 bg-emerald-500 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-emerald-600 hover:shadow-lg hover:shadow-emerald-500/25 transition-all duration-300"><i class="fab fa-whatsapp text-lg"></i> WhatsApp Us</a>
+                <a href="contact.html" class="inline-flex items-center justify-center gap-2 border border-white/20 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-white hover:text-slate-900 transition-all duration-300">Contact Us <i class="fas fa-arrow-right text-[11px]"></i></a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-widgets">
-                <!-- Column 1: About -->
-                <div class="footer-widget">
-                    <img src="images/logo/vaam-logo.png" alt="VAAM" style="height: 50px; margin-bottom: 20px;">
-                    <h4>VAAM Import and Export Trading Co., LTD</h4>
-                    <p>Leading manufacturer and wholesale supplier of high-quality solar panels dedicated to revolutionizing renewable energy solutions worldwide.</p>
-                    <div style="display: flex; gap: 10px; margin-top: 20px;">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+    <footer class="bg-dark-900 text-white pt-20 pb-8 relative overflow-hidden">
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary-500/50 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pb-14 border-b border-white/10">
+                <div>
+                    <img src="images/logo/vaam-logo.png" alt="VAAM" class="h-10 mb-5 brightness-200">
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">Leading manufacturer and wholesale supplier of premium solar panels, powering the global transition to renewable energy.</p>
+                    <div class="flex gap-2">
+                        <a href="#" class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center hover:bg-primary-600 text-slate-400 hover:text-white transition-all duration-300"><i class="fab fa-facebook-f text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center hover:bg-primary-600 text-slate-400 hover:text-white transition-all duration-300"><i class="fab fa-linkedin-in text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center hover:bg-primary-600 text-slate-400 hover:text-white transition-all duration-300"><i class="fab fa-instagram text-sm"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center hover:bg-primary-600 text-slate-400 hover:text-white transition-all duration-300"><i class="fab fa-youtube text-sm"></i></a>
                     </div>
                 </div>
-                
-                <!-- Column 2: Useful Links -->
-                <div class="footer-widget">
-                    <h4>Useful Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="about.html"><i class="fas fa-angle-right"></i> About Us</a></li>
-                        <li><a href="services.html"><i class="fas fa-angle-right"></i> Our Services</a></li>
-                        <li><a href="products.html"><i class="fas fa-angle-right"></i> Products</a></li>
-                        <li><a href="projects.html"><i class="fas fa-angle-right"></i> Projects</a></li>
-                        <li><a href="contact.html"><i class="fas fa-angle-right"></i> Contact Us</a></li>
+                <div>
+                    <h4 class="text-sm font-bold mb-6 text-white tracking-wide uppercase">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="about.html" class="text-slate-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-primary-500/60"></i> About Us</a></li>
+                        <li><a href="services.html" class="text-slate-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-primary-500/60"></i> Our Services</a></li>
+                        <li><a href="products.html" class="text-slate-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-primary-500/60"></i> Products</a></li>
+                        <li><a href="projects.html" class="text-slate-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-primary-500/60"></i> Projects</a></li>
+                        <li><a href="contact.html" class="text-slate-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-primary-500/60"></i> Contact Us</a></li>
                     </ul>
                 </div>
-                
-                <!-- Column 3: Our Services -->
-                <div class="footer-widget">
-                    <h4>Our Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="services.html"><i class="fas fa-angle-right"></i> Solar Panel Manufacturing</a></li>
-                        <li><a href="services.html"><i class="fas fa-angle-right"></i> Wholesale Distribution</a></li>
-                        <li><a href="services.html"><i class="fas fa-angle-right"></i> Technical Consultation</a></li>
-                        <li><a href="services.html"><i class="fas fa-angle-right"></i> Installation Support</a></li>
-                        <li><a href="services.html"><i class="fas fa-angle-right"></i> After-Sales Service</a></li>
+                <div>
+                    <h4 class="text-sm font-bold mb-6 text-white tracking-wide uppercase">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="services.html" class="text-slate-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-primary-500/60"></i> Panel Manufacturing</a></li>
+                        <li><a href="services.html" class="text-slate-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-primary-500/60"></i> Wholesale Distribution</a></li>
+                        <li><a href="services.html" class="text-slate-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-primary-500/60"></i> Technical Consultation</a></li>
+                        <li><a href="services.html" class="text-slate-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-primary-500/60"></i> Installation Support</a></li>
+                        <li><a href="services.html" class="text-slate-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-primary-500/60"></i> After-Sales Service</a></li>
                     </ul>
                 </div>
-                
-                <!-- Column 4: Contact Info -->
-                <div class="footer-widget">
-                    <h4>Contact Us</h4>
-                    <div style="display: flex; gap: 15px; margin-bottom: 15px; align-items: flex-start;">
-                        <i class="fas fa-phone" style="color: var(--secondary-color); margin-top: 5px;"></i>
-                        <div>
-                            <p style="margin: 0; font-weight: 600;">+994 50 123 45 67</p>
-                            <p style="margin: 0; font-size: 14px;">Call us for support</p>
-                        </div>
-                    </div>
-                    <div style="display: flex; gap: 15px; margin-bottom: 15px; align-items: flex-start;">
-                        <i class="fas fa-envelope" style="color: var(--secondary-color); margin-top: 5px;"></i>
-                        <div>
-                            <p style="margin: 0; font-weight: 600;">info@vaamtrading.com</p>
-                            <p style="margin: 0; font-size: 14px;">Email us for query</p>
-                        </div>
-                    </div>
-                    <div style="display: flex; gap: 15px; margin-bottom: 15px; align-items: flex-start;">
-                        <i class="fas fa-map-marker-alt" style="color: var(--secondary-color); margin-top: 5px;"></i>
-                        <div>
-                            <p style="margin: 0; font-weight: 600;">Baku, Azerbaijan</p>
-                            <p style="margin: 0; font-size: 14px;">Our headquarters</p>
-                        </div>
+                <div>
+                    <h4 class="text-sm font-bold mb-6 text-white tracking-wide uppercase">Contact</h4>
+                    <div class="space-y-4">
+                        <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-phone text-primary-400 text-xs"></i></div><div><p class="font-medium text-white text-sm">+994 50 123 45 67</p><p class="text-slate-500 text-xs">Mon-Fri 9:00-18:00</p></div></div>
+                        <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-envelope text-primary-400 text-xs"></i></div><div><p class="font-medium text-white text-sm">info@vaamtrading.com</p><p class="text-slate-500 text-xs">Email us anytime</p></div></div>
+                        <div class="flex gap-3 items-start"><div class="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center flex-shrink-0 mt-0.5"><i class="fas fa-location-dot text-primary-400 text-xs"></i></div><div><p class="font-medium text-white text-sm">Baku, Azerbaijan</p><p class="text-slate-500 text-xs">Our headquarters</p></div></div>
                     </div>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; <span class="current-year">2026</span> VAAM Import and Export Trading Co., LTD. All Rights Reserved.</p>
+            <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-slate-500 text-sm">&copy; <span x-text="$store.app.currentYear"></span> VAAM Import and Export Trading Co., LTD. All rights reserved.</p>
+                <div class="flex gap-6 text-sm text-slate-500">
+                    <a href="#" class="hover:text-primary-400 transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-primary-400 transition-colors">Terms</a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/994501234567?text=Hello%20VAAM!%20I'm%20interested%20in%20your%20solar%20solutions." 
-       class="whatsapp-float" 
-       target="_blank"
-       title="Chat on WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- Float Buttons -->
+    <a href="https://wa.me/994501234567?text=Hello%20VAAM!%20I'm%20interested%20in%20your%20solar%20solutions." target="_blank" class="fixed bottom-8 right-8 z-50 w-14 h-14 bg-emerald-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-emerald-500/30 hover:bg-emerald-600 hover:shadow-xl hover:shadow-emerald-500/40 hover:scale-105 transition-all duration-300"><i class="fab fa-whatsapp"></i></a>
+    <button x-data="{show:false}" @scroll.window="show=window.scrollY>500" x-show="show" x-transition @click="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-8 right-24 z-50 w-11 h-11 bg-slate-800 text-white rounded-2xl flex items-center justify-center shadow-lg hover:bg-primary-600 hover:-translate-y-0.5 transition-all duration-300"><i class="fas fa-chevron-up text-sm"></i></button>
 
     <!-- Scripts -->
-    <script src="js/solari-main.js"></script>
-    
+    <script src="js/app.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </body>
 </html>

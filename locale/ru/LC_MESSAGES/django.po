@@ -1,0 +1,411 @@
+# VAAM Trading Translations
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14) ? 2 : 3);\n"
+
+#: templates/core/base.html
+msgid "Home"
+msgstr "Главная"
+
+#: templates/core/base.html
+msgid "About"
+msgstr "О нас"
+
+#: templates/core/base.html
+msgid "Services"
+msgstr "Услуги"
+
+#: templates/core/base.html
+msgid "Products"
+msgstr "Продукция"
+
+#: templates/core/base.html
+msgid "Projects"
+msgstr "Проекты"
+
+#: templates/core/base.html
+msgid "News"
+msgstr "Новости"
+
+#: templates/core/base.html
+msgid "Contact"
+msgstr "Контакт"
+
+#: templates/core/base.html
+msgid "Get A Quote"
+msgstr "Получить предложение"
+
+#: templates/core/base.html
+msgid "Language"
+msgstr "Язык"
+
+#: templates/core/base.html
+msgid "Quick Links"
+msgstr "Быстрые ссылки"
+
+#: templates/core/base.html
+msgid "About Us"
+msgstr "О нас"
+
+#: templates/core/base.html
+msgid "Our Services"
+msgstr "Наши услуги"
+
+#: templates/core/base.html
+msgid "Panel Manufacturing"
+msgstr "Производство панелей"
+
+#: templates/core/base.html
+msgid "Wholesale Distribution"
+msgstr "Оптовая дистрибуция"
+
+#: templates/core/base.html
+msgid "Technical Consultation"
+msgstr "Техническая консультация"
+
+#: templates/core/base.html
+msgid "Contact Us"
+msgstr "Свяжитесь с нами"
+
+#: templates/core/base.html
+msgid "Email us anytime"
+msgstr "Пишите нам"
+
+#: templates/core/base.html
+msgid "Our headquarters"
+msgstr "Наш офис"
+
+#: templates/core/base.html
+msgid "All rights reserved."
+msgstr "Все права защищены."
+
+#: templates/core/base.html
+msgid "Privacy Policy"
+msgstr "Политика конфиденциальности"
+
+#: templates/core/base.html
+msgid "Terms"
+msgstr "Условия"
+
+#: templates/core/home.html
+msgid "Solar Panel Manufacturing & Wholesale"
+msgstr "Производство и оптовая продажа солнечных панелей"
+
+#: templates/core/home.html
+msgid "Engineering the Future of Solar Energy"
+msgstr "Создавая будущее солнечной энергии"
+
+#: templates/core/home.html
+msgid "Premium solar panels for global markets."
+msgstr "Премиум солнечные панели для мировых рынков."
+
+#: templates/core/home.html
+msgid "Explore Products"
+msgstr "Продукция"
+
+#: templates/core/home.html
+msgid "Eco Friendly"
+msgstr "Экологичность"
+
+#: templates/core/home.html
+msgid "Sustainable solar energy for a greener future"
+msgstr "Устойчивая солнечная энергия для зелёного будущего"
+
+#: templates/core/home.html
+msgid "Years Warranty"
+msgstr "Лет гарантии"
+
+#: templates/core/home.html
+msgid "About VAAM"
+msgstr "О VAAM"
+
+#: templates/core/home.html
+msgid "accessible to all"
+msgstr "доступной для всех"
+
+#: templates/core/home.html
+msgid "Learn More"
+msgstr "Подробнее"
+
+#: templates/core/home.html
+msgid "Call Us 24/7"
+msgstr "Звоните 24/7"
+
+#: templates/core/home.html
+msgid "What We Offer"
+msgstr "Наши предложения"
+
+#: templates/core/home.html
+msgid "Comprehensive Solar Solutions"
+msgstr "Комплексные солнечные решения"
+
+#: templates/core/home.html
+msgid "End-to-end services from manufacturing to installation and long-term support"
+msgstr "Полный цикл услуг от производства до монтажа и долгосрочной поддержки"
+
+#: templates/core/home.html
+msgid "How It Works"
+msgstr "Как это работает"
+
+#: templates/core/home.html
+msgid "From Concept to Clean Energy"
+msgstr "От идеи до чистой энергии"
+
+#: templates/core/home.html
+msgid "Get Free Consultancy"
+msgstr "Бесплатная консультация"
+
+#: templates/core/home.html
+msgid "or call us at"
+msgstr "или позвоните нам"
+
+#: templates/core/home.html
+msgid "Get It Now"
+msgstr "Получить сейчас"
+
+#: templates/core/home.html
+msgid "Portfolio"
+msgstr "Портфолио"
+
+#: templates/core/home.html
+msgid "Our Latest Projects"
+msgstr "Наши последние проекты"
+
+#: templates/core/home.html
+msgid "Showcasing solar installations across residential and commercial sectors"
+msgstr "Демонстрация солнечных установок в жилом и коммерческом секторах"
+
+#: templates/core/home.html
+msgid "View Project"
+msgstr "Смотреть проект"
+
+#: templates/core/home.html
+msgid "View All Projects"
+msgstr "Все проекты"
+
+#: templates/core/home.html
+msgid "Insights"
+msgstr "Аналитика"
+
+#: templates/core/home.html
+msgid "Latest News & Updates"
+msgstr "Последние новости"
+
+#: templates/core/home.html
+msgid "Stay informed about solar energy trends"
+msgstr "Будьте в курсе трендов солнечной энергии"
+
+#: templates/core/home.html
+msgid "View All Articles"
+msgstr "Все статьи"
+
+#: templates/core/home.html templates/core/news.html templates/core/news_detail.html
+msgid "min read"
+msgstr "мин чтения"
+
+#: templates/core/home.html templates/core/news.html templates/core/news_detail.html
+msgid "Read More"
+msgstr "Читать далее"
+
+#: templates/core/about.html
+msgid "About VAAM Trading"
+msgstr "О VAAM Trading"
+
+#: templates/core/about.html
+msgid "Learn about our journey powering sustainable energy solutions"
+msgstr "Узнайте о нашем пути в сфере устойчивой энергетики"
+
+#: templates/core/about.html
+msgid "Who We Are"
+msgstr "Кто мы"
+
+#: templates/core/about.html
+msgid "Our Mission"
+msgstr "Наша миссия"
+
+#: templates/core/about.html
+msgid "Our Vision"
+msgstr "Наше видение"
+
+#: templates/core/about.html
+msgid "Why Choose VAAM"
+msgstr "Почему VAAM"
+
+#: templates/core/about.html
+msgid "Meet Our Team"
+msgstr "Наша команда"
+
+#: templates/core/about.html
+msgid "Trusted By Industry Leaders"
+msgstr "Нам доверяют лидеры рынка"
+
+#: templates/core/products.html
+msgid "Our Products"
+msgstr "Наша продукция"
+
+#: templates/core/products.html
+msgid "Solar Panel Products"
+msgstr "Продукция солнечных панелей"
+
+#: templates/core/products.html
+msgid "Premium quality solar panels for every application"
+msgstr "Солнечные панели премиум-качества для любого применения"
+
+#: templates/core/products.html
+msgid "All Products"
+msgstr "Все продукты"
+
+#: templates/core/products.html
+msgid "Featured"
+msgstr "Рекомендуемые"
+
+#: templates/core/products.html templates/core/product_detail.html
+msgid "View Details"
+msgstr "Подробности"
+
+#: templates/core/products.html
+msgid "No products found"
+msgstr "Продукты не найдены"
+
+#: templates/core/product_detail.html
+msgid "Specifications"
+msgstr "Характеристики"
+
+#: templates/core/product_detail.html
+msgid "Order via WhatsApp"
+msgstr "Заказать через WhatsApp"
+
+#: templates/core/product_detail.html
+msgid "Product Description"
+msgstr "Описание продукта"
+
+#: templates/core/product_detail.html
+msgid "Related Products"
+msgstr "Похожие продукты"
+
+#: templates/core/services.html
+msgid "Comprehensive solar energy solutions from manufacturing to support"
+msgstr "Комплексные решения от производства до поддержки"
+
+#: templates/core/services.html
+msgid "Request Quote"
+msgstr "Запросить предложение"
+
+#: templates/core/services.html
+msgid "Our Working Process"
+msgstr "Наш рабочий процесс"
+
+#: templates/core/services.html
+msgid "Frequently Asked Questions"
+msgstr "Часто задаваемые вопросы"
+
+#: templates/core/services.html
+msgid "Need a Custom Solution?"
+msgstr "Нужно индивидуальное решение?"
+
+#: templates/core/services.html
+msgid "Contact us for a free consultation"
+msgstr "Свяжитесь с нами для бесплатной консультации"
+
+#: templates/core/projects.html
+msgid "Our Projects"
+msgstr "Наши проекты"
+
+#: templates/core/projects.html
+msgid "Showcasing our solar installations worldwide"
+msgstr "Наши солнечные установки по всему миру"
+
+#: templates/core/projects.html
+msgid "All"
+msgstr "Все"
+
+#: templates/core/projects.html
+msgid "No projects found"
+msgstr "Проекты не найдены"
+
+#: templates/core/news.html
+msgid "News & Updates"
+msgstr "Новости и обновления"
+
+#: templates/core/news.html
+msgid "Stay informed about solar energy trends and innovations"
+msgstr "Будьте в курсе трендов и инноваций"
+
+#: templates/core/news.html
+msgid "No articles found"
+msgstr "Статьи не найдены"
+
+#: templates/core/news_detail.html
+msgid "Back to News"
+msgstr "Назад к новостям"
+
+#: templates/core/news_detail.html
+msgid "Share:"
+msgstr "Поделиться:"
+
+#: templates/core/news_detail.html
+msgid "Related Articles"
+msgstr "Похожие статьи"
+
+#: templates/core/contact.html
+msgid "Get In Touch"
+msgstr "Свяжитесь с нами"
+
+#: templates/core/contact.html
+msgid "We'd love to hear from you. Get in touch and we'll respond as soon as possible."
+msgstr "Будем рады услышать вас. Свяжитесь с нами и мы ответим как можно скорее."
+
+#: templates/core/contact.html
+msgid "Phone"
+msgstr "Телефон"
+
+#: templates/core/contact.html
+msgid "Email"
+msgstr "Эл. почта"
+
+#: templates/core/contact.html
+msgid "Address"
+msgstr "Адрес"
+
+#: templates/core/contact.html
+msgid "Working Hours"
+msgstr "Рабочие часы"
+
+#: templates/core/contact.html
+msgid "Send Us a Message"
+msgstr "Отправьте нам сообщение"
+
+#: templates/core/contact.html
+msgid "Fill out the form and our team will get back to you within 24 hours."
+msgstr "Заполните форму и наша команда свяжется с вами в течение 24 часов."
+
+#: templates/core/contact.html
+msgid "First Name *"
+msgstr "Имя *"
+
+#: templates/core/contact.html
+msgid "Last Name"
+msgstr "Фамилия"
+
+#: templates/core/contact.html
+msgid "Email *"
+msgstr "Эл. почта *"
+
+#: templates/core/contact.html
+msgid "Subject *"
+msgstr "Тема *"
+
+#: templates/core/contact.html
+msgid "Message *"
+msgstr "Сообщение *"
+
+#: templates/core/contact.html
+msgid "Send Message"
+msgstr "Отправить"
+
+#: templates/core/contact.html
+msgid "What Our Clients Say"
+msgstr "Что говорят наши клиенты"

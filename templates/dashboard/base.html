@@ -1,0 +1,427 @@
+{% load static %}
+{% load i18n %}
+{% get_current_language as CURRENT_LANGUAGE %}
+<!DOCTYPE html>
+<html lang="{{ CURRENT_LANGUAGE }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dashboard{% endblock %} | VAAM Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: { DEFAULT:'#4154f1', light:'#717ff5', dark:'#2a3cdb', 50:'#eef0fe', 100:'#d5d9fc' },
+                        heading: '#012970',
+                        success: '#2eca6a',
+                        warning: '#ff771d',
+                        danger: '#e63757',
+                        info: '#2db7f5',
+                        body: '#444444',
+                    },
+                    fontFamily: {
+                        heading: ['Nunito', 'sans-serif'],
+                        body: ['"Open Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        body { font-family: 'Open Sans', sans-serif; color: #444444; }
+        h1,h2,h3,h4,h5,h6 { font-family: 'Nunito', sans-serif; }
+        .sidebar-scroll::-webkit-scrollbar { width: 4px; }
+        .sidebar-scroll::-webkit-scrollbar-track { background: transparent; }
+        .sidebar-scroll::-webkit-scrollbar-thumb { background: #aab7cf; border-radius: 4px; }
+        .sidebar-scroll::-webkit-scrollbar-thumb:hover { background: #8a99b5; }
+        [x-cloak] { display: none !important; }
+        .nav-item { color: #012970; }
+        .nav-item:hover { background: #f6f9ff; color: #4154f1; }
+        .nav-item.active { background: #f0f4fb; color: #4154f1; border-left: 3px solid #4154f1; }
+        .nav-sub-item { color: #899bbd; }
+        .nav-sub-item:hover { color: #4154f1; }
+        .nav-sub-item.active { color: #4154f1; font-weight: 600; }
+    </style>
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-[#f6f9ff] antialiased" x-data="{ sidebarOpen: true, mobileSidebar: false }">
+
+    <!-- SIDEBAR -->
+    <aside :class="sidebarOpen ? 'translate-x-0' : '-translate-x-full'"
+           class="fixed top-0 left-0 h-full w-[300px] bg-white z-40 transition-transform duration-300 hidden lg:block border-r border-[#e6e9f4]">
+        <div class="flex flex-col h-full w-[300px]">
+            <!-- Logo -->
+            <div class="flex items-center h-[60px] px-6 border-b border-[#e6e9f4]">
+                <a href="{% url 'dashboard:home' %}" class="flex items-center gap-2">
+                    <span class="text-[26px] font-extrabold text-heading font-heading">VAAM</span>
+                    <span class="text-[9px] bg-primary text-white px-1.5 py-0.5 rounded font-bold tracking-wide">ADMIN</span>
+                </a>
+            </div>
+
+            <!-- Nav -->
+            <nav class="flex-1 py-4 px-4 overflow-y-auto sidebar-scroll">
+                <!-- Dashboard -->
+                <a href="{% url 'dashboard:home' %}"
+                   class="flex items-center gap-3 px-4 py-[10px] mb-1 rounded-sm text-[15px] font-semibold transition-all duration-200 {% if request.resolver_match.url_name == 'home' %}nav-item active{% else %}nav-item{% endif %}">
+                    <i class="bi bi-grid text-base"></i>
+                    <span>Dashboard</span>
+                </a>
+
+                <div class="text-[11px] font-bold text-[#899bbd] uppercase tracking-wider px-4 mt-5 mb-2">Content</div>
+
+                <!-- Products -->
+                <div x-data="{open: {% if 'product' in request.resolver_match.url_name %}true{% else %}false{% endif %}}">
+                    <button @click="open=!open"
+                            class="w-full flex items-center justify-between px-4 py-[10px] mb-0.5 rounded-sm text-[15px] font-semibold transition-all duration-200 {% if 'product' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}">
+                        <div class="flex items-center gap-3"><i class="bi bi-box-seam text-base"></i><span>Products</span></div>
+                        <i class="bi bi-chevron-down text-[10px] transition-transform duration-200" :class="open && 'rotate-180'"></i>
+                    </button>
+                    <div x-show="open" x-collapse class="ml-6 pl-4 border-l-[2px] border-[#e6e9f4] mb-1">
+                        <a href="{% url 'dashboard:product_list' %}" class="flex items-center gap-2 px-3 py-[7px] text-[14px] transition {% if request.resolver_match.url_name == 'product_list' %}nav-sub-item active{% else %}nav-sub-item{% endif %}">
+                            <i class="bi {% if request.resolver_match.url_name == 'product_list' %}bi-circle-fill{% else %}bi-circle{% endif %} text-[6px]"></i> All Products
+                        </a>
+                        <a href="{% url 'dashboard:product_create' %}" class="flex items-center gap-2 px-3 py-[7px] text-[14px] transition {% if request.resolver_match.url_name == 'product_create' %}nav-sub-item active{% else %}nav-sub-item{% endif %}">
+                            <i class="bi {% if request.resolver_match.url_name == 'product_create' %}bi-circle-fill{% else %}bi-circle{% endif %} text-[6px]"></i> Add Product
+                        </a>
+                        <a href="{% url 'dashboard:product_category_list' %}" class="flex items-center gap-2 px-3 py-[7px] text-[14px] transition {% if 'product_category' in request.resolver_match.url_name %}nav-sub-item active{% else %}nav-sub-item{% endif %}">
+                            <i class="bi {% if 'product_category' in request.resolver_match.url_name %}bi-circle-fill{% else %}bi-circle{% endif %} text-[6px]"></i> Categories
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Services -->
+                <div x-data="{open: {% if 'service' in request.resolver_match.url_name %}true{% else %}false{% endif %}}">
+                    <button @click="open=!open"
+                            class="w-full flex items-center justify-between px-4 py-[10px] mb-0.5 rounded-sm text-[15px] font-semibold transition-all duration-200 {% if 'service' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}">
+                        <div class="flex items-center gap-3"><i class="bi bi-wrench text-base"></i><span>Services</span></div>
+                        <i class="bi bi-chevron-down text-[10px] transition-transform duration-200" :class="open && 'rotate-180'"></i>
+                    </button>
+                    <div x-show="open" x-collapse class="ml-6 pl-4 border-l-[2px] border-[#e6e9f4] mb-1">
+                        <a href="{% url 'dashboard:service_list' %}" class="flex items-center gap-2 px-3 py-[7px] text-[14px] transition {% if request.resolver_match.url_name == 'service_list' %}nav-sub-item active{% else %}nav-sub-item{% endif %}">
+                            <i class="bi {% if request.resolver_match.url_name == 'service_list' %}bi-circle-fill{% else %}bi-circle{% endif %} text-[6px]"></i> All Services
+                        </a>
+                        <a href="{% url 'dashboard:service_create' %}" class="flex items-center gap-2 px-3 py-[7px] text-[14px] transition {% if request.resolver_match.url_name == 'service_create' %}nav-sub-item active{% else %}nav-sub-item{% endif %}">
+                            <i class="bi {% if request.resolver_match.url_name == 'service_create' %}bi-circle-fill{% else %}bi-circle{% endif %} text-[6px]"></i> Add Service
+                        </a>
+                        <a href="{% url 'dashboard:service_category_list' %}" class="flex items-center gap-2 px-3 py-[7px] text-[14px] transition {% if 'service_category' in request.resolver_match.url_name %}nav-sub-item active{% else %}nav-sub-item{% endif %}">
+                            <i class="bi {% if 'service_category' in request.resolver_match.url_name %}bi-circle-fill{% else %}bi-circle{% endif %} text-[6px]"></i> Categories
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Projects -->
+                <div x-data="{open: {% if 'project' in request.resolver_match.url_name %}true{% else %}false{% endif %}}">
+                    <button @click="open=!open"
+                            class="w-full flex items-center justify-between px-4 py-[10px] mb-0.5 rounded-sm text-[15px] font-semibold transition-all duration-200 {% if 'project' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}">
+                        <div class="flex items-center gap-3"><i class="bi bi-journal-text text-base"></i><span>Projects</span></div>
+                        <i class="bi bi-chevron-down text-[10px] transition-transform duration-200" :class="open && 'rotate-180'"></i>
+                    </button>
+                    <div x-show="open" x-collapse class="ml-6 pl-4 border-l-[2px] border-[#e6e9f4] mb-1">
+                        <a href="{% url 'dashboard:project_list' %}" class="flex items-center gap-2 px-3 py-[7px] text-[14px] transition {% if request.resolver_match.url_name == 'project_list' %}nav-sub-item active{% else %}nav-sub-item{% endif %}">
+                            <i class="bi {% if request.resolver_match.url_name == 'project_list' %}bi-circle-fill{% else %}bi-circle{% endif %} text-[6px]"></i> All Projects
+                        </a>
+                        <a href="{% url 'dashboard:project_create' %}" class="flex items-center gap-2 px-3 py-[7px] text-[14px] transition {% if request.resolver_match.url_name == 'project_create' %}nav-sub-item active{% else %}nav-sub-item{% endif %}">
+                            <i class="bi {% if request.resolver_match.url_name == 'project_create' %}bi-circle-fill{% else %}bi-circle{% endif %} text-[6px]"></i> Add Project
+                        </a>
+                        <a href="{% url 'dashboard:project_category_list' %}" class="flex items-center gap-2 px-3 py-[7px] text-[14px] transition {% if 'project_category' in request.resolver_match.url_name %}nav-sub-item active{% else %}nav-sub-item{% endif %}">
+                            <i class="bi {% if 'project_category' in request.resolver_match.url_name %}bi-circle-fill{% else %}bi-circle{% endif %} text-[6px]"></i> Categories
+                        </a>
+                    </div>
+                </div>
+
+                <!-- News -->
+                <div x-data="{open: {% if 'news' in request.resolver_match.url_name %}true{% else %}false{% endif %}}">
+                    <button @click="open=!open"
+                            class="w-full flex items-center justify-between px-4 py-[10px] mb-0.5 rounded-sm text-[15px] font-semibold transition-all duration-200 {% if 'news' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}">
+                        <div class="flex items-center gap-3"><i class="bi bi-newspaper text-base"></i><span>News</span></div>
+                        <i class="bi bi-chevron-down text-[10px] transition-transform duration-200" :class="open && 'rotate-180'"></i>
+                    </button>
+                    <div x-show="open" x-collapse class="ml-6 pl-4 border-l-[2px] border-[#e6e9f4] mb-1">
+                        <a href="{% url 'dashboard:news_list' %}" class="flex items-center gap-2 px-3 py-[7px] text-[14px] transition {% if request.resolver_match.url_name == 'news_list' %}nav-sub-item active{% else %}nav-sub-item{% endif %}">
+                            <i class="bi {% if request.resolver_match.url_name == 'news_list' %}bi-circle-fill{% else %}bi-circle{% endif %} text-[6px]"></i> All News
+                        </a>
+                        <a href="{% url 'dashboard:news_create' %}" class="flex items-center gap-2 px-3 py-[7px] text-[14px] transition {% if request.resolver_match.url_name == 'news_create' %}nav-sub-item active{% else %}nav-sub-item{% endif %}">
+                            <i class="bi {% if request.resolver_match.url_name == 'news_create' %}bi-circle-fill{% else %}bi-circle{% endif %} text-[6px]"></i> Add News
+                        </a>
+                        <a href="{% url 'dashboard:news_category_list' %}" class="flex items-center gap-2 px-3 py-[7px] text-[14px] transition {% if 'news_category' in request.resolver_match.url_name %}nav-sub-item active{% else %}nav-sub-item{% endif %}">
+                            <i class="bi {% if 'news_category' in request.resolver_match.url_name %}bi-circle-fill{% else %}bi-circle{% endif %} text-[6px]"></i> Categories
+                        </a>
+                    </div>
+                </div>
+
+                <div class="text-[11px] font-bold text-[#899bbd] uppercase tracking-wider px-4 mt-5 mb-2">Pages</div>
+
+                <!-- Menus -->
+                <div x-data="{open: {% if 'menu' in request.resolver_match.url_name %}true{% else %}false{% endif %}}">
+                    <button @click="open=!open"
+                            class="w-full flex items-center justify-between px-4 py-[10px] mb-0.5 rounded-sm text-[15px] font-semibold transition-all duration-200 {% if 'menu' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}">
+                        <div class="flex items-center gap-3"><i class="bi bi-menu-button-wide text-base"></i><span>Menus</span></div>
+                        <i class="bi bi-chevron-down text-[10px] transition-transform duration-200" :class="open && 'rotate-180'"></i>
+                    </button>
+                    <div x-show="open" x-collapse class="ml-6 pl-4 border-l-[2px] border-[#e6e9f4] mb-1">
+                        <a href="{% url 'dashboard:menu_list' %}" class="flex items-center gap-2 px-3 py-[7px] text-[14px] transition {% if request.resolver_match.url_name == 'menu_list' %}nav-sub-item active{% else %}nav-sub-item{% endif %}">
+                            <i class="bi {% if request.resolver_match.url_name == 'menu_list' %}bi-circle-fill{% else %}bi-circle{% endif %} text-[6px]"></i> All Menus
+                        </a>
+                        <a href="{% url 'dashboard:menu_create' %}" class="flex items-center gap-2 px-3 py-[7px] text-[14px] transition {% if request.resolver_match.url_name == 'menu_create' %}nav-sub-item active{% else %}nav-sub-item{% endif %}">
+                            <i class="bi {% if request.resolver_match.url_name == 'menu_create' %}bi-circle-fill{% else %}bi-circle{% endif %} text-[6px]"></i> Add Menu
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pages -->
+                <div x-data="{open: {% if 'page' in request.resolver_match.url_name %}true{% else %}false{% endif %}}">
+                    <button @click="open=!open"
+                            class="w-full flex items-center justify-between px-4 py-[10px] mb-0.5 rounded-sm text-[15px] font-semibold transition-all duration-200 {% if 'page' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}">
+                        <div class="flex items-center gap-3"><i class="bi bi-file-earmark-text text-base"></i><span>Pages</span></div>
+                        <i class="bi bi-chevron-down text-[10px] transition-transform duration-200" :class="open && 'rotate-180'"></i>
+                    </button>
+                    <div x-show="open" x-collapse class="ml-6 pl-4 border-l-[2px] border-[#e6e9f4] mb-1">
+                        <a href="{% url 'dashboard:page_list' %}" class="flex items-center gap-2 px-3 py-[7px] text-[14px] transition {% if request.resolver_match.url_name == 'page_list' %}nav-sub-item active{% else %}nav-sub-item{% endif %}">
+                            <i class="bi {% if request.resolver_match.url_name == 'page_list' %}bi-circle-fill{% else %}bi-circle{% endif %} text-[6px]"></i> All Pages
+                        </a>
+                        <a href="{% url 'dashboard:page_create' %}" class="flex items-center gap-2 px-3 py-[7px] text-[14px] transition {% if request.resolver_match.url_name == 'page_create' %}nav-sub-item active{% else %}nav-sub-item{% endif %}">
+                            <i class="bi {% if request.resolver_match.url_name == 'page_create' %}bi-circle-fill{% else %}bi-circle{% endif %} text-[6px]"></i> Add Page
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Hero Slides -->
+                <a href="{% url 'dashboard:hero_slide_list' %}"
+                   class="flex items-center gap-3 px-4 py-[10px] mb-0.5 rounded-sm text-[15px] font-semibold transition-all duration-200 {% if 'hero_slide' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}">
+                    <i class="bi bi-images text-base"></i><span>Hero Slides</span>
+                </a>
+
+                <!-- Company Features -->
+                <a href="{% url 'dashboard:feature_list' %}"
+                   class="flex items-center gap-3 px-4 py-[10px] mb-0.5 rounded-sm text-[15px] font-semibold transition-all duration-200 {% if 'feature' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}">
+                    <i class="bi bi-star text-base"></i><span>Features</span>
+                </a>
+
+                <!-- Statistics -->
+                <a href="{% url 'dashboard:statistic_list' %}"
+                   class="flex items-center gap-3 px-4 py-[10px] mb-0.5 rounded-sm text-[15px] font-semibold transition-all duration-200 {% if 'statistic' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}">
+                    <i class="bi bi-bar-chart text-base"></i><span>Statistics</span>
+                </a>
+
+                <!-- Process Steps -->
+                <a href="{% url 'dashboard:process_step_list' %}"
+                   class="flex items-center gap-3 px-4 py-[10px] mb-0.5 rounded-sm text-[15px] font-semibold transition-all duration-200 {% if 'process_step' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}">
+                    <i class="bi bi-diagram-3 text-base"></i><span>Process Steps</span>
+                </a>
+
+                <!-- FAQs -->
+                <a href="{% url 'dashboard:faq_list' %}"
+                   class="flex items-center gap-3 px-4 py-[10px] mb-0.5 rounded-sm text-[15px] font-semibold transition-all duration-200 {% if 'faq' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}">
+                    <i class="bi bi-question-circle text-base"></i><span>FAQs</span>
+                </a>
+
+                <!-- Testimonials -->
+                <a href="{% url 'dashboard:testimonial_list' %}"
+                   class="flex items-center gap-3 px-4 py-[10px] mb-0.5 rounded-sm text-[15px] font-semibold transition-all duration-200 {% if 'testimonial' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}">
+                    <i class="bi bi-chat-quote text-base"></i><span>Testimonials</span>
+                </a>
+
+                <!-- Brands -->
+                <a href="{% url 'dashboard:brand_list' %}"
+                   class="flex items-center gap-3 px-4 py-[10px] mb-0.5 rounded-sm text-[15px] font-semibold transition-all duration-200 {% if 'brand' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}">
+                    <i class="bi bi-building text-base"></i><span>Brands</span>
+                </a>
+
+                <div class="text-[11px] font-bold text-[#899bbd] uppercase tracking-wider px-4 mt-5 mb-2">System</div>
+
+                <!-- Messages -->
+                <a href="{% url 'dashboard:message_list' %}"
+                   class="flex items-center gap-3 px-4 py-[10px] mb-0.5 rounded-sm text-[15px] font-semibold transition-all duration-200 {% if 'message' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}">
+                    <i class="bi bi-envelope text-base"></i><span>Messages</span>
+                    {% if new_messages_count %}<span class="ml-auto bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full">{{ new_messages_count }}</span>{% endif %}
+                </a>
+
+                <!-- Company Info -->
+                <a href="{% url 'dashboard:company_info' %}"
+                   class="flex items-center gap-3 px-4 py-[10px] mb-0.5 rounded-sm text-[15px] font-semibold transition-all duration-200 {% if request.resolver_match.url_name == 'company_info' %}nav-item active{% else %}nav-item{% endif %}">
+                    <i class="bi bi-info-circle text-base"></i><span>Company Info</span>
+                </a>
+
+                <!-- Settings -->
+                <a href="{% url 'dashboard:site_settings' %}"
+                   class="flex items-center gap-3 px-4 py-[10px] mb-0.5 rounded-sm text-[15px] font-semibold transition-all duration-200 {% if request.resolver_match.url_name == 'site_settings' %}nav-item active{% else %}nav-item{% endif %}">
+                    <i class="bi bi-gear text-base"></i><span>Settings</span>
+                </a>
+            </nav>
+        </div>
+    </aside>
+
+    <!-- MOBILE SIDEBAR OVERLAY -->
+    <div x-show="mobileSidebar" @click="mobileSidebar=false"
+         x-transition:enter="transition-opacity duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+         x-transition:leave="transition-opacity duration-200"
+         class="fixed inset-0 bg-black/50 z-40 lg:hidden"></div>
+
+    <!-- MOBILE SIDEBAR -->
+    <aside x-show="mobileSidebar"
+           x-transition:enter="transition transform duration-300" x-transition:enter-start="-translate-x-full" x-transition:enter-end="translate-x-0"
+           x-transition:leave="transition transform duration-200" x-transition:leave-start="translate-x-0" x-transition:leave-end="-translate-x-full"
+           class="fixed top-0 left-0 h-full w-[300px] bg-white z-50 lg:hidden overflow-y-auto sidebar-scroll border-r border-[#e6e9f4]">
+        <div class="flex items-center justify-between h-[60px] px-6 border-b border-[#e6e9f4]">
+            <a href="{% url 'dashboard:home' %}" class="flex items-center gap-2">
+                <span class="text-[22px] font-extrabold text-heading font-heading">VAAM</span>
+                <span class="text-[9px] bg-primary text-white px-1.5 py-0.5 rounded font-bold">ADMIN</span>
+            </a>
+            <button @click="mobileSidebar=false" class="text-heading hover:text-primary transition"><i class="bi bi-x-lg"></i></button>
+        </div>
+        <nav class="py-4 px-4 space-y-0.5">
+            <a href="{% url 'dashboard:home' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if request.resolver_match.url_name == 'home' %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-grid text-base"></i> {% trans "Dashboard" %}</a>
+
+            <div class="text-[11px] font-bold text-[#899bbd] uppercase tracking-wider px-4 mt-4 mb-1">{% trans "Content" %}</div>
+            <a href="{% url 'dashboard:product_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'product' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-box-seam text-base"></i> {% trans "Products" %}</a>
+            <a href="{% url 'dashboard:service_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'service' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-wrench text-base"></i> {% trans "Services" %}</a>
+            <a href="{% url 'dashboard:project_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'project' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-journal-text text-base"></i> {% trans "Projects" %}</a>
+            <a href="{% url 'dashboard:news_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'news' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-newspaper text-base"></i> {% trans "News" %}</a>
+
+            <div class="text-[11px] font-bold text-[#899bbd] uppercase tracking-wider px-4 mt-4 mb-1">{% trans "Pages" %}</div>
+            <a href="{% url 'dashboard:menu_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'menu' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-menu-button-wide text-base"></i> {% trans "Menus" %}</a>
+            <a href="{% url 'dashboard:page_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'page' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-file-earmark-text text-base"></i> {% trans "Pages" %}</a>
+            <a href="{% url 'dashboard:hero_slide_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'hero_slide' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-images text-base"></i> {% trans "Hero Slides" %}</a>
+            <a href="{% url 'dashboard:feature_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'feature' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-star text-base"></i> {% trans "Features" %}</a>
+            <a href="{% url 'dashboard:statistic_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'statistic' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-bar-chart text-base"></i> {% trans "Statistics" %}</a>
+            <a href="{% url 'dashboard:process_step_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'process_step' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-diagram-3 text-base"></i> {% trans "Process Steps" %}</a>
+            <a href="{% url 'dashboard:faq_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'faq' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-question-circle text-base"></i> {% trans "FAQs" %}</a>
+            <a href="{% url 'dashboard:testimonial_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'testimonial' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-chat-quote text-base"></i> {% trans "Testimonials" %}</a>
+            <a href="{% url 'dashboard:brand_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'brand' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-building text-base"></i> {% trans "Brands" %}</a>
+
+            <div class="text-[11px] font-bold text-[#899bbd] uppercase tracking-wider px-4 mt-4 mb-1">{% trans "System" %}</div>
+            <a href="{% url 'dashboard:message_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'message' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}">
+                <i class="bi bi-envelope text-base"></i> {% trans "Messages" %}
+                {% if new_messages_count %}<span class="ml-auto bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full">{{ new_messages_count }}</span>{% endif %}
+            </a>
+            <a href="{% url 'dashboard:company_info' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if request.resolver_match.url_name == 'company_info' %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-info-circle text-base"></i> {% trans "Company Info" %}</a>
+            <a href="{% url 'dashboard:site_settings' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if request.resolver_match.url_name == 'site_settings' %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-gear text-base"></i> {% trans "Settings" %}</a>
+        </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <div :class="sidebarOpen ? 'lg:ml-[300px]' : 'lg:ml-0'" class="transition-all duration-300 min-h-screen flex flex-col">
+
+        <!-- TOP HEADER -->
+        <header class="sticky top-0 z-30 bg-white h-[60px]" style="box-shadow: 0px 2px 20px rgba(1,41,112,.08);">
+            <div class="flex items-center justify-between h-full px-5">
+                <div class="flex items-center gap-3">
+                    <button @click="sidebarOpen=!sidebarOpen" class="hidden lg:flex items-center justify-center text-heading hover:text-primary transition p-1"><i class="bi bi-list text-[22px]"></i></button>
+                    <button @click="mobileSidebar=true" class="lg:hidden flex items-center justify-center text-heading hover:text-primary transition p-1"><i class="bi bi-list text-[22px]"></i></button>
+                    <div class="hidden md:flex items-center bg-[#f6f9ff] rounded px-3.5 py-2 ml-2">
+                        <input type="text" placeholder="Search..." class="bg-transparent outline-none text-sm text-body placeholder-[#899bbd] w-44 font-body">
+                        <button class="text-[#899bbd] hover:text-primary transition ml-2"><i class="bi bi-search text-sm"></i></button>
+                    </div>
+                </div>
+                <div class="flex items-center gap-1">
+                    <!-- Notification bell -->
+                    <div x-data="{open:false}" class="relative">
+                        <button @click="open=!open" class="relative p-2.5 text-[#012970]/70 hover:text-primary transition rounded-full hover:bg-[#f6f9ff]">
+                            <i class="bi bi-bell text-[20px]"></i>
+                            {% if new_messages_count %}<span class="absolute top-1 right-1 w-[18px] h-[18px] bg-primary text-white text-[9px] font-bold rounded-full flex items-center justify-center">{{ new_messages_count }}</span>{% endif %}
+                        </button>
+                        <div x-show="open" @click.away="open=false" x-transition class="absolute right-0 top-full mt-1 w-80 bg-white rounded shadow-lg z-50" style="box-shadow: 0px 0px 30px rgba(1,41,112,.1);">
+                            <div class="flex items-center justify-between px-4 py-3 border-b border-[#e6e9f4]">
+                                <h5 class="text-base font-bold text-heading font-heading">Notifications</h5>
+                                {% if new_messages_count %}<span class="text-[11px] bg-primary/10 text-primary px-2 py-0.5 rounded-full font-semibold">{{ new_messages_count }} new</span>{% endif %}
+                            </div>
+                            <div class="max-h-72 overflow-y-auto">
+                                {% if new_messages_count %}
+                                <a href="{% url 'dashboard:message_list' %}" class="flex items-start gap-3 px-4 py-3 hover:bg-[#f6f9ff] transition border-b border-[#f0f0f0]">
+                                    <div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"><i class="bi bi-envelope-fill text-primary text-sm"></i></div>
+                                    <div class="flex-1">
+                                        <h6 class="text-sm font-semibold text-heading font-heading">{{ new_messages_count }} new message{{ new_messages_count|pluralize }}</h6>
+                                        <p class="text-xs text-[#899bbd] mt-0.5">Click to view all messages</p>
+                                    </div>
+                                </a>
+                                {% else %}
+                                <p class="text-sm text-[#899bbd] text-center py-8">No new notifications</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Profile dropdown -->
+                    <div x-data="{open:false}" class="relative ml-2">
+                        <button @click="open=!open" class="flex items-center gap-2 py-1 px-2 rounded hover:bg-[#f6f9ff] transition">
+                            <div class="w-9 h-9 bg-primary rounded-full flex items-center justify-center flex-shrink-0">
+                                <span class="text-white text-sm font-bold font-heading">{{ request.user.first_name|first|default:"A" }}</span>
+                            </div>
+                            <span class="hidden md:block text-sm font-semibold text-heading font-heading">{{ request.user.get_full_name|default:request.user.username }}</span>
+                            <i class="bi bi-chevron-down text-[10px] text-heading hidden md:block"></i>
+                        </button>
+                        <div x-show="open" @click.away="open=false" x-transition class="absolute right-0 top-full mt-1 w-52 bg-white rounded shadow-lg z-50 py-1" style="box-shadow: 0px 0px 30px rgba(1,41,112,.1);">
+                            <div class="px-4 py-3 border-b border-[#e6e9f4]">
+                                <h6 class="text-sm font-bold text-heading font-heading">{{ request.user.get_full_name|default:request.user.username }}</h6>
+                                <span class="text-xs text-[#899bbd]">Administrator</span>
+                            </div>
+                            <a href="{% url 'core:home' %}" target="_blank" class="flex items-center gap-2 px-4 py-2.5 text-sm text-body hover:bg-[#f6f9ff] transition">
+                                <i class="bi bi-box-arrow-up-right text-base text-[#899bbd]"></i> View Site
+                            </a>
+                            <hr class="border-[#e6e9f4]">
+                            <form method="post" action="{% url 'dashboard:logout' %}">
+                                {% csrf_token %}
+                                <button type="submit" class="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-body hover:bg-[#f6f9ff] transition">
+                                    <i class="bi bi-box-arrow-right text-base text-[#899bbd]"></i> {% trans "Sign Out" %}
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- PAGE TITLE & BREADCRUMB -->
+        <div class="px-6 py-5">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                <h1 class="text-2xl font-bold text-heading font-heading">{% block page_title %}Dashboard{% endblock %}</h1>
+                <nav class="flex items-center gap-1.5 text-sm mt-1 sm:mt-0">
+                    <a href="{% url 'dashboard:home' %}" class="text-primary hover:underline">Home</a>
+                    {% block breadcrumb %}
+                    <span class="text-[#899bbd]">/</span>
+                    <span class="text-[#899bbd]">Dashboard</span>
+                    {% endblock %}
+                </nav>
+            </div>
+        </div>
+
+        <!-- PAGE CONTENT -->
+        <main class="flex-1 px-6 pb-6">
+            {% if messages %}
+            <div class="mb-5 space-y-2">
+                {% for message in messages %}
+                <div x-data="{show:true}" x-show="show" x-transition
+                     class="flex items-center justify-between px-4 py-3 rounded text-sm {% if message.tags == 'success' %}bg-green-50 border border-green-200 text-green-700{% elif message.tags == 'error' %}bg-red-50 border border-red-200 text-red-700{% elif message.tags == 'warning' %}bg-amber-50 border border-amber-200 text-amber-700{% else %}bg-blue-50 border border-blue-200 text-blue-700{% endif %}">
+                    <div class="flex items-center gap-2">
+                        <i class="bi {% if message.tags == 'success' %}bi-check-circle-fill{% elif message.tags == 'error' %}bi-exclamation-circle-fill{% elif message.tags == 'warning' %}bi-exclamation-triangle-fill{% else %}bi-info-circle-fill{% endif %}"></i>
+                        <span class="font-medium">{{ message }}</span>
+                    </div>
+                    <button @click="show=false" class="opacity-50 hover:opacity-100 transition ml-3"><i class="bi bi-x-lg text-xs"></i></button>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% block content %}{% endblock %}
+        </main>
+
+        <!-- FOOTER -->
+        <footer class="bg-white border-t border-[#e6e9f4] px-6 py-4">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-1 text-sm text-[#899bbd]">
+                <p>&copy; {% now "Y" %} <span class="font-semibold text-heading">VAAM</span> Import and Export Trading. {% trans "All rights reserved." %}</p>
+                <p>Developed by <a href="#" class="font-semibold text-primary hover:underline">Pragmatech</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.14.3/dist/cdn.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/cdn.min.js"></script>
+    {% block extra_scripts %}{% endblock %}
+</body>
+</html>
