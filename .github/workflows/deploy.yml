@@ -20,4 +20,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script_stop: true
           script: |
-            cd /home/vaam/app && bash deploy/deploy.sh
+            cd /home/vaam/app
+            git config --global --add safe.directory /home/vaam/app
+            git pull origin main
+            bash deploy/deploy.sh
