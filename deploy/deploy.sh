@@ -19,6 +19,8 @@ cd "$APP_DIR"
 # Pull latest code (as root, with safe.directory)
 echo "[1/6] Pulling latest code..."
 git config --global --add safe.directory "$APP_DIR"
+git reset --hard HEAD
+git clean -fd
 git pull origin main
 
 # Install/update dependencies (as vaam user)
