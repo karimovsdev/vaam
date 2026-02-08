@@ -1,7 +1,7 @@
 """
 Model translation registration for django-modeltranslation.
 Each model's translatable text fields are registered here.
-This creates _en, _ru, _tr, _ar columns for each registered field.
+Creates _en, _ru, _tr, _ar columns for each registered field.
 """
 from modeltranslation.translator import translator, TranslationOptions
 
