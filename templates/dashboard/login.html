@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | VAAM Admin</title>
+    <title>Login | {{ settings.site_name|default:'VAAM' }} Admin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -35,8 +35,14 @@
         <!-- Logo -->
         <div class="text-center mb-5 pt-5">
             <a href="{% url 'core:home' %}" class="flex items-center justify-center gap-2 mb-2">
+                {% if settings.logo_admin %}
+                <img src="{{ settings.logo_admin.url }}" alt="{{ settings.site_name|default:'VAAM' }}" class="h-12 w-auto max-w-[200px] object-contain">
+                {% elif settings.logo %}
+                <img src="{{ settings.logo.url }}" alt="{{ settings.site_name|default:'VAAM' }}" class="h-12 w-auto max-w-[200px] object-contain">
+                {% else %}
                 <span class="text-3xl font-extrabold text-heading" style="font-family:'Nunito',sans-serif;">VAAM</span>
                 <span class="text-[10px] bg-primary text-white px-2 py-0.5 rounded font-bold tracking-wide">ADMIN</span>
+                {% endif %}
             </a>
         </div>
 

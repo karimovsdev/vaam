@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Dashboard{% endblock %} | VAAM Admin</title>
+    <title>{% block title %}Dashboard{% endblock %} | {{ settings.site_name|default:'VAAM' }} Admin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -60,8 +60,14 @@
             <!-- Logo -->
             <div class="flex items-center h-[60px] px-6 border-b border-[#e6e9f4]">
                 <a href="{% url 'dashboard:home' %}" class="flex items-center gap-2">
+                    {% if settings.logo_admin %}
+                    <img src="{{ settings.logo_admin.url }}" alt="{{ settings.site_name|default:'VAAM' }} Admin" class="h-9 w-auto max-w-[160px] object-contain">
+                    {% elif settings.logo %}
+                    <img src="{{ settings.logo.url }}" alt="{{ settings.site_name|default:'VAAM' }} Admin" class="h-9 w-auto max-w-[160px] object-contain">
+                    {% else %}
                     <span class="text-[26px] font-extrabold text-heading font-heading">VAAM</span>
                     <span class="text-[9px] bg-primary text-white px-1.5 py-0.5 rounded font-bold tracking-wide">ADMIN</span>
+                    {% endif %}
                 </a>
             </div>
 
@@ -271,8 +277,14 @@
            class="fixed top-0 left-0 h-full w-[300px] bg-white z-50 lg:hidden overflow-y-auto sidebar-scroll border-r border-[#e6e9f4]">
         <div class="flex items-center justify-between h-[60px] px-6 border-b border-[#e6e9f4]">
             <a href="{% url 'dashboard:home' %}" class="flex items-center gap-2">
+                {% if settings.logo_admin %}
+                <img src="{{ settings.logo_admin.url }}" alt="{{ settings.site_name|default:'VAAM' }} Admin" class="h-8 w-auto max-w-[140px] object-contain">
+                {% elif settings.logo %}
+                <img src="{{ settings.logo.url }}" alt="{{ settings.site_name|default:'VAAM' }} Admin" class="h-8 w-auto max-w-[140px] object-contain">
+                {% else %}
                 <span class="text-[22px] font-extrabold text-heading font-heading">VAAM</span>
                 <span class="text-[9px] bg-primary text-white px-1.5 py-0.5 rounded font-bold">ADMIN</span>
+                {% endif %}
             </a>
             <button @click="mobileSidebar=false" class="text-heading hover:text-primary transition"><i class="bi bi-x-lg"></i></button>
         </div>
@@ -414,7 +426,7 @@
         <!-- FOOTER -->
         <footer class="bg-white border-t border-[#e6e9f4] px-6 py-4">
             <div class="flex flex-col sm:flex-row justify-between items-center gap-1 text-sm text-[#899bbd]">
-                <p>&copy; {% now "Y" %} <span class="font-semibold text-heading">VAAM</span> Import and Export Trading. {% trans "All rights reserved." %}</p>
+                <p>&copy; {% now "Y" %} <span class="font-semibold text-heading">{{ settings.site_name|default:'VAAM Import and Export Trading' }}</span>. {% trans "All rights reserved." %}</p>
                 <p>Developed by <a href="#" class="font-semibold text-primary hover:underline">Pragmatech</a></p>
             </div>
         </footer>

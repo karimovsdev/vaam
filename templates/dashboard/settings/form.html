@@ -64,7 +64,7 @@
             <div x-show="activeTab === 'general'" x-transition>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                     {% for field in form %}
-                        {% if field.name == 'site_name_en' or field.name == 'site_description_en' or field.name == 'logo' or field.name == 'favicon' or field.name == 'footer_text' or field.name == 'copyright_text' %}
+                        {% if field.name == 'site_name_en' or field.name == 'site_description_en' or field.name == 'footer_text' or field.name == 'copyright_text' %}
                         <div class="{% if field.name == 'footer_text' or field.name == 'copyright_text' or field.name == 'site_description_en' %}md:col-span-2{% endif %}">
                             <label class="block text-sm font-semibold text-heading mb-2 font-heading" for="{{ field.id_for_label }}">
                                 {{ field.label }}
@@ -76,6 +76,42 @@
                         </div>
                         {% endif %}
                     {% endfor %}
+                </div>
+
+                <!-- Logo & Branding Section -->
+                <div class="mt-8 pt-6 border-t border-[#e6e9f4]">
+                    <h6 class="text-sm font-bold text-heading font-heading mb-4 flex items-center gap-2">
+                        <i class="bi bi-image text-primary"></i> Logo & Branding
+                    </h6>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {% for field in form %}
+                            {% if field.name == 'logo' or field.name == 'logo_white' or field.name == 'logo_admin' or field.name == 'favicon' %}
+                            <div class="border border-[#e6e9f4] rounded-lg p-4 bg-{% if field.name == 'logo_white' %}[#1b2e4b]{% else %}[#f8f9fa]{% endif %}">
+                                <label class="block text-sm font-semibold {% if field.name == 'logo_white' %}text-white{% else %}text-heading{% endif %} mb-3 font-heading" for="{{ field.id_for_label }}">
+                                    {% if field.name == 'logo' %}<i class="bi bi-card-image mr-1"></i> Main Logo
+                                    {% elif field.name == 'logo_white' %}<i class="bi bi-brightness-high mr-1"></i> White Logo
+                                    {% elif field.name == 'logo_admin' %}<i class="bi bi-shield-lock mr-1"></i> Admin Logo
+                                    {% elif field.name == 'favicon' %}<i class="bi bi-app mr-1"></i> Favicon
+                                    {% endif %}
+                                </label>
+                                {% with current_file=field.value %}
+                                {% if current_file %}
+                                <div class="mb-3 {% if field.name == 'logo_white' %}bg-[#0d1b2a] p-3{% else %}bg-white p-3 border border-[#e6e9f4]{% endif %} rounded flex items-center justify-center min-h-[60px]">
+                                    <img src="/media/{{ current_file }}" alt="{{ field.label }}" class="max-h-14 max-w-full object-contain">
+                                </div>
+                                {% else %}
+                                <div class="mb-3 {% if field.name == 'logo_white' %}bg-[#0d1b2a]{% else %}bg-white border border-dashed border-[#d0d4e9]{% endif %} rounded flex items-center justify-center min-h-[60px]">
+                                    <span class="text-xs {% if field.name == 'logo_white' %}text-slate-500{% else %}text-[#899bbd]{% endif %}">No image uploaded</span>
+                                </div>
+                                {% endif %}
+                                {% endwith %}
+                                {{ field }}
+                                {% if field.help_text %}<p class="text-xs {% if field.name == 'logo_white' %}text-slate-400{% else %}text-[#899bbd]{% endif %} mt-1.5">{{ field.help_text }}</p>{% endif %}
+                                {% if field.errors %}<p class="text-xs text-danger mt-1">{{ field.errors.0 }}</p>{% endif %}
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
 

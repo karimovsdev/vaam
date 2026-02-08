@@ -123,8 +123,10 @@ class Page(models.Model):
 class SiteSettings(models.Model):
     site_name = models.CharField(max_length=200, default='VAAM Import and Export Trading')
     site_description = models.TextField(blank=True)
-    logo = models.ImageField(upload_to='site/', blank=True, null=True)
-    favicon = models.ImageField(upload_to='site/', blank=True, null=True)
+    logo = models.ImageField(upload_to='site/', blank=True, null=True, help_text='Main logo for header and light backgrounds')
+    logo_white = models.ImageField(upload_to='site/', blank=True, null=True, help_text='White/light logo for dark backgrounds (footer etc.)')
+    logo_admin = models.ImageField(upload_to='site/', blank=True, null=True, help_text='Logo for admin panel sidebar and login page')
+    favicon = models.ImageField(upload_to='site/', blank=True, null=True, help_text='Browser tab icon (recommended: 32x32 or 64x64 PNG)')
     phone = models.CharField(max_length=50, default='+994 50 123 45 67')
     phone2 = models.CharField(max_length=50, blank=True)
     email = models.EmailField(default='info@vaamtrading.com')

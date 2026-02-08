@@ -25,7 +25,8 @@ def _get_translatable_field_names(model_class):
     try:
         from modeltranslation.translator import translator
         opts = translator.get_options_for_model(model_class)
-        return set(opts.fields.keys())
+        # opts.fields is a tuple of field names, not a dict
+        return set(opts.fields)
     except Exception:
         return set()
 

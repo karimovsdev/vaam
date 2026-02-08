@@ -8,35 +8,35 @@ msgstr ""
 
 #: templates/core/base.html
 msgid "Home"
-msgstr "Ana Səhifə"
+msgstr "Ana Sayfa"
 
 #: templates/core/base.html
 msgid "About"
-msgstr "Haqqımızda"
+msgstr "Hakkımızda"
 
 #: templates/core/base.html
 msgid "Services"
-msgstr "Xidmətlər"
+msgstr "Hizmetler"
 
 #: templates/core/base.html
 msgid "Products"
-msgstr "Məhsullar"
+msgstr "Ürünler"
 
 #: templates/core/base.html
 msgid "Projects"
-msgstr "Layihələr"
+msgstr "Projeler"
 
 #: templates/core/base.html
 msgid "News"
-msgstr "Xəbərlər"
+msgstr "Haberler"
 
 #: templates/core/base.html
 msgid "Contact"
-msgstr "Əlaqə"
+msgstr "İletişim"
 
 #: templates/core/base.html
 msgid "Get A Quote"
-msgstr "Təklif Al"
+msgstr "Teklif Al"
 
 #: templates/core/base.html
 msgid "Language"
@@ -44,187 +44,187 @@ msgstr "Dil"
 
 #: templates/core/base.html
 msgid "Quick Links"
-msgstr "Faydalı Linklər"
+msgstr "Hızlı Bağlantılar"
 
 #: templates/core/base.html
 msgid "About Us"
-msgstr "Haqqımızda"
+msgstr "Hakkımızda"
 
 #: templates/core/base.html
 msgid "Our Services"
-msgstr "Xidmətlərimiz"
+msgstr "Hizmetlerimiz"
 
 #: templates/core/base.html
 msgid "Panel Manufacturing"
-msgstr "Panel İstehsalı"
+msgstr "Panel Üretimi"
 
 #: templates/core/base.html
 msgid "Wholesale Distribution"
-msgstr "Topdan Distribyusiya"
+msgstr "Toptan Dağıtım"
 
 #: templates/core/base.html
 msgid "Technical Consultation"
-msgstr "Texniki Məsləhət"
+msgstr "Teknik Danışmanlık"
 
 #: templates/core/base.html
 msgid "Contact Us"
-msgstr "Bizimlə Əlaqə"
+msgstr "Bize Ulaşın"
 
 #: templates/core/base.html
 msgid "Email us anytime"
-msgstr "İstənilən vaxt e-poçt göndərin"
+msgstr "İstediğiniz zaman e-posta gönderin"
 
 #: templates/core/base.html
 msgid "Our headquarters"
-msgstr "Baş ofisimiz"
+msgstr "Genel merkezimiz"
 
 #: templates/core/base.html
 msgid "All rights reserved."
-msgstr "Bütün hüquqlar qorunur."
+msgstr "Tüm hakları saklıdır."
 
 #: templates/core/base.html
 msgid "Privacy Policy"
-msgstr "Məxfilik Siyasəti"
+msgstr "Gizlilik Politikası"
 
 #: templates/core/base.html
 msgid "Terms"
-msgstr "Şərtlər"
+msgstr "Şartlar"
 
 #: templates/core/home.html
 msgid "Solar Panel Manufacturing & Wholesale"
-msgstr "Günəş Panel İstehsalı və Topdan Satış"
+msgstr "Güneş Paneli Üretimi ve Toptan Satış"
 
 #: templates/core/home.html
 msgid "Engineering the Future of Solar Energy"
-msgstr "Günəş Enerjisinin Gələcəyini Mühəndisliklə Formalaşdırırıq"
+msgstr "Güneş Enerjisinin Geleceğini Mühendislikle Şekillendiriyoruz"
 
 #: templates/core/home.html
 msgid "Premium solar panels for global markets."
-msgstr "Qlobal bazarlar üçün premium günəş panelləri."
+msgstr "Küresel pazarlar için premium güneş panelleri."
 
 #: templates/core/home.html
 msgid "Explore Products"
-msgstr "Məhsulları Kəşf Et"
+msgstr "Ürünleri Keşfet"
 
 #: templates/core/home.html
 msgid "Eco Friendly"
-msgstr "Ekoloji"
+msgstr "Çevre Dostu"
 
 #: templates/core/home.html
 msgid "Sustainable solar energy for a greener future"
-msgstr "Daha yaşıl bir gələcək üçün davamlı günəş enerjisi"
+msgstr "Daha yeşil bir gelecek için sürdürülebilir güneş enerjisi"
 
 #: templates/core/home.html
 msgid "Years Warranty"
-msgstr "İl Zəmanət"
+msgstr "Yıl Garanti"
 
 #: templates/core/home.html
 msgid "About VAAM"
-msgstr "VAAM Haqqında"
+msgstr "VAAM Hakkında"
 
 #: templates/core/home.html
 msgid "accessible to all"
-msgstr "hamı üçün əlçatan"
+msgstr "herkes için erişilebilir"
 
 #: templates/core/home.html
 msgid "Learn More"
-msgstr "Daha Ətraflı"
+msgstr "Daha Fazla"
 
 #: templates/core/home.html
 msgid "Call Us 24/7"
-msgstr "7/24 Zəng Edin"
+msgstr "7/24 Bizi Arayın"
 
 #: templates/core/home.html
 msgid "What We Offer"
-msgstr "Nə Təklif Edirik"
+msgstr "Neler Sunuyoruz"
 
 #: templates/core/home.html
 msgid "Comprehensive Solar Solutions"
-msgstr "Hərtərəfli Günəş Həlləri"
+msgstr "Kapsamlı Güneş Enerjisi Çözümleri"
 
 #: templates/core/home.html
 msgid "End-to-end services from manufacturing to installation and long-term support"
-msgstr "İstehsaldan quraşdırmaya və uzunmüddətli dəstəyə qədər tam xidmət"
+msgstr "Üretimden kuruluma ve uzun vadeli desteğe kadar uçtan uca hizmet"
 
 #: templates/core/home.html
 msgid "How It Works"
-msgstr "Necə İşləyir"
+msgstr "Nasıl Çalışır"
 
 #: templates/core/home.html
 msgid "From Concept to Clean Energy"
-msgstr "Konseptdən Təmiz Enerjiyə"
+msgstr "Konseptten Temiz Enerjiye"
 
 #: templates/core/home.html
 msgid "Get Free Consultancy"
-msgstr "Pulsuz Məsləhət Alın"
+msgstr "Ücretsiz Danışmanlık Alın"
 
 #: templates/core/home.html
 msgid "or call us at"
-msgstr "və ya bizə zəng edin"
+msgstr "veya bizi arayın"
 
 #: templates/core/home.html
 msgid "Get It Now"
-msgstr "İndi Əldə Et"
+msgstr "Hemen Alın"
 
 #: templates/core/home.html
 msgid "Portfolio"
-msgstr "Portfolio"
+msgstr "Portföy"
 
 #: templates/core/home.html
 msgid "Our Latest Projects"
-msgstr "Ən Son Layihələrimiz"
+msgstr "En Son Projelerimiz"
 
 #: templates/core/home.html
 msgid "Showcasing solar installations across residential and commercial sectors"
-msgstr "Yaşayış və kommersiya sektorlarında günəş qurğularının nümayişi"
+msgstr "Konut ve ticari sektörlerde güneş enerjisi kurulumlarının sergilenmesi"
 
 #: templates/core/home.html
 msgid "View Project"
-msgstr "Layihəyə Bax"
+msgstr "Projeyi Görüntüle"
 
 #: templates/core/home.html
 msgid "View All Projects"
-msgstr "Bütün Layihələr"
+msgstr "Tüm Projeler"
 
 #: templates/core/home.html
 msgid "Insights"
-msgstr "Məqalələr"
+msgstr "Makaleler"
 
 #: templates/core/home.html
 msgid "Latest News & Updates"
-msgstr "Son Xəbərlər və Yeniliklər"
+msgstr "Son Haberler ve Güncellemeler"
 
 #: templates/core/home.html
 msgid "Stay informed about solar energy trends"
-msgstr "Günəş enerjisi trendlərindən xəbərdar olun"
+msgstr "Güneş enerjisi trendlerinden haberdar olun"
 
 #: templates/core/home.html
 msgid "View All Articles"
-msgstr "Bütün Məqalələr"
+msgstr "Tüm Makaleler"
 
 #: templates/core/home.html templates/core/news.html templates/core/news_detail.html
 msgid "min read"
-msgstr "dəq oxu"
+msgstr "dk okuma"
 
 #: templates/core/home.html templates/core/news.html templates/core/news_detail.html
 msgid "Read More"
-msgstr "Daha Ətraflı"
+msgstr "Devamını Oku"
 
 #: templates/core/about.html
 msgid "About VAAM Trading"
-msgstr "VAAM Trading Haqqında"
+msgstr "VAAM Trading Hakkında"
 
 #: templates/core/about.html
 msgid "Learn about our journey powering sustainable energy solutions"
-msgstr "Davamlı enerji həlləri üzrə yolçuluğumuz haqqında öyrənin"
+msgstr "Sürdürülebilir enerji çözümlerine güç veren yolculuğumuz hakkında bilgi edinin"
 
 #: templates/core/about.html
 msgid "Who We Are"
-msgstr "Biz Kimik"
+msgstr "Biz Kimiz"
 
 #: templates/core/about.html
 msgid "Our Mission"
-msgstr "Missiyamız"
+msgstr "Misyonumuz"
 
 #: templates/core/about.html
 msgid "Our Vision"
@@ -232,115 +232,115 @@ msgstr "Vizyonumuz"
 
 #: templates/core/about.html
 msgid "Why Choose VAAM"
-msgstr "Niyə VAAM"
+msgstr "Neden VAAM"
 
 #: templates/core/about.html
 msgid "Meet Our Team"
-msgstr "Komandamız"
+msgstr "Ekibimiz"
 
 #: templates/core/about.html
 msgid "Trusted By Industry Leaders"
-msgstr "Sənaye Liderləri Tərəfindən Etibar Edilir"
+msgstr "Sektör Liderleri Tarafından Güveniliyor"
 
 #: templates/core/products.html
 msgid "Our Products"
-msgstr "Məhsullarımız"
+msgstr "Ürünlerimiz"
 
 #: templates/core/products.html
 msgid "Solar Panel Products"
-msgstr "Günəş Panel Məhsulları"
+msgstr "Güneş Paneli Ürünleri"
 
 #: templates/core/products.html
 msgid "Premium quality solar panels for every application"
-msgstr "Hər tətbiq üçün premium keyfiyyətli günəş panelləri"
+msgstr "Her uygulama için premium kalitede güneş panelleri"
 
 #: templates/core/products.html
 msgid "All Products"
-msgstr "Bütün Məhsullar"
+msgstr "Tüm Ürünler"
 
 #: templates/core/products.html
 msgid "Featured"
-msgstr "Seçilmiş"
+msgstr "Öne Çıkan"
 
 #: templates/core/products.html templates/core/product_detail.html
 msgid "View Details"
-msgstr "Ətraflı Bax"
+msgstr "Detayları Gör"
 
 #: templates/core/products.html
 msgid "No products found"
-msgstr "Məhsul tapılmadı"
+msgstr "Ürün bulunamadı"
 
 #: templates/core/product_detail.html
 msgid "Specifications"
-msgstr "Xüsusiyyətlər"
+msgstr "Özellikler"
 
 #: templates/core/product_detail.html
 msgid "Order via WhatsApp"
-msgstr "WhatsApp ilə Sifariş"
+msgstr "WhatsApp ile Sipariş"
 
 #: templates/core/product_detail.html
 msgid "Product Description"
-msgstr "Məhsul Təsviri"
+msgstr "Ürün Açıklaması"
 
 #: templates/core/product_detail.html
 msgid "Related Products"
-msgstr "Əlaqəli Məhsullar"
+msgstr "İlgili Ürünler"
 
 #: templates/core/services.html
 msgid "Comprehensive solar energy solutions from manufacturing to support"
-msgstr "İstehsaldan dəstəyə qədər hərtərəfli günəş enerjisi həlləri"
+msgstr "Üretimden desteğe kadar kapsamlı güneş enerjisi çözümleri"
 
 #: templates/core/services.html
 msgid "Request Quote"
-msgstr "Təklif İstə"
+msgstr "Teklif İste"
 
 #: templates/core/services.html
 msgid "Our Working Process"
-msgstr "İş Prosesimiz"
+msgstr "Çalışma Sürecimiz"
 
 #: templates/core/services.html
 msgid "Frequently Asked Questions"
-msgstr "Tez-tez Verilən Suallar"
+msgstr "Sıkça Sorulan Sorular"
 
 #: templates/core/services.html
 msgid "Need a Custom Solution?"
-msgstr "Xüsusi Həll Lazımdır?"
+msgstr "Özel Bir Çözüme mi İhtiyacınız Var?"
 
 #: templates/core/services.html
 msgid "Contact us for a free consultation"
-msgstr "Pulsuz məsləhət üçün bizimlə əlaqə saxlayın"
+msgstr "Ücretsiz danışmanlık için bizimle iletişime geçin"
 
 #: templates/core/projects.html
 msgid "Our Projects"
-msgstr "Layihələrimiz"
+msgstr "Projelerimiz"
 
 #: templates/core/projects.html
 msgid "Showcasing our solar installations worldwide"
-msgstr "Dünya üzrə günəş qurğularımızın nümayişi"
+msgstr "Dünya genelinde güneş enerjisi kurulumlarımızın sergilenmesi"
 
 #: templates/core/projects.html
 msgid "All"
-msgstr "Hamısı"
+msgstr "Tümü"
 
 #: templates/core/projects.html
 msgid "No projects found"
-msgstr "Layihə tapılmadı"
+msgstr "Proje bulunamadı"
 
 #: templates/core/news.html
 msgid "News & Updates"
-msgstr "Xəbərlər və Yeniliklər"
+msgstr "Haberler ve Güncellemeler"
 
 #: templates/core/news.html
 msgid "Stay informed about solar energy trends and innovations"
-msgstr "Günəş enerjisi trendləri və yeniliklərdən xəbərdar olun"
+msgstr "Güneş enerjisi trendleri ve yeniliklerden haberdar olun"
 
 #: templates/core/news.html
 msgid "No articles found"
-msgstr "Məqalə tapılmadı"
+msgstr "Makale bulunamadı"
 
 #: templates/core/news_detail.html
 msgid "Back to News"
-msgstr "Xəbərlərə Qayıt"
+msgstr "Haberlere Dön"
 
 #: templates/core/news_detail.html
 msgid "Share:"
@@ -348,15 +348,15 @@ msgstr "Paylaş:"
 
 #: templates/core/news_detail.html
 msgid "Related Articles"
-msgstr "Əlaqəli Məqalələr"
+msgstr "İlgili Makaleler"
 
 #: templates/core/contact.html
 msgid "Get In Touch"
-msgstr "Əlaqə Saxlayın"
+msgstr "İletişime Geçin"
 
 #: templates/core/contact.html
 msgid "We'd love to hear from you. Get in touch and we'll respond as soon as possible."
-msgstr "Sizdən eşitmək istərdik. Əlaqə saxlayın, ən qısa zamanda cavab verəcəyik."
+msgstr "Sizden haber almak isteriz. İletişime geçin, en kısa sürede dönüş yapacağız."
 
 #: templates/core/contact.html
 msgid "Phone"
@@ -364,23 +364,23 @@ msgstr "Telefon"
 
 #: templates/core/contact.html
 msgid "Email"
-msgstr "E-poçt"
+msgstr "E-posta"
 
 #: templates/core/contact.html
 msgid "Address"
-msgstr "Ünvan"
+msgstr "Adres"
 
 #: templates/core/contact.html
 msgid "Working Hours"
-msgstr "İş Saatları"
+msgstr "Çalışma Saatleri"
 
 #: templates/core/contact.html
 msgid "Send Us a Message"
-msgstr "Bizə Mesaj Göndərin"
+msgstr "Bize Mesaj Gönderin"
 
 #: templates/core/contact.html
 msgid "Fill out the form and our team will get back to you within 24 hours."
-msgstr "Formu doldurun, komandamız 24 saat ərzində sizinlə əlaqə saxlayacaq."
+msgstr "Formu doldurun, ekibimiz 24 saat içinde sizinle iletişime geçecektir."
 
 #: templates/core/contact.html
 msgid "First Name *"
@@ -392,11 +392,11 @@ msgstr "Soyad"
 
 #: templates/core/contact.html
 msgid "Email *"
-msgstr "E-poçt *"
+msgstr "E-posta *"
 
 #: templates/core/contact.html
 msgid "Subject *"
-msgstr "Mövzu *"
+msgstr "Konu *"
 
 #: templates/core/contact.html
 msgid "Message *"
@@ -404,8 +404,8 @@ msgstr "Mesaj *"
 
 #: templates/core/contact.html
 msgid "Send Message"
-msgstr "Mesaj Göndər"
+msgstr "Mesaj Gönder"
 
 #: templates/core/contact.html
 msgid "What Our Clients Say"
-msgstr "Müştərilərimiz Nə Deyir"
+msgstr "Müşterilerimiz Ne Diyor"
