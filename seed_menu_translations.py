@@ -9,6 +9,7 @@ import django
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'vaam_project.settings')
 django.setup()
 
+from django.utils.translation import activate
 from core.models import Menu, MenuItem
 
 print("=" * 80)
@@ -19,19 +20,23 @@ print("=" * 80)
 main_menu, created = Menu.objects.get_or_create(
     slug='main',
     defaults={
-        'title_en': 'Main Navigation',
-        'title_ru': 'Главное меню',
-        'title_tr': 'Ana Menü',
-        'title_ar': 'القائمة الرئيسية',
+        'title': 'Main Navigation',
         'location': 'main',
         'is_active': True
     }
 )
 
+# Manually set translations for Menu
+main_menu.title_en = 'Main Navigation'
+main_menu.title_ru = 'Главное меню'
+main_menu.title_tr = 'Ana Menü'
+main_menu.title_ar = 'القائمة الرئيسية'
+main_menu.save()
+
 if not created:
-    print("✓ Main menu already exists")
+    print("✓ Main menu already exists - updated translations")
 else:
-    print("✓ Main menu created")
+    print("✓ Main menu created with translations")
 
 # Delete old menu items
 MenuItem.objects.filter(menu=main_menu).delete()
@@ -97,14 +102,27 @@ menu_items = [
     },
 ]
 
-# Create menu items
+# Create menu items with proper modeltranslation support
 created_count = 0
 for item_data in menu_items:
-    MenuItem.objects.create(
+    # Create item with English (default language)
+    activate('en')
+    item = MenuItem.objects.create(
         menu=main_menu,
-        **item_data,
+        title=item_data['title_en'],
+        link_type=item_data['link_type'],
+        order=item_data['order'],
         is_active=True
     )
+    
+    # Update translation fields directly using update_fields
+    MenuItem.objects.filter(id=item.id).update(
+        title_en=item_data['title_en'],
+        title_ru=item_data['title_ru'],
+        title_tr=item_data['title_tr'],
+        title_ar=item_data['title_ar']
+    )
+    
     created_count += 1
     print(f"  ✓ Created: {item_data['title_en']} / {item_data['title_ru']} / {item_data['title_tr']} / {item_data['title_ar']}")
 
