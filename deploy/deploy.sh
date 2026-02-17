@@ -37,6 +37,7 @@ sudo -u vaam "$VENV_DIR/bin/python" manage.py collectstatic --noinput
 
 # Compile translation messages (as vaam user)
 echo "[5/6] Compiling translations..."
+rm -f "$APP_DIR/locale/*/LC_MESSAGES/*.mo"
 sudo -u vaam "$VENV_DIR/bin/python" manage.py compilemessages || true
 
 # Restart Gunicorn (as root)
