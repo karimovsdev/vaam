@@ -1,5 +1,5 @@
 """
-VAAM - Update Menu Items with 4-Language Support
+VAAM - Create Menu Items with 4-Language Support
 Run: python seed_menu_translations.py
 """
 import os
@@ -10,6 +10,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'vaam_project.settings')
 django.setup()
 
 from django.utils.translation import activate
+from django.db import connection
 from core.models import Menu, MenuItem
 
 print("=" * 80)
@@ -26,12 +27,13 @@ main_menu, created = Menu.objects.get_or_create(
     }
 )
 
-# Manually set translations for Menu
-main_menu.title_en = 'Main Navigation'
-main_menu.title_ru = 'Главное меню'
-main_menu.title_tr = 'Ana Menü'
-main_menu.title_ar = 'القائمة الرئيسية'
-main_menu.save()
+# Update Menu translations using raw SQL
+with connection.cursor() as cursor:
+    cursor.execute("""
+        UPDATE core_menu 
+        SET title_en = %s, title_ru = %s, title_tr = %s, title_ar = %s
+        WHERE id = %s
+    """, ['Main Navigation', 'Главное меню', 'Ana Menü', 'القائمة الرئيسية', main_menu.id])
 
 if not created:
     print("✓ Main menu already exists - updated translations")
@@ -102,29 +104,29 @@ menu_items = [
     },
 ]
 
-# Create menu items with proper modeltranslation support
+# Create menu items and update translations with raw SQL
 created_count = 0
-for item_data in menu_items:
-    # Create item with English (default language)
-    activate('en')
-    item = MenuItem.objects.create(
-        menu=main_menu,
-        title=item_data['title_en'],
-        link_type=item_data['link_type'],
-        order=item_data['order'],
-        is_active=True
-    )
-    
-    # Update translation fields directly using update_fields
-    MenuItem.objects.filter(id=item.id).update(
-        title_en=item_data['title_en'],
-        title_ru=item_data['title_ru'],
-        title_tr=item_data['title_tr'],
-        title_ar=item_data['title_ar']
-    )
-    
-    created_count += 1
-    print(f"  ✓ Created: {item_data['title_en']} / {item_data['title_ru']} / {item_data['title_tr']} / {item_data['title_ar']}")
+with connection.cursor() as cursor:
+    for item_data in menu_items:
+        # Create item with English (default language)
+        activate('en')
+        item = MenuItem.objects.create(
+            menu=main_menu,
+            title=item_data['title_en'],
+            link_type=item_data['link_type'],
+            order=item_data['order'],
+            is_active=True
+        )
+        
+        # Update translation fields using raw SQL (modeltranslation has issues with direct assignment)
+        cursor.execute("""
+            UPDATE core_menuitem 
+            SET title_en = %s, title_ru = %s, title_tr = %s, title_ar = %s
+            WHERE id = %s
+        """, [item_data['title_en'], item_data['title_ru'], item_data['title_tr'], item_data['title_ar'], item.id])
+        
+        created_count += 1
+        print(f"  ✓ Created: {item_data['title_en']} / {item_data['title_ru']} / {item_data['title_tr']} / {item_data['title_ar']}")
 
 print("\n" + "=" * 80)
 print(f"  ✓ SUCCESS! Created {created_count} menu items in 4 languages")
@@ -135,4 +137,11 @@ print("  🇷🇺 Russian (RU)")
 print("  🇹🇷 Turkish (TR)")
 print("  🇸🇦 Arabic (AR)")
 print("\nNavbar will now show correctly in all languages!")
+print("=" * 80)
+
+# Verification
+print("\n📋 Verification:")
+items = MenuItem.objects.all().order_by('order')
+for item in items:
+    print(f"  {item.order}. EN: {item.title_en} | RU: {item.title_ru} | TR: {item.title_tr} | AR: {item.title_ar}")
 print("=" * 80)
