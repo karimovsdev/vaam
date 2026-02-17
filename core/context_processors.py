@@ -1,7 +1,14 @@
+from django.conf import settings as django_settings
 from django.core.cache import cache
 from django.utils.translation import get_language
 
 from .models import SiteSettings, Service, Menu, Page
+
+
+def clear_site_cache():
+    """Clear all cached context processor data (call after saving menus, settings, etc.)."""
+    for lang_code, _ in django_settings.LANGUAGES:
+        cache.delete(f'ctx_site_settings_{lang_code}')
 
 
 def site_settings(request):

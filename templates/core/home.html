@@ -22,7 +22,7 @@ function heroSlider() {
     }
 }
 </script>
-<section x-data="heroSlider()" class="relative h-[92vh] min-h-[600px] max-h-[900px] overflow-hidden">
+<section x-data="heroSlider()" class="relative h-[92vh] min-h-[600px] max-h-[900px] overflow-hidden z-20">
     {% if slides %}
     <template x-for="(slide,i) in slides" :key="i">
         <div x-show="currentSlide===i"

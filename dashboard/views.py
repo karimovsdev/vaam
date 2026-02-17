@@ -78,7 +78,7 @@ def dashboard_home(request):
 
 
 # ============ GENERIC CRUD HELPERS ============
-def _list_view(request, model, template, title, create_url_name, search_fields=None):
+def _list_view(request, model, template, title, create_url_name, search_fields=None, extra_context=None):
     items = model.objects.all()
     q = request.GET.get('q', '').strip()
     if q and search_fields:
@@ -93,6 +93,8 @@ def _list_view(request, model, template, title, create_url_name, search_fields=N
         'search_query': q,
         'new_messages_count': _new_msg_count(),
     }
+    if extra_context:
+        context.update(extra_context)
     return render(request, template, context)
 
 
@@ -178,7 +180,9 @@ def product_delete(request, pk):
 @login_required
 def product_category_list(request):
     return _list_view(request, ProductCategory, 'dashboard/categories/list.html', 'Product Categories',
-                      'dashboard:product_category_create', ['name'])
+                      'dashboard:product_category_create', ['name'],
+                      extra_context={'edit_url_name': 'dashboard:product_category_edit',
+                                     'delete_url_name': 'dashboard:product_category_delete'})
 
 @login_required
 def product_category_create(request):
@@ -222,7 +226,9 @@ def service_delete(request, pk):
 @login_required
 def service_category_list(request):
     return _list_view(request, ServiceCategory, 'dashboard/categories/list.html', 'Service Categories',
-                      'dashboard:service_category_create', ['name'])
+                      'dashboard:service_category_create', ['name'],
+                      extra_context={'edit_url_name': 'dashboard:service_category_edit',
+                                     'delete_url_name': 'dashboard:service_category_delete'})
 
 @login_required
 def service_category_create(request):
@@ -266,7 +272,9 @@ def project_delete(request, pk):
 @login_required
 def project_category_list(request):
     return _list_view(request, ProjectCategory, 'dashboard/categories/list.html', 'Project Categories',
-                      'dashboard:project_category_create', ['name'])
+                      'dashboard:project_category_create', ['name'],
+                      extra_context={'edit_url_name': 'dashboard:project_category_edit',
+                                     'delete_url_name': 'dashboard:project_category_delete'})
 
 @login_required
 def project_category_create(request):
@@ -310,7 +318,9 @@ def news_delete(request, pk):
 @login_required
 def news_category_list(request):
     return _list_view(request, NewsCategory, 'dashboard/categories/list.html', 'News Categories',
-                      'dashboard:news_category_create', ['name'])
+                      'dashboard:news_category_create', ['name'],
+                      extra_context={'edit_url_name': 'dashboard:news_category_edit',
+                                     'delete_url_name': 'dashboard:news_category_delete'})
 
 @login_required
 def news_category_create(request):

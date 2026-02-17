@@ -7,13 +7,13 @@ class CoreConfig(AppConfig):
 
     def ready(self):
         from django.db.models.signals import post_save, post_delete
-        from django.core.cache import cache
+        from django.conf import settings
 
         def clear_context_cache(sender, **kwargs):
             """Clear context_processor cache when relevant models change."""
-            # Delete all language variants of the cache
-            for lang in ('en', 'ru', 'az', 'ar'):
-                cache.delete(f'ctx_site_settings_{lang}')
+            from django.core.cache import cache
+            for lang_code, _ in settings.LANGUAGES:
+                cache.delete(f'ctx_site_settings_{lang_code}')
 
         from .models import SiteSettings, Service, Menu, MenuItem, Page
         for model in (SiteSettings, Service, Menu, MenuItem, Page):
