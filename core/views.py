@@ -10,9 +10,10 @@ from .models import (
     Certificate, TeamMember, ProductCategory, Product,
     ServiceCategory, Service, ProcessStep,
     ProjectCategory, Project, NewsCategory, News,
-    FAQ, Testimonial, Brand, ContactMessage, Page
+    FAQ, Testimonial, Brand, ContactMessage, Page,
+    Country, ProductInquiry
 )
-from .forms import ContactMessageForm
+from .forms import ContactMessageForm, ProductInquiryForm
 
 
 def home(request):
@@ -45,6 +46,9 @@ def home(request):
         'featured_projects': Project.objects.filter(is_active=True, is_featured=True)[:3],
         'latest_news': News.objects.filter(is_published=True)[:3],
         'brands': Brand.objects.filter(is_active=True),
+        'countries': Country.objects.filter(is_active=True),
+        'product_categories': ProductCategory.objects.filter(is_active=True),
+        'inquiry_form': ProductInquiryForm(),
     }
     return render(request, 'core/home.html', context)
 
@@ -192,3 +196,24 @@ def page_detail(request, slug):
         'page': page,
     }
     return render(request, 'core/page_detail.html', context)
+
+
+def product_inquiry(request):
+    """Handle product sourcing inquiry form submission."""
+    if request.method == 'POST':
+        form = ProductInquiryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, _('Your product inquiry has been submitted successfully! Our team will review your request and contact you shortly.'))
+            return redirect('core:home')
+        else:
+            messages.error(request, _('Please correct the errors below.'))
+    else:
+        form = ProductInquiryForm()
+
+    context = {
+        'active_page': 'inquiry',
+        'form': form,
+        'product_categories': ProductCategory.objects.filter(is_active=True),
+    }
+    return render(request, 'core/product_inquiry.html', context)

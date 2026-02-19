@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block title %}{% trans "Services" %} - {{ settings.site_name }}{% endblock %}
-{% block meta_description %}{% trans "Explore our comprehensive solar energy services - from manufacturing to installation and technical support" %}{% endblock %}
+{% block meta_description %}{% trans "End-to-end procurement services — product sourcing, quality control, pricing, logistics and delivery from China" %}{% endblock %}
 
 {% block content %}
 <!-- PAGE HEADER -->
@@ -18,7 +18,7 @@
             <span class="w-8 h-[2px] bg-primary-400"></span>
         </div>
         <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">{% trans "Our Services" %}</h1>
-        <p class="text-white/60 text-lg max-w-2xl mx-auto">{% trans "Comprehensive solar energy solutions from manufacturing to support" %}</p>
+        <p class="text-white/60 text-lg max-w-2xl mx-auto">{% trans "End-to-end procurement solutions from product sourcing to doorstep delivery" %}</p>
         <div class="flex justify-center gap-2 mt-8 text-sm">
             <a href="{% url 'core:home' %}" class="text-white/60 hover:text-white transition">{% trans "Home" %}</a>
             <span class="text-white/30">/</span>
@@ -49,7 +49,7 @@
                         {% endfor %}
                     </ul>
                     {% endif %}
-                    <a href="{% url 'core:contact' %}" class="inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-primary-700 transition">{% trans "Request Quote" %} <i class="fas fa-arrow-right text-[10px]"></i></a>
+                    <a href="{% url 'core:product_inquiry' %}" class="inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-primary-700 transition">{% trans "Request Quote" %} <i class="fas fa-arrow-right text-[10px]"></i></a>
                 </div>
             </div>
             {% endfor %}
@@ -106,9 +106,9 @@
 <section class="relative py-20 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-primary-900"></div>
     <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
-        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">{% trans "Need a Custom Solution?" %}</h2>
-        <p class="text-white/60 text-lg mb-8">{% trans "Contact us for a free consultation" %}</p>
-        <a href="{% url 'core:contact' %}" class="inline-flex items-center gap-2 bg-primary-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-primary-400 transition-all">{% trans "Get A Quote" %} <i class="fas fa-arrow-right"></i></a>
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">{% trans "Need Products Sourced from China?" %}</h2>
+        <p class="text-white/60 text-lg mb-8">{% trans "Tell us what you need — we'll find it, price it, and deliver it" %}</p>
+        <a href="{% url 'core:product_inquiry' %}" class="inline-flex items-center gap-2 bg-primary-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-primary-400 transition-all">{% trans "Submit Inquiry" %} <i class="fas fa-arrow-right"></i></a>
     </div>
 </section>
 {% endblock %}

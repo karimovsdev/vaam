@@ -13,5 +13,6 @@ urlpatterns = [
     path('news/', views.news_list, name='news'),
     path('news/<slug:slug>/', views.news_detail, name='news_detail'),
     path('contact/', views.contact, name='contact'),
+    path('inquiry/', views.product_inquiry, name='product_inquiry'),
     path('page/<slug:slug>/', views.page_detail, name='page_detail'),
 ]

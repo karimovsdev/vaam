@@ -6,7 +6,7 @@ from .models import (
     ProductSpecification, ServiceCategory, Service, ProcessStep,
     ProjectCategory, Project, ProjectImage, NewsCategory, News,
     FAQ, Testimonial, Brand, ContactMessage,
-    Menu, MenuItem, Page
+    Menu, MenuItem, Page, Country, ProductInquiry
 )
 
 # Reusable Tailwind widget class
@@ -284,3 +284,37 @@ class ContactMessageForm(forms.ModelForm):
             'subject': forms.TextInput(attrs={'class': TW_INPUT, 'placeholder': 'Subject *'}),
             'message': forms.Textarea(attrs={'class': TW_TEXTAREA, 'placeholder': 'Your Message *', 'rows': 5}),
         }
+
+
+class CountryForm(TranslatedModelForm):
+    class Meta:
+        model = Country
+        fields = '__all__'
+        widgets = tw_widgets(Country)
+
+
+class ProductInquiryForm(forms.ModelForm):
+    """Front-end product inquiry/sourcing request form."""
+    class Meta:
+        model = ProductInquiry
+        fields = ['full_name', 'email', 'phone', 'company_name', 'delivery_country',
+                  'product_category', 'product_description', 'quantity', 'budget_range', 'additional_notes']
+        widgets = {
+            'full_name': forms.TextInput(attrs={'class': TW_INPUT, 'placeholder': 'Full Name *'}),
+            'email': forms.EmailInput(attrs={'class': TW_INPUT, 'placeholder': 'Email Address *'}),
+            'phone': forms.TextInput(attrs={'class': TW_INPUT, 'placeholder': 'Phone Number'}),
+            'company_name': forms.TextInput(attrs={'class': TW_INPUT, 'placeholder': 'Company Name'}),
+            'delivery_country': forms.TextInput(attrs={'class': TW_INPUT, 'placeholder': 'Delivery Country *'}),
+            'product_category': forms.Select(attrs={'class': TW_SELECT}),
+            'product_description': forms.Textarea(attrs={'class': TW_TEXTAREA, 'placeholder': 'Describe the product(s) you need *', 'rows': 4}),
+            'quantity': forms.TextInput(attrs={'class': TW_INPUT, 'placeholder': 'Estimated Quantity'}),
+            'budget_range': forms.TextInput(attrs={'class': TW_INPUT, 'placeholder': 'Budget Range (e.g. $5,000 - $10,000)'}),
+            'additional_notes': forms.Textarea(attrs={'class': TW_TEXTAREA, 'placeholder': 'Additional Requirements or Notes', 'rows': 3}),
+        }
+
+
+class ProductInquiryAdminForm(TranslatedModelForm):
+    class Meta:
+        model = ProductInquiry
+        fields = '__all__'
+        widgets = tw_widgets(ProductInquiry)

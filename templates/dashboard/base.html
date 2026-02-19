@@ -240,7 +240,20 @@
                     <i class="bi bi-building text-base"></i><span>Brands</span>
                 </a>
 
+                <!-- Countries -->
+                <a href="{% url 'dashboard:country_list' %}"
+                   class="flex items-center gap-3 px-4 py-[10px] mb-0.5 rounded-sm text-[15px] font-semibold transition-all duration-200 {% if 'country' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}">
+                    <i class="bi bi-globe text-base"></i><span>Countries</span>
+                </a>
+
                 <div class="text-[11px] font-bold text-[#899bbd] uppercase tracking-wider px-4 mt-5 mb-2">System</div>
+
+                <!-- Product Inquiries -->
+                <a href="{% url 'dashboard:inquiry_list' %}"
+                   class="flex items-center gap-3 px-4 py-[10px] mb-0.5 rounded-sm text-[15px] font-semibold transition-all duration-200 {% if 'inquiry' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}">
+                    <i class="bi bi-clipboard-data text-base"></i><span>Inquiries</span>
+                    {% if new_inquiries_count %}<span class="ml-auto bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">{{ new_inquiries_count }}</span>{% endif %}
+                </a>
 
                 <!-- Messages -->
                 <a href="{% url 'dashboard:message_list' %}"
@@ -307,8 +320,13 @@
             <a href="{% url 'dashboard:faq_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'faq' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-question-circle text-base"></i> {% trans "FAQs" %}</a>
             <a href="{% url 'dashboard:testimonial_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'testimonial' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-chat-quote text-base"></i> {% trans "Testimonials" %}</a>
             <a href="{% url 'dashboard:brand_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'brand' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-building text-base"></i> {% trans "Brands" %}</a>
+            <a href="{% url 'dashboard:country_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'country' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}"><i class="bi bi-globe text-base"></i> {% trans "Countries" %}</a>
 
             <div class="text-[11px] font-bold text-[#899bbd] uppercase tracking-wider px-4 mt-4 mb-1">{% trans "System" %}</div>
+            <a href="{% url 'dashboard:inquiry_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'inquiry' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}">
+                <i class="bi bi-clipboard-data text-base"></i> {% trans "Inquiries" %}
+                {% if new_inquiries_count %}<span class="ml-auto bg-amber-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">{{ new_inquiries_count }}</span>{% endif %}
+            </a>
             <a href="{% url 'dashboard:message_list' %}" class="flex items-center gap-3 px-4 py-[10px] rounded-sm text-[15px] font-semibold transition {% if 'message' in request.resolver_match.url_name %}nav-item active{% else %}nav-item{% endif %}">
                 <i class="bi bi-envelope text-base"></i> {% trans "Messages" %}
                 {% if new_messages_count %}<span class="ml-auto bg-primary text-white text-[10px] font-bold px-2 py-0.5 rounded-full">{{ new_messages_count }}</span>{% endif %}

@@ -3,7 +3,7 @@
 {% load i18n %}
 
 {% block title %}{% trans "News" %} - {{ settings.site_name }}{% endblock %}
-{% block meta_description %}{% trans "Stay updated with the latest news and announcements." %}{% endblock %}
+{% block meta_description %}{% trans "Stay updated with the latest news on global trade, sourcing trends and company announcements" %}{% endblock %}
 
 {% block content %}
 <!-- PAGE HEADER -->
@@ -18,7 +18,7 @@
             <span class="w-8 h-[2px] bg-primary-400"></span>
         </div>
         <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">{% trans "News & Updates" %}</h1>
-        <p class="text-white/60 text-lg max-w-2xl mx-auto">{% trans "Stay informed about solar energy trends and innovations" %}</p>
+        <p class="text-white/60 text-lg max-w-2xl mx-auto">{% trans "Stay informed about global trade trends, sourcing insights and company updates" %}</p>
         <div class="flex justify-center gap-2 mt-8 text-sm">
             <a href="{% url 'core:home' %}" class="text-white/60 hover:text-white transition">{% trans "Home" %}</a>
             <span class="text-white/30">/</span>

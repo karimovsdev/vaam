@@ -5,7 +5,35 @@
 
 {% block content %}
 <!-- Stats Cards - NiceAdmin style with colored left border -->
-<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 mb-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6 mb-6">
+
+    <!-- Inquiries Card -->
+    <div class="bg-white rounded-md shadow-sm overflow-hidden">
+        <div class="p-5 border-l-4 border-amber-500">
+            <div class="flex items-center justify-between mb-1">
+                <h5 class="text-sm font-semibold text-[#899bbd] uppercase">Inquiries</h5>
+                <div x-data="{open:false}" class="relative">
+                    <button @click="open=!open" class="text-[#899bbd] hover:text-heading transition"><i class="bi bi-three-dots"></i></button>
+                    <div x-show="open" @click.away="open=false" x-transition class="absolute right-0 top-6 w-28 bg-white rounded shadow-lg border border-[#e6e9f4] text-xs z-10">
+                        <a href="{% url 'dashboard:inquiry_list' %}" class="block px-3 py-2 hover:bg-[#f6f9ff] text-body">View All</a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex items-center gap-4">
+                <div class="flex-1">
+                    <h2 class="text-[28px] font-bold text-amber-500 font-heading">{{ stats.inquiries }}</h2>
+                    {% if stats.new_inquiries > 0 %}
+                    <p class="text-xs text-amber-500 font-semibold mt-1"><i class="bi bi-exclamation-circle"></i> {{ stats.new_inquiries }} new</p>
+                    {% else %}
+                    <p class="text-xs text-success font-semibold mt-1"><i class="bi bi-check-circle"></i> All reviewed</p>
+                    {% endif %}
+                </div>
+                <div class="w-14 h-14 bg-amber-50 rounded-full flex items-center justify-center flex-shrink-0">
+                    <i class="bi bi-clipboard-data text-2xl text-amber-500"></i>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Products Card -->
     <div class="bg-white rounded-md shadow-sm overflow-hidden">
@@ -179,12 +207,49 @@
     <!-- Right Sidebar Column -->
     <div class="lg:col-span-4 space-y-6">
 
+        <!-- Recent Inquiries Card -->
+        <div class="bg-white rounded-md shadow-sm">
+            <div class="flex items-center justify-between px-5 py-4 border-b border-[#e6e9f4]">
+                <div class="flex items-center gap-3">
+                    <h5 class="text-lg font-bold text-heading font-heading">Recent Inquiries</h5>
+                </div>
+                <a href="{% url 'dashboard:inquiry_list' %}" class="text-sm text-primary font-semibold hover:underline transition">View All <i class="bi bi-arrow-right text-xs"></i></a>
+            </div>
+            <div class="p-4 space-y-2">
+                {% for inq in recent_inquiries %}
+                <a href="{% url 'dashboard:inquiry_detail' inq.pk %}" class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-[#f6f9ff] group transition">
+                    <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white flex-shrink-0 {% if inq.status == 'new' %}bg-amber-500{% elif inq.status == 'reviewing' %}bg-blue-500{% elif inq.status == 'completed' %}bg-emerald-500{% else %}bg-gray-400{% endif %}">
+                        {{ inq.full_name|first }}
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <p class="text-sm font-semibold text-heading truncate">{{ inq.full_name }}</p>
+                        <p class="text-xs text-[#899bbd] truncate">{{ inq.delivery_country }} · {{ inq.created_at|timesince }} ago</p>
+                    </div>
+                    {% if inq.status == 'new' %}
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-amber-50 text-amber-600">New</span>
+                    {% endif %}
+                </a>
+                {% empty %}
+                <div class="px-3 py-8 text-center">
+                    <i class="bi bi-inbox text-3xl text-[#e6e9f4] block mb-2"></i>
+                    <p class="text-sm text-[#899bbd]">No inquiries yet</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
         <!-- Quick Actions Card -->
         <div class="bg-white rounded-md shadow-sm">
             <div class="px-5 py-4 border-b border-[#e6e9f4]">
                 <h5 class="text-lg font-bold text-heading font-heading">Quick Actions</h5>
             </div>
-            <div class="p-4 space-y-1">
+            <div class="p-4 space-y-1">country_create' %}" class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-[#f6f9ff] group transition">
+                    <div class="w-8 h-8 bg-indigo-50 rounded-full flex items-center justify-center flex-shrink-0">
+                        <i class="bi bi-globe text-indigo-500 text-sm"></i>
+                    </div>
+                    <span class="text-sm font-medium text-heading group-hover:text-indigo-500 transition">Add Country</span>
+                </a>
+                <a href="{% url 'dashboard:
                 <a href="{% url 'dashboard:product_create' %}" class="flex items-center gap-3 px-3 py-2.5 rounded hover:bg-[#f6f9ff] group transition">
                     <div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                         <i class="bi bi-plus-lg text-primary text-sm"></i>
@@ -265,6 +330,24 @@
                         <span class="text-sm text-body">Testimonials</span>
                     </div>
                     <span class="text-sm font-bold text-heading bg-[#f6f9ff] px-3 py-1 rounded">{{ stats.testimonials }}</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-indigo-50 rounded-full flex items-center justify-center">
+                            <i class="bi bi-globe text-indigo-500 text-sm"></i>
+                        </div>
+                        <span class="text-sm text-body">Countries</span>
+                    </div>
+                    <span class="text-sm font-bold text-heading bg-[#f6f9ff] px-3 py-1 rounded">{{ stats.countries }}</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 bg-amber-50 rounded-full flex items-center justify-center">
+                            <i class="bi bi-building text-amber-500 text-sm"></i>
+                        </div>
+                        <span class="text-sm text-body">Brands</span>
+                    </div>
+                    <span class="text-sm font-bold text-heading bg-[#f6f9ff] px-3 py-1 rounded">{{ stats.brands }}</span>
                 </div>
             </div>
         </div>

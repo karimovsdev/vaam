@@ -6,7 +6,7 @@ from .models import (
     ProductSpecification, ServiceCategory, Service, ProcessStep,
     ProjectCategory, Project, ProjectImage, NewsCategory, News,
     FAQ, Testimonial, Brand, ContactMessage,
-    Menu, MenuItem, Page
+    Menu, MenuItem, Page, Country, ProductInquiry
 )
 
 
@@ -285,3 +285,23 @@ class PageAdmin(admin.ModelAdmin):
     list_editable = ('is_published', 'show_in_footer', 'order')
     search_fields = ('title', 'content')
     prepopulated_fields = {'slug': ('title',)}
+
+
+@admin.register(Country)
+class CountryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'code', 'flag_icon', 'is_active', 'order')
+    list_filter = ('is_active',)
+    list_editable = ('order', 'is_active')
+    search_fields = ('name', 'code')
+
+
+@admin.register(ProductInquiry)
+class ProductInquiryAdmin(admin.ModelAdmin):
+    list_display = ('full_name', 'email', 'delivery_country', 'product_category', 'status', 'created_at')
+    list_filter = ('status', 'product_category', 'created_at')
+    list_editable = ('status',)
+    search_fields = ('full_name', 'email', 'delivery_country', 'product_description')
+    readonly_fields = ('full_name', 'email', 'phone', 'company_name', 'delivery_country',
+                       'product_category', 'product_description', 'quantity', 'budget_range',
+                       'additional_notes', 'created_at')
+    date_hierarchy = 'created_at'

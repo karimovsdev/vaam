@@ -6,13 +6,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{% block meta_description %}{{ settings.meta_description|default:'VAAM Import and Export Trading Co., LTD - Solar Panel Manufacturing & Wholesale' }}{% endblock %}">
-    <meta name="keywords" content="{% block meta_keywords %}{{ settings.meta_keywords|default:'solar panels, solar energy, renewable energy, VAAM' }}{% endblock %}">
+    <meta name="description" content="{% block meta_description %}{{ settings.meta_description|default:'VAAM Import and Export Trading Co., LTD - Global Product Sourcing & Procurement from China' }}{% endblock %}">
+    <meta name="keywords" content="{% block meta_keywords %}{{ settings.meta_keywords|default:'product sourcing, China import, export trading, generators, machinery, solar panels, VAAM' }}{% endblock %}">
     <meta name="author" content="{{ settings.site_name }}">
     <!-- Open Graph -->
     <meta property="og:type" content="{% block og_type %}website{% endblock %}">
     <meta property="og:title" content="{% block og_title %}{{ settings.meta_title|default:settings.site_name }}{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}{{ settings.meta_description|default:'Premium solar panels for global markets.' }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ settings.meta_description|default:'Global product sourcing and procurement from China. Generators, machinery, solar panels and more.' }}{% endblock %}">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
     {% block og_image %}{% if settings.logo %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ settings.logo.url }}">{% endif %}{% endblock %}
     <meta property="og:site_name" content="{{ settings.site_name }}">
@@ -20,7 +20,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{% block tw_title %}{{ settings.meta_title|default:settings.site_name }}{% endblock %}">
-    <meta name="twitter:description" content="{% block tw_description %}{{ settings.meta_description|default:'Premium solar panels for global markets.' }}{% endblock %}">
+    <meta name="twitter:description" content="{% block tw_description %}{{ settings.meta_description|default:'Global product sourcing and procurement from China. Generators, machinery, solar panels and more.' }}{% endblock %}">
     {% block tw_image %}{% if settings.logo %}<meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ settings.logo.url }}">{% endif %}{% endblock %}
     <!-- Canonical -->
     <link rel="canonical" href="{{ request.build_absolute_uri }}">
@@ -286,7 +286,7 @@
                     {% else %}
                     <img src="{% static 'images/logo/vaam-logo.png' %}" alt="VAAM" class="h-10 mb-5 brightness-200">
                     {% endif %}
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6">{{ settings.site_description|default:'Leading manufacturer and wholesale supplier of premium solar panels, powering the global transition to renewable energy.' }}</p>
+                    <p class="text-slate-400 text-sm leading-relaxed mb-6">{{ settings.site_description|default:'Your trusted partner for product sourcing and procurement from China. Generators, machinery, industrial equipment and more.' }}</p>
                     <div class="flex gap-2">
                         {% if settings.facebook %}<a href="{{ settings.facebook }}" target="_blank" class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center hover:bg-primary-600 text-slate-400 hover:text-white transition-all duration-300"><i class="fab fa-facebook-f text-sm"></i></a>{% endif %}
                         {% if settings.linkedin %}<a href="{{ settings.linkedin }}" target="_blank" class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center hover:bg-primary-600 text-slate-400 hover:text-white transition-all duration-300"><i class="fab fa-linkedin-in text-sm"></i></a>{% endif %}
@@ -310,9 +310,9 @@
                         {% for service in footer_services %}
                         <li><a href="{% url 'core:services' %}" class="text-slate-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-primary-500/60"></i> {{ service.title }}</a></li>
                         {% empty %}
-                        <li><a href="{% url 'core:services' %}" class="text-slate-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-primary-500/60"></i> {% trans "Panel Manufacturing" %}</a></li>
-                        <li><a href="{% url 'core:services' %}" class="text-slate-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-primary-500/60"></i> {% trans "Wholesale Distribution" %}</a></li>
-                        <li><a href="{% url 'core:services' %}" class="text-slate-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-primary-500/60"></i> {% trans "Technical Consultation" %}</a></li>
+                        <li><a href="{% url 'core:services' %}" class="text-slate-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-primary-500/60"></i> {% trans "Product Sourcing" %}</a></li>
+                        <li><a href="{% url 'core:services' %}" class="text-slate-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-primary-500/60"></i> {% trans "Quality Control" %}</a></li>
+                        <li><a href="{% url 'core:services' %}" class="text-slate-400 hover:text-primary-400 transition-colors text-sm flex items-center gap-2"><i class="fas fa-chevron-right text-[8px] text-primary-500/60"></i> {% trans "Logistics & Delivery" %}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -340,7 +340,7 @@
     </footer>
 
     <!-- WHATSAPP FLOAT -->
-    <a href="https://wa.me/{{ settings.whatsapp|default:'994501234567' }}?text=Hello%20VAAM!%20I'm%20interested%20in%20your%20solar%20solutions." target="_blank" aria-label="{% trans 'Contact us on WhatsApp' %}" class="fixed bottom-8 {% if LANGUAGE_CODE == 'ar' %}left-8{% else %}right-8{% endif %} z-50 w-14 h-14 bg-emerald-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-emerald-500/30 hover:bg-emerald-600 hover:shadow-xl hover:shadow-emerald-500/40 hover:scale-105 transition-all duration-300"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/{{ settings.whatsapp|default:'994501234567' }}?text=Hello%20VAAM!%20I'm%20interested%20in%20your%20sourcing%20services." target="_blank" aria-label="{% trans 'Contact us on WhatsApp' %}" class="fixed bottom-8 {% if LANGUAGE_CODE == 'ar' %}left-8{% else %}right-8{% endif %} z-50 w-14 h-14 bg-emerald-500 text-white rounded-2xl flex items-center justify-center text-2xl shadow-lg shadow-emerald-500/30 hover:bg-emerald-600 hover:shadow-xl hover:shadow-emerald-500/40 hover:scale-105 transition-all duration-300"><i class="fab fa-whatsapp"></i></a>
 
     <!-- SCROLL TO TOP -->
     <button x-data="{show:false}" @scroll.window="show=window.scrollY>500" x-show="show" x-transition @click="window.scrollTo({top:0,behavior:'smooth'})" aria-label="{% trans 'Scroll to top' %}" class="fixed bottom-8 {% if LANGUAGE_CODE == 'ar' %}left-24{% else %}right-24{% endif %} z-50 w-11 h-11 bg-slate-800 text-white rounded-2xl flex items-center justify-center shadow-lg hover:bg-primary-600 hover:-translate-y-0.5 transition-all duration-300"><i class="fas fa-chevron-up text-sm"></i></button>

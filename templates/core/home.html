@@ -2,7 +2,7 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}{{ settings.site_name }} - {% trans "Solar Panel Manufacturing & Wholesale" %}{% endblock %}
+{% block title %}{{ settings.site_name }} - {% trans "Global Product Sourcing & Procurement from China" %}{% endblock %}
 
 {% block content %}
 <!-- HERO SLIDER -->
@@ -60,14 +60,21 @@ function heroSlider() {
     {% else %}
     <!-- Fallback when no slides -->
     <div class="absolute inset-0">
-        <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1920&h=1080&fit=crop&q=80')"></div>
+        <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1920&h=1080&fit=crop&q=80')"></div>
         <div class="absolute inset-0 bg-gradient-to-r from-dark-900/90 via-dark-800/70 to-dark-800/40"></div>
         <div class="relative z-10 h-full flex items-center">
             <div class="max-w-7xl mx-auto px-6 w-full">
                 <div class="max-w-2xl">
-                    <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold text-white leading-[1.1] mb-6">{% trans "Engineering the Future of Solar Energy" %}</h1>
-                    <p class="text-white/70 text-lg mb-10">{% trans "Premium solar panels for global markets." %}</p>
-                    <a href="{% url 'core:products' %}" class="inline-flex items-center gap-3 bg-primary-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-primary-500 transition-all duration-300">{% trans "Explore Products" %} <i class="fas fa-arrow-right"></i></a>
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="w-8 h-[2px] bg-primary-400"></span>
+                        <span class="text-primary-400 text-sm font-semibold tracking-[0.2em] uppercase">{% trans "Global Trade Partner" %}</span>
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold text-white leading-[1.1] mb-6">{% trans "Your Trusted Sourcing Partner from China to the World" %}</h1>
+                    <p class="text-white/70 text-lg mb-10">{% trans "We find, negotiate, and deliver the products you need from the Chinese market — generators, machinery, solar panels, and more." %}</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#inquiry-form" class="group inline-flex items-center gap-3 bg-primary-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-primary-500 transition-all duration-300 shadow-xl shadow-primary-900/20">{% trans "Request a Quote" %} <i class="fas fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i></a>
+                        <a href="{% url 'core:products' %}" class="inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm border border-white/20 text-white px-8 py-4 rounded-full font-semibold hover:bg-white/20 transition-all duration-300">{% trans "Explore Products" %}</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -101,13 +108,105 @@ function heroSlider() {
                 </div>
             </div>
             {% empty %}
-            <div class="opacity-0 group bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 animate-fade-up">
+            <div class="group bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 animate-fade-up">
                 <div class="flex items-start gap-4">
-                    <div class="w-12 h-12 flex-shrink-0 bg-primary-50 text-primary-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-leaf"></i></div>
-                    <div><h4 class="text-sm font-bold text-slate-900 mb-1">{% trans "Eco Friendly" %}</h4><p class="text-slate-500 text-xs leading-relaxed">{% trans "Sustainable solar energy for a greener future" %}</p></div>
+                    <div class="w-12 h-12 flex-shrink-0 bg-primary-50 text-primary-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-search-dollar"></i></div>
+                    <div><h4 class="text-sm font-bold text-slate-900 mb-1">{% trans "Product Sourcing" %}</h4><p class="text-slate-500 text-xs leading-relaxed">{% trans "We find the best products from China's vast market" %}</p></div>
+                </div>
+            </div>
+            <div class="group bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 animate-fade-up">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 flex-shrink-0 bg-accent-50 text-accent-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-tags"></i></div>
+                    <div><h4 class="text-sm font-bold text-slate-900 mb-1">{% trans "Best Pricing" %}</h4><p class="text-slate-500 text-xs leading-relaxed">{% trans "Competitive pricing through direct factory partnerships" %}</p></div>
+                </div>
+            </div>
+            <div class="group bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 animate-fade-up">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 flex-shrink-0 bg-primary-50 text-primary-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-shield-alt"></i></div>
+                    <div><h4 class="text-sm font-bold text-slate-900 mb-1">{% trans "Quality Control" %}</h4><p class="text-slate-500 text-xs leading-relaxed">{% trans "Rigorous inspection before every shipment" %}</p></div>
+                </div>
+            </div>
+            <div class="group bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 animate-fade-up">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 flex-shrink-0 bg-accent-50 text-accent-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-ship"></i></div>
+                    <div><h4 class="text-sm font-bold text-slate-900 mb-1">{% trans "Global Delivery" %}</h4><p class="text-slate-500 text-xs leading-relaxed">{% trans "End-to-end logistics and shipping worldwide" %}</p></div>
                 </div>
             </div>
             {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCT CATEGORIES SECTION -->
+<section class="section-padding bg-slate-50/80 relative overflow-hidden">
+    <div class="absolute inset-0 dot-pattern opacity-30"></div>
+    <div class="relative max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16" x-data="scrollAnimate()" :class="visible&&'animate-fade-up'">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <span class="w-8 h-[2px] bg-primary-500"></span>
+                <span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "What We Source" %}</span>
+                <span class="w-8 h-[2px] bg-primary-500"></span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{% trans "Product Categories" %}</h2>
+            <p class="text-slate-500 text-lg max-w-2xl mx-auto">{% trans "We specialize in sourcing high-quality products from China across these key categories" %}</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for category in product_categories %}
+            <div x-data="scrollAnimate()" {% if forloop.counter0 > 0 %}data-delay="{{ forloop.counter0 }}00"{% endif %} :class="visible&&'animate-fade-up'" class="opacity-0 group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-primary-200 transition-all duration-500 hover:shadow-xl hover:shadow-primary-100/30">
+                <div class="relative overflow-hidden h-56">
+                    {% if category.image %}<img src="{{ category.image.url }}" alt="{{ category.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">{% else %}<div class="w-full h-full bg-gradient-to-br from-primary-100 to-primary-50 flex items-center justify-center"><i class="{{ category.icon|default:'fas fa-box' }} text-5xl text-primary-300"></i></div>{% endif %}
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-4 left-4">
+                        <div class="w-11 h-11 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center text-primary-600">
+                            <i class="{{ category.icon|default:'fas fa-box' }}"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary-700 transition-colors">{{ category.name }}</h3>
+                    <p class="text-slate-500 text-sm mb-4 leading-relaxed">{{ category.description|truncatewords:20 }}</p>
+                    <a href="{% url 'core:products' %}?category={{ category.slug }}" class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold hover:gap-3 transition-all">{% trans "View Products" %} <i class="fas fa-arrow-right text-[10px]"></i></a>
+                </div>
+            </div>
+            {% empty %}
+            <!-- Fallback categories when none exist in DB -->
+            <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-primary-200 transition-all duration-500 hover:shadow-xl hover:shadow-primary-100/30 animate-fade-up">
+                <div class="relative overflow-hidden h-56">
+                    <div class="w-full h-full bg-gradient-to-br from-amber-100 to-amber-50 flex items-center justify-center"><i class="fas fa-bolt text-5xl text-amber-400"></i></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">{% trans "Generators" %}</h3>
+                    <p class="text-slate-500 text-sm mb-4 leading-relaxed">{% trans "Industrial and portable generators for all power needs — diesel, gas, and hybrid solutions." %}</p>
+                    <a href="{% url 'core:products' %}" class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold hover:gap-3 transition-all">{% trans "View Products" %} <i class="fas fa-arrow-right text-[10px]"></i></a>
+                </div>
+            </div>
+            <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-primary-200 transition-all duration-500 hover:shadow-xl hover:shadow-primary-100/30 animate-fade-up">
+                <div class="relative overflow-hidden h-56">
+                    <div class="w-full h-full bg-gradient-to-br from-slate-200 to-slate-100 flex items-center justify-center"><i class="fas fa-cogs text-5xl text-slate-400"></i></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">{% trans "Machinery & Equipment" %}</h3>
+                    <p class="text-slate-500 text-sm mb-4 leading-relaxed">{% trans "Construction, agricultural, and industrial machinery from leading Chinese manufacturers." %}</p>
+                    <a href="{% url 'core:products' %}" class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold hover:gap-3 transition-all">{% trans "View Products" %} <i class="fas fa-arrow-right text-[10px]"></i></a>
+                </div>
+            </div>
+            <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-primary-200 transition-all duration-500 hover:shadow-xl hover:shadow-primary-100/30 animate-fade-up">
+                <div class="relative overflow-hidden h-56">
+                    <div class="w-full h-full bg-gradient-to-br from-emerald-100 to-emerald-50 flex items-center justify-center"><i class="fas fa-solar-panel text-5xl text-emerald-400"></i></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent"></div>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">{% trans "Solar Panels" %}</h3>
+                    <p class="text-slate-500 text-sm mb-4 leading-relaxed">{% trans "High-efficiency solar panels and renewable energy equipment for commercial and residential use." %}</p>
+                    <a href="{% url 'core:products' %}" class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold hover:gap-3 transition-all">{% trans "View Products" %} <i class="fas fa-arrow-right text-[10px]"></i></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-12">
+            <a href="{% url 'core:products' %}" class="group inline-flex items-center gap-2 bg-primary-600 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-primary-700 hover:shadow-lg transition-all duration-300">{% trans "View All Products" %} <i class="fas fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i></a>
         </div>
     </div>
 </section>
@@ -121,7 +220,7 @@ function heroSlider() {
                     {% if company_info.image %}
                     <img src="{{ company_info.image.url }}" alt="{{ company_info.title }}" class="w-full h-[480px] object-cover" loading="lazy">
                     {% else %}
-                    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&h=600&fit=crop&q=80" alt="VAAM Trading" class="w-full h-[480px] object-cover" loading="lazy">
+                    <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&h=600&fit=crop&q=80" alt="VAAM Trading" class="w-full h-[480px] object-cover" loading="lazy">
                     {% endif %}
                     <div class="absolute inset-0 bg-gradient-to-t from-dark-900/30 to-transparent"></div>
                 </div>
@@ -130,8 +229,8 @@ function heroSlider() {
                     <h3 class="text-4xl font-extrabold leading-none">{{ statistics.0.value }}{{ statistics.0.suffix }}</h3>
                     <p class="mt-1 text-primary-100 text-sm font-medium tracking-wide">{{ statistics.0.title }}</p>
                     {% else %}
-                    <h3 class="text-4xl font-extrabold leading-none">25+</h3>
-                    <p class="mt-1 text-primary-100 text-sm font-medium tracking-wide">{% trans "Years Warranty" %}</p>
+                    <h3 class="text-4xl font-extrabold leading-none">50+</h3>
+                    <p class="mt-1 text-primary-100 text-sm font-medium tracking-wide">{% trans "Countries Served" %}</p>
                     {% endif %}
                 </div>
                 <div class="absolute -top-4 -left-4 w-24 h-24 border-2 border-primary-200 rounded-3xl -z-10"></div>
@@ -141,8 +240,36 @@ function heroSlider() {
                     <span class="w-8 h-[2px] bg-primary-500"></span>
                     <span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "About VAAM" %}</span>
                 </div>
-                <h2 class="text-3xl md:text-[2.5rem] font-bold text-slate-900 mb-6 leading-tight">{{ company_info.title|default:'Our mission is to make solar energy' }} <span class="text-gradient from-primary-600 to-primary-400">{% trans "accessible to all" %}</span></h2>
-                <p class="text-slate-500 mb-8 text-lg leading-relaxed">{{ company_info.description|default:'VAAM Import and Export Trading Co., LTD is a premier manufacturer and wholesale supplier of high-quality solar panels.' }}</p>
+                <h2 class="text-3xl md:text-[2.5rem] font-bold text-slate-900 mb-6 leading-tight">{{ company_info.title|default:'Your Bridge to' }} <span class="text-gradient from-primary-600 to-primary-400">{% trans "Chinese Markets" %}</span></h2>
+                <p class="text-slate-500 mb-6 text-lg leading-relaxed">{{ company_info.description|default:'VAAM Import and Export Trading Co., LTD specializes in sourcing and procuring products from the Chinese market for clients worldwide. We research, negotiate, and deliver — so you get the best quality at the best price.' }}</p>
+                
+                {% if company_info.mission or company_info.vision %}
+                <div class="space-y-3 mb-8">
+                    {% if company_info.mission %}
+                    <div class="flex gap-3 p-4 bg-primary-50/50 rounded-xl border border-primary-100/50">
+                        <div class="flex-shrink-0 w-8 h-8 bg-primary-500 text-white rounded-lg flex items-center justify-center text-sm">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-primary-900 mb-1">{% trans "Our Mission" %}</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed">{{ company_info.mission|truncatewords:25 }}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if company_info.vision %}
+                    <div class="flex gap-3 p-4 bg-accent-50/50 rounded-xl border border-accent-100/50">
+                        <div class="flex-shrink-0 w-8 h-8 bg-accent-500 text-white rounded-lg flex items-center justify-center text-sm">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-bold text-accent-900 mb-1">{% trans "Our Vision" %}</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed">{{ company_info.vision|truncatewords:25 }}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endif %}
+                
                 <div class="flex flex-wrap gap-3">
                     <a href="{% url 'core:about' %}" class="group inline-flex items-center gap-2 bg-primary-600 text-white px-7 py-3 rounded-full text-sm font-semibold hover:bg-primary-700 hover:shadow-lg hover:shadow-primary-600/25 transition-all duration-300">{% trans "Learn More" %} <i class="fas fa-arrow-right text-[11px] group-hover:translate-x-1 transition-transform"></i></a>
                     <a href="tel:{{ settings.phone }}" class="inline-flex items-center gap-2 border border-slate-200 text-slate-700 px-7 py-3 rounded-full text-sm font-semibold hover:border-primary-300 hover:text-primary-700 transition-all duration-300"><i class="fas fa-phone text-primary-500 text-xs"></i> {% trans "Call Us 24/7" %}</a>
@@ -152,18 +279,50 @@ function heroSlider() {
     </div>
 </section>
 
-<!-- SERVICES SECTION -->
+<!-- COUNTRIES WE SERVE -->
+{% if countries %}
+<section class="section-padding bg-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16" x-data="scrollAnimate()" :class="visible&&'animate-fade-up'">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <span class="w-8 h-[2px] bg-primary-500"></span>
+                <span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "Global Reach" %}</span>
+                <span class="w-8 h-[2px] bg-primary-500"></span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{% trans "Countries We Deliver To" %}</h2>
+            <p class="text-slate-500 text-lg max-w-2xl mx-auto">{% trans "Sourcing from China and delivering to customers across the globe" %}</p>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {% for country in countries %}
+            <div x-data="scrollAnimate()" data-delay="{{ forloop.counter0 }}50" :class="visible&&'animate-fade-up'" class="opacity-0 group text-center p-6 bg-slate-50 rounded-2xl border border-slate-100 hover:border-primary-200 hover:bg-primary-50/30 hover:shadow-lg hover:shadow-primary-100/20 transition-all duration-500">
+                {% if country.image %}
+                <img src="{{ country.image.url }}" alt="{{ country.name }}" class="w-14 h-14 mx-auto mb-3 rounded-full object-cover shadow-md group-hover:scale-110 transition-transform duration-300" loading="lazy">
+                {% elif country.flag_icon %}
+                <div class="w-14 h-14 mx-auto mb-3 bg-white rounded-full flex items-center justify-center text-2xl shadow-md group-hover:scale-110 transition-transform duration-300">{{ country.flag_icon }}</div>
+                {% else %}
+                <div class="w-14 h-14 mx-auto mb-3 bg-primary-100 rounded-full flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300"><i class="fas fa-globe text-primary-500 text-xl"></i></div>
+                {% endif %}
+                <h4 class="text-sm font-bold text-slate-900 group-hover:text-primary-700 transition-colors">{{ country.name }}</h4>
+                {% if country.code %}<span class="text-xs text-slate-400 font-medium">{{ country.code }}</span>{% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- HOW IT WORKS / SERVICES -->
 <section class="section-padding bg-slate-50/80 relative overflow-hidden">
     <div class="absolute inset-0 dot-pattern opacity-30"></div>
     <div class="relative max-w-7xl mx-auto px-6">
         <div class="text-center mb-16" x-data="scrollAnimate()" :class="visible&&'animate-fade-up'">
             <div class="flex items-center justify-center gap-3 mb-4">
                 <span class="w-8 h-[2px] bg-primary-500"></span>
-                <span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "What We Offer" %}</span>
+                <span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "Our Services" %}</span>
                 <span class="w-8 h-[2px] bg-primary-500"></span>
             </div>
-            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{% trans "Comprehensive Solar Solutions" %}</h2>
-            <p class="text-slate-500 text-lg max-w-2xl mx-auto">{% trans "End-to-end services from manufacturing to installation and long-term support" %}</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{% trans "End-to-End Procurement Solutions" %}</h2>
+            <p class="text-slate-500 text-lg max-w-2xl mx-auto">{% trans "From product research to delivery — we handle every step of the sourcing process" %}</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {% for service in services %}
@@ -190,7 +349,7 @@ function heroSlider() {
                 <span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "How It Works" %}</span>
                 <span class="w-8 h-[2px] bg-primary-500"></span>
             </div>
-            <h2 class="text-3xl md:text-4xl font-bold text-slate-900">{% trans "From Concept to Clean Energy" %}</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900">{% trans "From Your Order to Your Door" %}</h2>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {% for step in process_steps %}
@@ -206,15 +365,124 @@ function heroSlider() {
 </section>
 {% endif %}
 
-<!-- CTA BANNER -->
-<section class="relative py-20 overflow-hidden">
+<!-- CTA + INQUIRY FORM -->
+<section id="inquiry-form" class="relative py-20 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-primary-900"></div>
-    <div class="relative z-10 max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
-        <div>
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-3">{% trans "Get Free Consultancy" %}</h2>
-            <p class="text-white/60 text-lg">{% trans "or call us at" %} <a href="tel:{{ settings.phone }}" class="text-primary-400 font-semibold hover:text-primary-300 transition">{{ settings.phone }}</a></p>
+    <div class="absolute inset-0 dot-pattern opacity-[0.03]"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <!-- Left: CTA Text -->
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="w-8 h-[2px] bg-primary-400"></span>
+                    <span class="text-primary-400 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "Get Started" %}</span>
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">{% trans "Need Products from China?" %}</h2>
+                <p class="text-white/60 text-lg mb-8 leading-relaxed">{% trans "Tell us what you're looking for and we'll handle everything — from finding the right supplier to delivering the products to your doorstep. Fill out the form and our team will get back to you with a detailed quote." %}</p>
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-center gap-3 text-white/80">
+                        <div class="w-8 h-8 bg-primary-500/20 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-check text-primary-400 text-sm"></i></div>
+                        <span>{% trans "Free initial product research & quotation" %}</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-white/80">
+                        <div class="w-8 h-8 bg-primary-500/20 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-check text-primary-400 text-sm"></i></div>
+                        <span>{% trans "Quality inspection & factory verification" %}</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-white/80">
+                        <div class="w-8 h-8 bg-primary-500/20 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-check text-primary-400 text-sm"></i></div>
+                        <span>{% trans "Door-to-door shipping & customs clearance" %}</span>
+                    </div>
+                    <div class="flex items-center gap-3 text-white/80">
+                        <div class="w-8 h-8 bg-primary-500/20 rounded-lg flex items-center justify-center flex-shrink-0"><i class="fas fa-check text-primary-400 text-sm"></i></div>
+                        <span>{% trans "Dedicated support throughout the process" %}</span>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <p class="text-white/40">{% trans "or call us at" %}</p>
+                    <a href="tel:{{ settings.phone }}" class="text-primary-400 font-semibold text-lg hover:text-primary-300 transition">{{ settings.phone }}</a>
+                </div>
+            </div>
+            <!-- Right: Inquiry Form -->
+            <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-10">
+                <h3 class="text-xl font-bold text-white mb-6">{% trans "Submit Your Product Request" %}</h3>
+                {% if messages %}
+                <div class="mb-6">
+                    {% for message in messages %}
+                    <div class="p-4 rounded-xl {% if message.tags == 'success' %}bg-emerald-500/20 border border-emerald-500/30 text-emerald-300{% else %}bg-red-500/20 border border-red-500/30 text-red-300{% endif %}">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <form method="post" action="{% url 'core:product_inquiry' %}" class="space-y-4">
+                    {% csrf_token %}
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <input type="text" name="full_name" placeholder="{% trans 'Full Name' %} *" required
+                                   class="w-full px-4 py-3 bg-white/10 border border-white/10 rounded-xl text-white placeholder-white/40 focus:border-primary-400 focus:ring-2 focus:ring-primary-400/20 outline-none transition text-sm"
+                                   {% if inquiry_form.full_name.value %}value="{{ inquiry_form.full_name.value }}"{% endif %}>
+                        </div>
+                        <div>
+                            <input type="email" name="email" placeholder="{% trans 'Email Address' %} *" required
+                                   class="w-full px-4 py-3 bg-white/10 border border-white/10 rounded-xl text-white placeholder-white/40 focus:border-primary-400 focus:ring-2 focus:ring-primary-400/20 outline-none transition text-sm"
+                                   {% if inquiry_form.email.value %}value="{{ inquiry_form.email.value }}"{% endif %}>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <input type="text" name="phone" placeholder="{% trans 'Phone Number' %}"
+                                   class="w-full px-4 py-3 bg-white/10 border border-white/10 rounded-xl text-white placeholder-white/40 focus:border-primary-400 focus:ring-2 focus:ring-primary-400/20 outline-none transition text-sm"
+                                   {% if inquiry_form.phone.value %}value="{{ inquiry_form.phone.value }}"{% endif %}>
+                        </div>
+                        <div>
+                            <input type="text" name="company_name" placeholder="{% trans 'Company Name' %}"
+                                   class="w-full px-4 py-3 bg-white/10 border border-white/10 rounded-xl text-white placeholder-white/40 focus:border-primary-400 focus:ring-2 focus:ring-primary-400/20 outline-none transition text-sm"
+                                   {% if inquiry_form.company_name.value %}value="{{ inquiry_form.company_name.value }}"{% endif %}>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <input type="text" name="delivery_country" placeholder="{% trans 'Delivery Country' %} *" required
+                                   class="w-full px-4 py-3 bg-white/10 border border-white/10 rounded-xl text-white placeholder-white/40 focus:border-primary-400 focus:ring-2 focus:ring-primary-400/20 outline-none transition text-sm"
+                                   {% if inquiry_form.delivery_country.value %}value="{{ inquiry_form.delivery_country.value }}"{% endif %}>
+                        </div>
+                        <div>
+                            <select name="product_category"
+                                    class="w-full px-4 py-3 bg-white/10 border border-white/10 rounded-xl text-white/70 focus:border-primary-400 focus:ring-2 focus:ring-primary-400/20 outline-none transition text-sm">
+                                <option value="" class="bg-dark-800">{% trans "Product Category" %}</option>
+                                {% for cat in product_categories %}
+                                <option value="{{ cat.pk }}" class="bg-dark-800">{{ cat.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <textarea name="product_description" rows="3" placeholder="{% trans 'Describe the product(s) you need' %} *" required
+                                  class="w-full px-4 py-3 bg-white/10 border border-white/10 rounded-xl text-white placeholder-white/40 focus:border-primary-400 focus:ring-2 focus:ring-primary-400/20 outline-none transition text-sm resize-none">{% if inquiry_form.product_description.value %}{{ inquiry_form.product_description.value }}{% endif %}</textarea>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <input type="text" name="quantity" placeholder="{% trans 'Estimated Quantity' %}"
+                                   class="w-full px-4 py-3 bg-white/10 border border-white/10 rounded-xl text-white placeholder-white/40 focus:border-primary-400 focus:ring-2 focus:ring-primary-400/20 outline-none transition text-sm"
+                                   {% if inquiry_form.quantity.value %}value="{{ inquiry_form.quantity.value }}"{% endif %}>
+                        </div>
+                        <div>
+                            <input type="text" name="budget_range" placeholder="{% trans 'Budget Range' %}"
+                                   class="w-full px-4 py-3 bg-white/10 border border-white/10 rounded-xl text-white placeholder-white/40 focus:border-primary-400 focus:ring-2 focus:ring-primary-400/20 outline-none transition text-sm"
+                                   {% if inquiry_form.budget_range.value %}value="{{ inquiry_form.budget_range.value }}"{% endif %}>
+                        </div>
+                    </div>
+                    <div>
+                        <textarea name="additional_notes" rows="2" placeholder="{% trans 'Additional Notes (optional)' %}"
+                                  class="w-full px-4 py-3 bg-white/10 border border-white/10 rounded-xl text-white placeholder-white/40 focus:border-primary-400 focus:ring-2 focus:ring-primary-400/20 outline-none transition text-sm resize-none">{% if inquiry_form.additional_notes.value %}{{ inquiry_form.additional_notes.value }}{% endif %}</textarea>
+                    </div>
+                    <button type="submit"
+                            class="w-full inline-flex items-center justify-center gap-3 bg-primary-600 text-white px-8 py-4 rounded-xl font-semibold text-base hover:bg-primary-500 transition-all duration-300 shadow-xl shadow-primary-900/20">
+                        <i class="fas fa-paper-plane"></i> {% trans "Submit Inquiry" %}
+                    </button>
+                </form>
+            </div>
         </div>
-        <a href="https://wa.me/{{ settings.whatsapp|default:'994501234567' }}?text=Hello%20VAAM!%20I%20need%20a%20free%20consultancy." target="_blank" class="inline-flex items-center gap-3 bg-primary-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-primary-400 transition-all duration-300 shadow-xl shadow-primary-500/20 flex-shrink-0"><i class="fab fa-whatsapp text-xl"></i> {% trans "Get It Now" %}</a>
     </div>
 </section>
 
@@ -243,11 +511,11 @@ function heroSlider() {
         <div class="text-center mb-16">
             <div class="flex items-center justify-center gap-3 mb-4">
                 <span class="w-8 h-[2px] bg-primary-500"></span>
-                <span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "Portfolio" %}</span>
+                <span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "Success Stories" %}</span>
                 <span class="w-8 h-[2px] bg-primary-500"></span>
             </div>
-            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{% trans "Our Latest Projects" %}</h2>
-            <p class="text-slate-500 text-lg max-w-2xl mx-auto">{% trans "Showcasing solar installations across residential and commercial sectors" %}</p>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{% trans "Successfully Completed Orders" %}</h2>
+            <p class="text-slate-500 text-lg max-w-2xl mx-auto">{% trans "Real projects delivered to satisfied clients across the globe" %}</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {% for project in featured_projects %}
@@ -256,12 +524,38 @@ function heroSlider() {
                     {% if project.image %}<img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">{% else %}<div class="w-full h-full bg-gradient-to-br from-primary-100 to-primary-50 flex items-center justify-center"><i class="fas fa-image text-4xl text-primary-300"></i></div>{% endif %}
                     <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent"></div>
                     <div class="absolute bottom-4 left-4"><span class="px-3 py-1 bg-white/90 backdrop-blur-sm text-primary-700 rounded-full text-xs font-semibold">{{ project.category.name }}</span></div>
+                    {% if project.location %}<div class="absolute top-4 right-4"><span class="px-3 py-1 bg-dark-900/60 backdrop-blur-sm text-white/90 rounded-full text-xs font-medium"><i class="fas fa-location-dot mr-1"></i>{{ project.location }}</span></div>{% endif %}
                 </div>
-                <div class="p-6"><h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary-700 transition-colors">{{ project.title }}</h3><p class="text-slate-500 text-sm mb-4">{{ project.short_description|truncatewords:15 }}</p><a href="{% url 'core:projects' %}" class="inline-flex items-center gap-2 text-sm font-semibold text-primary-600 hover:gap-3 transition-all">{% trans "View Project" %} <i class="fas fa-arrow-right text-[10px]"></i></a></div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary-700 transition-colors">{{ project.title }}</h3>
+                    <p class="text-slate-500 text-sm mb-4">{{ project.short_description|truncatewords:15 }}</p>
+                    <div class="flex flex-wrap gap-3 text-xs text-slate-400">
+                        {% if project.client %}<span><i class="fas fa-building mr-1"></i> {{ project.client }}</span>{% endif %}
+                        {% if project.date_completed %}<span><i class="far fa-calendar-check mr-1"></i> {{ project.date_completed|date:"M Y" }}</span>{% endif %}
+                    </div>
+                </div>
             </div>
             {% endfor %}
         </div>
         <div class="text-center mt-12"><a href="{% url 'core:projects' %}" class="group inline-flex items-center gap-2 bg-primary-600 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-primary-700 hover:shadow-lg transition-all duration-300">{% trans "View All Projects" %} <i class="fas fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i></a></div>
+    </div>
+</section>
+{% endif %}
+
+<!-- BRANDS / PARTNERS -->
+{% if brands %}
+<section class="py-16 bg-white">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-10">
+            <h3 class="text-lg font-bold text-slate-400 uppercase tracking-widest">{% trans "Trusted Partners & Suppliers" %}</h3>
+        </div>
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            {% for brand in brands %}
+            <a href="{{ brand.url|default:'#' }}" {% if brand.url %}target="_blank"{% endif %} class="grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-300">
+                <img src="{{ brand.logo.url }}" alt="{{ brand.name }}" class="h-10 md:h-12 w-auto" loading="lazy">
+            </a>
+            {% endfor %}
+        </div>
     </div>
 </section>
 {% endif %}
@@ -274,7 +568,7 @@ function heroSlider() {
             <div>
                 <div class="flex items-center gap-3 mb-4"><span class="w-8 h-[2px] bg-primary-500"></span><span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "Insights" %}</span></div>
                 <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-2">{% trans "Latest News & Updates" %}</h2>
-                <p class="text-slate-500 text-lg">{% trans "Stay informed about solar energy trends" %}</p>
+                <p class="text-slate-500 text-lg">{% trans "Stay informed about global trade trends" %}</p>
             </div>
             <a href="{% url 'core:news' %}" class="inline-flex items-center gap-2 text-primary-600 font-semibold text-sm hover:gap-3 transition-all flex-shrink-0">{% trans "View All Articles" %} <i class="fas fa-arrow-right text-[10px]"></i></a>
         </div>

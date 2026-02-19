@@ -11,7 +11,7 @@ from .models import (
     ProductSpecification, ServiceCategory, Service, ProcessStep,
     ProjectCategory, Project, NewsCategory, News,
     FAQ, Testimonial, Brand, ContactMessage,
-    Menu, MenuItem, Page
+    Menu, MenuItem, Page, Country, ProductInquiry
 )
 
 
@@ -100,6 +100,14 @@ class BrandTranslation(TranslationOptions):
     fields = ('name',)
 
 
+class CountryTranslation(TranslationOptions):
+    fields = ('name', 'description')
+
+
+class ProductInquiryTranslation(TranslationOptions):
+    fields = ()
+
+
 class MenuTranslation(TranslationOptions):
     fields = ('title',)
 
@@ -137,3 +145,5 @@ translator.register(News, NewsTranslation)
 translator.register(FAQ, FAQTranslation)
 translator.register(Testimonial, TestimonialTranslation)
 translator.register(Brand, BrandTranslation)
+translator.register(Country, CountryTranslation)
+translator.register(ProductInquiry, ProductInquiryTranslation)

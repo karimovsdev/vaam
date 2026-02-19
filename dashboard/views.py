@@ -12,7 +12,8 @@ from core.models import (
     ProductSpecification, ServiceCategory, Service, ProcessStep,
     ProjectCategory, Project, ProjectImage, NewsCategory, News,
     FAQ, Testimonial, Brand, ContactMessage,
-    Menu, MenuItem, Page
+    Menu, MenuItem, Page,
+    Country, ProductInquiry
 )
 from core.forms import (
     SiteSettingsForm, HeroSlideForm, CompanyInfoForm, CompanyFeatureForm,
@@ -21,12 +22,17 @@ from core.forms import (
     ServiceCategoryForm, ServiceForm, ProcessStepForm,
     ProjectCategoryForm, ProjectForm, ProjectImageForm,
     NewsCategoryForm, NewsForm, FAQForm, TestimonialForm, BrandForm,
-    MenuForm, MenuItemForm, PageForm
+    MenuForm, MenuItemForm, PageForm,
+    CountryForm, ProductInquiryAdminForm
 )
 
 
 def _new_msg_count():
     return ContactMessage.objects.filter(status='new').count()
+
+
+def _new_inquiry_count():
+    return ProductInquiry.objects.filter(status='new').count()
 
 
 # ============ AUTH ============
@@ -67,11 +73,16 @@ def dashboard_home(request):
         'faqs': FAQ.objects.count(),
         'testimonials': Testimonial.objects.count(),
         'brands': Brand.objects.count(),
+        'countries': Country.objects.count(),
+        'inquiries': ProductInquiry.objects.count(),
+        'new_inquiries': ProductInquiry.objects.filter(status='new').count(),
     }
     recent_messages = ContactMessage.objects.order_by('-created_at')[:5]
+    recent_inquiries = ProductInquiry.objects.order_by('-created_at')[:5]
     context = {
         'stats': stats,
         'recent_messages': recent_messages,
+        'recent_inquiries': recent_inquiries,
         'new_messages_count': stats['new_messages'],
     }
     return render(request, 'dashboard/home.html', context)
@@ -92,6 +103,7 @@ def _list_view(request, model, template, title, create_url_name, search_fields=N
         'create_url': reverse(create_url_name),
         'search_query': q,
         'new_messages_count': _new_msg_count(),
+        'new_inquiries_count': _new_inquiry_count(),
     }
     if extra_context:
         context.update(extra_context)
@@ -113,6 +125,7 @@ def _create_view(request, form_class, template, title, list_url, parent_title=No
         'back_url': reverse(list_url) if ':' in list_url else list_url,
         'parent_title': parent_title or title + 's',
         'new_messages_count': _new_msg_count(),
+        'new_inquiries_count': _new_inquiry_count(),
     }
     return render(request, template, context)
 
@@ -134,6 +147,7 @@ def _edit_view(request, model, form_class, template, title, list_url, pk, parent
         'back_url': reverse(list_url) if ':' in list_url else list_url,
         'parent_title': parent_title or title + 's',
         'new_messages_count': _new_msg_count(),
+        'new_inquiries_count': _new_inquiry_count(),
     }
     return render(request, template, context)
 
@@ -150,6 +164,7 @@ def _delete_view(request, model, template, title, list_url, pk, parent_title=Non
         'back_url': reverse(list_url) if ':' in list_url else list_url,
         'parent_title': parent_title or title + 's',
         'new_messages_count': _new_msg_count(),
+        'new_inquiries_count': _new_inquiry_count(),
     }
     return render(request, template, context)
 
@@ -357,6 +372,7 @@ def message_list(request):
         'search_query': q,
         'status_filter': status_filter,
         'new_messages_count': _new_msg_count(),
+        'new_inquiries_count': _new_inquiry_count(),
     }
     return render(request, 'dashboard/messages/list.html', context)
 
@@ -379,6 +395,7 @@ def message_detail(request, pk):
         'item': item,
         'title': 'Message Detail',
         'new_messages_count': _new_msg_count(),
+        'new_inquiries_count': _new_inquiry_count(),
     }
     return render(request, 'dashboard/messages/detail.html', context)
 
@@ -453,6 +470,7 @@ def company_info(request):
         'back_url': '/dashboard/',
         'parent_title': 'Dashboard',
         'new_messages_count': _new_msg_count(),
+        'new_inquiries_count': _new_inquiry_count(),
     }
     return render(request, 'dashboard/settings/company_info.html', context)
 
@@ -539,6 +557,7 @@ def site_settings(request):
         'form': form,
         'title': 'Site Settings',
         'new_messages_count': _new_msg_count(),
+        'new_inquiries_count': _new_inquiry_count(),
     }
     return render(request, 'dashboard/settings/form.html', context)
 
@@ -624,6 +643,7 @@ def menu_item_list(request, menu_pk):
         'create_url': reverse('dashboard:menu_item_create', args=[menu_pk]),
         'search_query': q,
         'new_messages_count': _new_msg_count(),
+        'new_inquiries_count': _new_inquiry_count(),
     }
     return render(request, 'dashboard/menus/item_list.html', context)
 
@@ -651,6 +671,7 @@ def menu_item_create(request, menu_pk):
         'back_url': reverse('dashboard:menu_item_list', args=[menu_pk]),
         'parent_title': f'Menu Items – {menu_obj.title}',
         'new_messages_count': _new_msg_count(),
+        'new_inquiries_count': _new_inquiry_count(),
     }
     return render(request, 'dashboard/menus/item_form.html', context)
 
@@ -676,6 +697,7 @@ def menu_item_edit(request, menu_pk, pk):
         'back_url': reverse('dashboard:menu_item_list', args=[menu_pk]),
         'parent_title': f'Menu Items – {menu_obj.title}',
         'new_messages_count': _new_msg_count(),
+        'new_inquiries_count': _new_inquiry_count(),
     }
     return render(request, 'dashboard/menus/item_form.html', context)
 
@@ -694,6 +716,7 @@ def menu_item_delete(request, menu_pk, pk):
         'back_url': reverse('dashboard:menu_item_list', args=[menu_pk]),
         'parent_title': f'Menu Items – {menu_obj.title}',
         'new_messages_count': _new_msg_count(),
+        'new_inquiries_count': _new_inquiry_count(),
     }
     return render(request, 'dashboard/menus/item_delete.html', context)
 
@@ -718,3 +741,78 @@ def page_edit(request, pk):
 def page_delete(request, pk):
     return _delete_view(request, Page, 'dashboard/pages/delete.html', 'Page',
                         'dashboard:page_list', pk)
+
+
+# ============ COUNTRIES ============
+@login_required
+def country_list(request):
+    return _list_view(request, Country, 'dashboard/countries/list.html', 'Countries',
+                      'dashboard:country_create', ['name', 'code', 'description'])
+
+@login_required
+def country_create(request):
+    return _create_view(request, CountryForm, 'dashboard/countries/form.html', 'Country',
+                        'dashboard:country_list', parent_title='Countries')
+
+@login_required
+def country_edit(request, pk):
+    return _edit_view(request, Country, CountryForm, 'dashboard/countries/form.html', 'Country',
+                      'dashboard:country_list', pk, parent_title='Countries')
+
+@login_required
+def country_delete(request, pk):
+    return _delete_view(request, Country, 'dashboard/countries/delete.html', 'Country',
+                        'dashboard:country_list', pk, parent_title='Countries')
+
+
+# ============ PRODUCT INQUIRIES ============
+@login_required
+def inquiry_list(request):
+    items = ProductInquiry.objects.all()
+    q = request.GET.get('q', '').strip()
+    status_filter = request.GET.get('status', '')
+    if q:
+        items = items.filter(
+            Q(full_name__icontains=q) | Q(email__icontains=q) |
+            Q(company_name__icontains=q) | Q(delivery_country__icontains=q) |
+            Q(product_description__icontains=q)
+        )
+    if status_filter:
+        items = items.filter(status=status_filter)
+    context = {
+        'items': items,
+        'title': 'Product Inquiries',
+        'search_query': q,
+        'status_filter': status_filter,
+        'new_messages_count': _new_msg_count(),
+        'new_inquiries_count': _new_inquiry_count(),
+    }
+    return render(request, 'dashboard/inquiries/list.html', context)
+
+@login_required
+def inquiry_detail(request, pk):
+    item = get_object_or_404(ProductInquiry, pk=pk)
+    if item.status == 'new':
+        item.status = 'reviewing'
+        item.save()
+    if request.method == 'POST':
+        new_status = request.POST.get('status')
+        admin_notes = request.POST.get('admin_notes', '')
+        if new_status in dict(ProductInquiry.STATUS_CHOICES):
+            item.status = new_status
+            item.admin_notes = admin_notes
+            item.save()
+            messages.success(request, 'Inquiry updated successfully.')
+            return redirect('dashboard:inquiry_detail', pk=pk)
+    context = {
+        'item': item,
+        'title': 'Inquiry Detail',
+        'new_messages_count': _new_msg_count(),
+        'new_inquiries_count': _new_inquiry_count(),
+    }
+    return render(request, 'dashboard/inquiries/detail.html', context)
+
+@login_required
+def inquiry_delete(request, pk):
+    return _delete_view(request, ProductInquiry, 'dashboard/inquiries/delete.html', 'Inquiry',
+                        'dashboard:inquiry_list', pk, parent_title='Product Inquiries')

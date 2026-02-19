@@ -219,7 +219,7 @@ function openWhatsApp(productName = null) {
     const number = '994501234567';
     let text = productName
         ? `Hello VAAM! I'm interested in ${productName}. Please provide more details.`
-        : `Hello VAAM! I'm interested in your solar panel products.`;
+        : `Hello VAAM! I'm interested in your sourcing services. Please provide more details.`;
     window.open(`https://wa.me/${number}?text=${encodeURIComponent(text)}`, '_blank');
 }
 

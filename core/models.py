@@ -612,3 +612,58 @@ class ContactMessage(models.Model):
     @property
     def full_name(self):
         return f"{self.first_name} {self.last_name}".strip()
+
+
+# ============ COUNTRIES (Served Markets) ============
+class Country(models.Model):
+    name = models.CharField(max_length=200)
+    code = models.CharField(max_length=10, blank=True, help_text='ISO country code e.g. AZ, TR, RU')
+    flag_icon = models.CharField(max_length=100, blank=True, help_text='Flag emoji or CSS class')
+    image = models.ImageField(upload_to='countries/', blank=True, null=True, help_text='Country flag or representative image')
+    description = models.TextField(blank=True, help_text='Short note about operations in this country')
+    is_active = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        verbose_name_plural = 'Countries'
+        ordering = ['order', 'name']
+
+    def __str__(self):
+        return self.name
+
+
+# ============ PRODUCT INQUIRY (Sourcing Request Form) ============
+class ProductInquiry(models.Model):
+    STATUS_CHOICES = [
+        ('new', 'New'),
+        ('reviewing', 'Reviewing'),
+        ('quoted', 'Quoted'),
+        ('in_progress', 'In Progress'),
+        ('completed', 'Completed'),
+        ('cancelled', 'Cancelled'),
+    ]
+
+    full_name = models.CharField(max_length=200)
+    email = models.EmailField()
+    phone = models.CharField(max_length=50, blank=True)
+    company_name = models.CharField(max_length=200, blank=True)
+    delivery_country = models.CharField(max_length=200, help_text='Country where product will be delivered')
+    product_category = models.ForeignKey(
+        ProductCategory, on_delete=models.SET_NULL, null=True, blank=True,
+        related_name='inquiries', help_text='Product category of interest'
+    )
+    product_description = models.TextField(help_text='Detailed description of the product(s) needed')
+    quantity = models.CharField(max_length=200, blank=True, help_text='Estimated quantity needed')
+    budget_range = models.CharField(max_length=200, blank=True, help_text='Approximate budget range')
+    additional_notes = models.TextField(blank=True, help_text='Any additional requirements or notes')
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
+    admin_notes = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name_plural = 'Product Inquiries'
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"{self.full_name} - {self.delivery_country} ({self.get_status_display()})"

@@ -129,4 +129,15 @@ urlpatterns = [
     path('pages/create/', views.page_create, name='page_create'),
     path('pages/<int:pk>/edit/', views.page_edit, name='page_edit'),
     path('pages/<int:pk>/delete/', views.page_delete, name='page_delete'),
+
+    # Countries
+    path('countries/', views.country_list, name='country_list'),
+    path('countries/create/', views.country_create, name='country_create'),
+    path('countries/<int:pk>/edit/', views.country_edit, name='country_edit'),
+    path('countries/<int:pk>/delete/', views.country_delete, name='country_delete'),
+
+    # Product Inquiries
+    path('inquiries/', views.inquiry_list, name='inquiry_list'),
+    path('inquiries/<int:pk>/', views.inquiry_detail, name='inquiry_detail'),
+    path('inquiries/<int:pk>/delete/', views.inquiry_delete, name='inquiry_delete'),
 ]
