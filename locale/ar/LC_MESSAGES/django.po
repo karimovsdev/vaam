@@ -1,4 +1,4 @@
-# VAAM Trading Translations
+﻿# VAAM Trading Translations
 msgid ""
 msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -415,7 +415,7 @@ msgstr "ماذا يقول عملاؤنا"
 msgid "End-to-end procurement solutions from product sourcing to doorstep delivery"
 msgstr "حلول شراء متكاملة من توريد المنتج حتى التسليم عند الباب"
 
-msgid "End-to-end procurement services \u2014 product sourcing, quality control, pricing, logistics and delivery from China"
+msgid "End-to-end procurement services  product sourcing, quality control, pricing, logistics and delivery from China"
 msgstr "خدمات شراء متكاملة — توريد المنتجات ومراقبة الجودة والتسعير واللوجستيات والتسليم من الصين"
 
 msgid "What We Do"
@@ -424,7 +424,7 @@ msgstr "ما نقوم به"
 msgid "Comprehensive Procurement Services"
 msgstr "خدمات شراء شاملة"
 
-msgid "From finding the right supplier to your door \u2014 we handle every step of your supply chain"
+msgid "From finding the right supplier to your door  we handle every step of your supply chain"
 msgstr "من إيجاد المورد المناسب إلى بابك — نتولى كل خطوة في سلسلة التوريد الخاصة بك"
 
 msgid "Product Sourcing"
@@ -493,7 +493,7 @@ msgstr "هل تحتاج إلى توريد منتجات من الصين؟"
 msgid "Need Products from China?"
 msgstr "هل تحتاج منتجات من الصين؟"
 
-msgid "Tell us what you need \u2014 we'll find it, price it, and deliver it"
+msgid "Tell us what you need  we'll find it, price it, and deliver it"
 msgstr "أخبرنا بما تحتاجه — سنجده ونسعّره ونسلّمه"
 
 msgid "Tell us what you need and let us handle the sourcing and delivery"
@@ -529,10 +529,10 @@ msgstr "من طلبك إلى بابك"
 msgid "We find the best products from China's vast market"
 msgstr "نجد أفضل المنتجات من السوق الصيني الواسع"
 
-msgid "We find, negotiate, and deliver the products you need from the Chinese market \u2014 generators, machinery, solar panels, and more."
+msgid "We find, negotiate, and deliver the products you need from the Chinese market  generators, machinery, solar panels, and more."
 msgstr "نجد ونفاوض ونسلّم المنتجات التي تحتاجها من السوق الصيني — مولدات ومعدات وألواح شمسية وأكثر."
 
-msgid "From product research to delivery \u2014 we handle every step of the sourcing process"
+msgid "From product research to delivery  we handle every step of the sourcing process"
 msgstr "من البحث عن المنتج إلى التسليم — نتولى كل خطوة في عملية التوريد"
 
 msgid "Products We Source"
@@ -553,7 +553,7 @@ msgstr "الآلات والمعدات"
 msgid "Chinese Markets"
 msgstr "الأسواق الصينية"
 
-msgid "Industrial and portable generators for all power needs \u2014 diesel, gas, and hybrid solutions."
+msgid "Industrial and portable generators for all power needs  diesel, gas, and hybrid solutions."
 msgstr "مولدات صناعية ومحمولة لجميع احتياجات الطاقة — حلول ديزل وغاز وهجينة."
 
 msgid "High-efficiency solar panels and renewable energy equipment for commercial and residential use."
@@ -655,7 +655,7 @@ msgstr "أرسل لنا متطلباتك وسنوفرها لك من الصين"
 msgid "Tell us what you need and our team will research, price, and arrange delivery from China"
 msgstr "أخبرنا بما تحتاجه وسيبحث فريقنا ويسعّر ويرتب التسليم من الصين"
 
-msgid "Tell us what you're looking for and we'll handle everything \u2014 from finding the right supplier to delivering the products to your doorstep. Fill out the form and our team will get back to you with a detailed quote."
+msgid "Tell us what you're looking for and we'll handle everything  from finding the right supplier to delivering the products to your doorstep. Fill out the form and our team will get back to you with a detailed quote."
 msgstr "أخبرنا بما تبحث عنه وسنتولى كل شيء — من إيجاد المورد المناسب إلى توصيل المنتجات إلى بابك. أكمل النموذج وسيتواصل معك فريقنا بعرض تفصيلي."
 
 msgid "Stay informed about global trade trends, sourcing insights and company updates"
@@ -664,7 +664,7 @@ msgstr "ابقَ على اطلاع بأحدث اتجاهات التجارة ال
 msgid "Stay updated with the latest news on global trade, sourcing trends and company announcements"
 msgstr "تابع آخر أخبار التجارة العالمية واتجاهات التوريد وإعلانات الشركة"
 
-msgid "Learn about VAAM Trading \u2014 your trusted partner for product sourcing and procurement from China"
+msgid "Learn about VAAM Trading  your trusted partner for product sourcing and procurement from China"
 msgstr "تعرف على VAAM Trading — شريكك الموثوق لتوريد وشراء المنتجات من الصين"
 
 msgid "Your trusted partner for global product sourcing and procurement from China"
@@ -727,7 +727,7 @@ msgstr "عرض جميع المنتجات"
 msgid "Browse our full range of products sourced from China. Generators, machinery, solar panels and more."
 msgstr "تصفح مجموعتنا الكاملة من المنتجات المصدرة من الصين. مولدات ومعدات وألواح شمسية وأكثر."
 
-msgid "Quality products sourced directly from Chinese manufacturers \u2014 generators, machinery, solar panels, and more"
+msgid "Quality products sourced directly from Chinese manufacturers  generators, machinery, solar panels, and more"
 msgstr "منتجات عالية الجودة مصدرها مباشرة من المصنّعين الصينيين — مولدات ومعدات وألواح شمسية وأكثر"
 
 msgid "Ready to Start Your Order?"
@@ -772,20 +772,8 @@ msgstr "تاريخنا"
 msgid "Our Values"
 msgstr "قيمنا"
 
-msgid "What We Offer"
-msgstr "ما نقدمه"
 
-msgid "Why Choose VAAM"
-msgstr "لماذا VAAM"
 
-msgid "About VAAM Trading"
-msgstr "حول VAAM Trading"
 
-msgid "About VAAM"
-msgstr "حول VAAM"
 
-msgid "Call Us 24/7"
-msgstr "اتصل بنا 24/7"
 
-msgid "or call us at"
-msgstr "أو اتصل بنا على"
