@@ -409,3 +409,383 @@ msgstr "إرسال الرسالة"
 #: templates/core/contact.html
 msgid "What Our Clients Say"
 msgstr "ماذا يقول عملاؤنا"
+
+# === NEW PROCUREMENT STRINGS ===
+
+msgid "End-to-end procurement solutions from product sourcing to doorstep delivery"
+msgstr "حلول شراء متكاملة من توريد المنتج حتى التسليم عند الباب"
+
+msgid "End-to-end procurement services \u2014 product sourcing, quality control, pricing, logistics and delivery from China"
+msgstr "خدمات شراء متكاملة — توريد المنتجات ومراقبة الجودة والتسعير واللوجستيات والتسليم من الصين"
+
+msgid "What We Do"
+msgstr "ما نقوم به"
+
+msgid "Comprehensive Procurement Services"
+msgstr "خدمات شراء شاملة"
+
+msgid "From finding the right supplier to your door \u2014 we handle every step of your supply chain"
+msgstr "من إيجاد المورد المناسب إلى بابك — نتولى كل خطوة في سلسلة التوريد الخاصة بك"
+
+msgid "Product Sourcing"
+msgstr "توريد المنتجات"
+
+msgid "Quality Control"
+msgstr "مراقبة الجودة"
+
+msgid "Logistics & Delivery"
+msgstr "اللوجستيات والتسليم"
+
+msgid "Consultation & Order"
+msgstr "الاستشارة وتقديم الطلب"
+
+msgid "Product Research & Selection"
+msgstr "البحث عن المنتج واختياره"
+
+msgid "Procurement & Import"
+msgstr "الشراء والاستيراد"
+
+msgid "Delivery & Installation Support"
+msgstr "دعم التسليم والتركيب"
+
+msgid "After-Sales Service"
+msgstr "خدمة ما بعد البيع"
+
+msgid "We identify the best suppliers across China to match your quality and budget requirements."
+msgstr "نحدد أفضل الموردين في الصين ليتناسبوا مع متطلبات الجودة والميزانية الخاصة بك."
+
+msgid "Rigorous inspection of products before shipment to guarantee they meet your specifications."
+msgstr "فحص دقيق للمنتجات قبل الشحن لضمان مطابقتها لمواصفاتك."
+
+msgid "International shipping coordination and customs clearance right to your doorstep."
+msgstr "تنسيق الشحن الدولي وإتمام إجراءات الجمارك حتى باب منزلك."
+
+msgid "We listen to your needs carefully and identify the best procurement solutions for you."
+msgstr "نستمع إلى احتياجاتك بعناية ونحدد أفضل حلول الشراء المناسبة لك."
+
+msgid "We research suitable products in China and compare quality and price."
+msgstr "نبحث عن المنتجات المناسبة في الصين ونقارن الجودة والسعر."
+
+msgid "We source from trusted suppliers and handle international logistics."
+msgstr "نتوجه إلى موردين موثوقين ونتولى اللوجستيات الدولية."
+
+msgid "We inspect products before shipment to ensure there are no defects."
+msgstr "نفحص المنتجات قبل الشحن للتأكد من خلوها من العيوب."
+
+msgid "Products are delivered to the customer and technical support is provided."
+msgstr "يتم تسليم المنتجات للعميل وتوفير الدعم الفني."
+
+msgid "We ensure customer satisfaction with ongoing support, technical help and consultancy."
+msgstr "نضمن رضا العملاء من خلال الدعم المستمر والمساعدة الفنية والاستشارات."
+
+msgid "How We Work"
+msgstr "كيف نعمل"
+
+msgid "Our Step-by-Step Process"
+msgstr "عمليتنا خطوة بخطوة"
+
+msgid "A proven workflow designed to take your idea from initial inquiry to successful delivery"
+msgstr "سير عمل مُجرَّب مصمم لأخذ فكرتك من الاستفسار الأولي إلى التسليم الناجح"
+
+msgid "Need Products Sourced from China?"
+msgstr "هل تحتاج إلى توريد منتجات من الصين؟"
+
+msgid "Need Products from China?"
+msgstr "هل تحتاج منتجات من الصين؟"
+
+msgid "Tell us what you need \u2014 we'll find it, price it, and deliver it"
+msgstr "أخبرنا بما تحتاجه — سنجده ونسعّره ونسلّمه"
+
+msgid "Tell us what you need and let us handle the sourcing and delivery"
+msgstr "أخبرنا بما تحتاجه ودعنا نتولى التوريد والتسليم"
+
+msgid "Submit Inquiry"
+msgstr "إرسال الاستفسار"
+
+msgid "Submit Your Product Request"
+msgstr "إرسال طلب المنتج"
+
+msgid "Global Product Sourcing & Procurement from China"
+msgstr "توريد وشراء المنتجات العالمي من الصين"
+
+msgid "Global Trade Partner"
+msgstr "شريك تجاري عالمي"
+
+msgid "Global Reach"
+msgstr "انتشار عالمي"
+
+msgid "Global Delivery"
+msgstr "توصيل عالمي"
+
+msgid "End-to-End Procurement Solutions"
+msgstr "حلول شراء متكاملة"
+
+msgid "Sourcing from China and delivering to customers across the globe"
+msgstr "توريد من الصين وتسليم للعملاء في جميع أنحاء العالم"
+
+msgid "From Your Order to Your Door"
+msgstr "من طلبك إلى بابك"
+
+msgid "We find the best products from China's vast market"
+msgstr "نجد أفضل المنتجات من السوق الصيني الواسع"
+
+msgid "We find, negotiate, and deliver the products you need from the Chinese market \u2014 generators, machinery, solar panels, and more."
+msgstr "نجد ونفاوض ونسلّم المنتجات التي تحتاجها من السوق الصيني — مولدات ومعدات وألواح شمسية وأكثر."
+
+msgid "From product research to delivery \u2014 we handle every step of the sourcing process"
+msgstr "من البحث عن المنتج إلى التسليم — نتولى كل خطوة في عملية التوريد"
+
+msgid "Products We Source"
+msgstr "المنتجات التي نوردها"
+
+msgid "We specialize in sourcing high-quality products from China across these key categories"
+msgstr "نتخصص في توريد منتجات عالية الجودة من الصين في هذه الفئات الرئيسية"
+
+msgid "Generators"
+msgstr "مولدات الكهرباء"
+
+msgid "Solar Panels"
+msgstr "الألواح الشمسية"
+
+msgid "Machinery & Equipment"
+msgstr "الآلات والمعدات"
+
+msgid "Chinese Markets"
+msgstr "الأسواق الصينية"
+
+msgid "Industrial and portable generators for all power needs \u2014 diesel, gas, and hybrid solutions."
+msgstr "مولدات صناعية ومحمولة لجميع احتياجات الطاقة — حلول ديزل وغاز وهجينة."
+
+msgid "High-efficiency solar panels and renewable energy equipment for commercial and residential use."
+msgstr "ألواح شمسية عالية الكفاءة ومعدات طاقة متجددة للاستخدام التجاري والسكني."
+
+msgid "Construction, agricultural, and industrial machinery from leading Chinese manufacturers."
+msgstr "آلات بناء وزراعية وصناعية من كبار المصنّعين الصينيين."
+
+msgid "Trusted Partners & Suppliers"
+msgstr "شركاء وموردون موثوقون"
+
+msgid "Brands"
+msgstr "العلامات التجارية"
+
+msgid "Testimonials"
+msgstr "شهادات العملاء"
+
+msgid "Success Stories"
+msgstr "قصص النجاح"
+
+msgid "Real projects delivered to satisfied clients across the globe"
+msgstr "مشاريع حقيقية سُلِّمت لعملاء راضين حول العالم"
+
+msgid "Explore our completed projects and success stories."
+msgstr "استكشف مشاريعنا المكتملة وقصص نجاحنا."
+
+msgid "Successfully Completed Orders"
+msgstr "الطلبات المكتملة بنجاح"
+
+msgid "Successfully sourced and delivered products for clients worldwide"
+msgstr "تمّ توريد وتسليم المنتجات بنجاح لعملاء حول العالم"
+
+msgid "Completed Orders"
+msgstr "الطلبات المكتملة"
+
+msgid "Countries"
+msgstr "الدول"
+
+msgid "Countries Served"
+msgstr "الدول التي نخدمها"
+
+msgid "Countries We Deliver To"
+msgstr "الدول التي نوصّل إليها"
+
+msgid "Product Inquiry"
+msgstr "استفسار عن منتج"
+
+msgid "Submit your product sourcing request. We'll find and deliver the products you need from China."
+msgstr "أرسل طلب توريد المنتج. سنجد ونسلّم المنتجات التي تحتاجها من الصين."
+
+msgid "Fill out the form below with details about the product(s) you need. Our team will review your request and contact you with pricing and delivery options."
+msgstr "أكمل النموذج أدناه بتفاصيل المنتج/المنتجات التي تحتاجها. سيراجع فريقنا طلبك ويتواصل معك بشأن خيارات التسعير والتسليم."
+
+msgid "Full Name"
+msgstr "الاسم الكامل"
+
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+msgid "Company Name"
+msgstr "اسم الشركة"
+
+msgid "Delivery Country"
+msgstr "دولة التسليم"
+
+msgid "Product Category"
+msgstr "فئة المنتج"
+
+msgid "Product Categories"
+msgstr "فئات المنتجات"
+
+msgid "Please describe in detail what product(s) you're looking for, including specifications if possible."
+msgstr "يرجى وصف المنتج/المنتجات التي تبحث عنها بالتفصيل، بما في ذلك المواصفات إن أمكن."
+
+msgid "Estimated Quantity"
+msgstr "الكمية التقريبية"
+
+msgid "Budget Range"
+msgstr "نطاق الميزانية"
+
+msgid "Additional Notes"
+msgstr "ملاحظات إضافية"
+
+msgid "Content"
+msgstr "المحتوى"
+
+msgid "Product Details"
+msgstr "تفاصيل المنتج"
+
+msgid "Features"
+msgstr "الميزات"
+
+msgid "Can't find what you're looking for?"
+msgstr "لا تجد ما تبحث عنه؟"
+
+msgid "Send us your requirements and we'll source it from China for you"
+msgstr "أرسل لنا متطلباتك وسنوفرها لك من الصين"
+
+msgid "Tell us what you need and our team will research, price, and arrange delivery from China"
+msgstr "أخبرنا بما تحتاجه وسيبحث فريقنا ويسعّر ويرتب التسليم من الصين"
+
+msgid "Tell us what you're looking for and we'll handle everything \u2014 from finding the right supplier to delivering the products to your doorstep. Fill out the form and our team will get back to you with a detailed quote."
+msgstr "أخبرنا بما تبحث عنه وسنتولى كل شيء — من إيجاد المورد المناسب إلى توصيل المنتجات إلى بابك. أكمل النموذج وسيتواصل معك فريقنا بعرض تفصيلي."
+
+msgid "Stay informed about global trade trends, sourcing insights and company updates"
+msgstr "ابقَ على اطلاع بأحدث اتجاهات التجارة العالمية ومعلومات التوريد وتحديثات الشركة"
+
+msgid "Stay updated with the latest news on global trade, sourcing trends and company announcements"
+msgstr "تابع آخر أخبار التجارة العالمية واتجاهات التوريد وإعلانات الشركة"
+
+msgid "Learn about VAAM Trading \u2014 your trusted partner for product sourcing and procurement from China"
+msgstr "تعرف على VAAM Trading — شريكك الموثوق لتوريد وشراء المنتجات من الصين"
+
+msgid "Your trusted partner for global product sourcing and procurement from China"
+msgstr "شريكك الموثوق لتوريد وشراء المنتجات العالمية من الصين"
+
+msgid "Competitive pricing through direct factory partnerships"
+msgstr "أسعار تنافسية من خلال الشراكات المباشرة مع المصانع"
+
+msgid "Dedicated support throughout the process"
+msgstr "دعم مخصص طوال العملية"
+
+msgid "Door-to-door shipping & customs clearance"
+msgstr "الشحن من الباب إلى الباب وإتمام إجراءات الجمارك"
+
+msgid "End-to-end logistics and shipping worldwide"
+msgstr "لوجستيات وشحن متكاملان حول العالم"
+
+msgid "Free initial product research & quotation"
+msgstr "بحث مجاني أولي عن المنتج وتقديم عرض أسعار"
+
+msgid "Free Research"
+msgstr "بحث مجاني"
+
+msgid "Best Pricing"
+msgstr "أفضل الأسعار"
+
+msgid "Quick Response"
+msgstr "رد سريع"
+
+msgid "No Obligation"
+msgstr "بدون التزام"
+
+msgid "Get a quote with no commitment required"
+msgstr "احصل على عرض أسعار دون أي التزام"
+
+msgid "Initial product research and pricing is complimentary"
+msgstr "البحث الأولي عن المنتجات والتسعير مجاني تمامًا"
+
+msgid "Quality inspection & factory verification"
+msgstr "فحص الجودة والتحقق من المصنع"
+
+msgid "Rigorous inspection before every shipment"
+msgstr "فحص دقيق قبل كل شحنة"
+
+msgid "WhatsApp"
+msgstr "واتساب"
+
+msgid "Request a Quote"
+msgstr "طلب عرض أسعار"
+
+msgid "Request Sourcing Quote"
+msgstr "طلب عرض توريد"
+
+msgid "Get Started"
+msgstr "ابدأ الآن"
+
+msgid "View All Products"
+msgstr "عرض جميع المنتجات"
+
+msgid "Browse our full range of products sourced from China. Generators, machinery, solar panels and more."
+msgstr "تصفح مجموعتنا الكاملة من المنتجات المصدرة من الصين. مولدات ومعدات وألواح شمسية وأكثر."
+
+msgid "Quality products sourced directly from Chinese manufacturers \u2014 generators, machinery, solar panels, and more"
+msgstr "منتجات عالية الجودة مصدرها مباشرة من المصنّعين الصينيين — مولدات ومعدات وألواح شمسية وأكثر"
+
+msgid "Ready to Start Your Order?"
+msgstr "هل أنت مستعد لبدء طلبك؟"
+
+msgid "Terms and Conditions"
+msgstr "الشروط والأحكام"
+
+msgid "Go to slide"
+msgstr "انتقل إلى الشريحة"
+
+msgid "Dashboard"
+msgstr "لوحة التحكم"
+
+msgid "Sign Out"
+msgstr "تسجيل الخروج"
+
+msgid "Statistics"
+msgstr "الإحصائيات"
+
+msgid "Inquiries"
+msgstr "الاستفسارات"
+
+msgid "Messages"
+msgstr "الرسائل"
+
+msgid "Hero Slides"
+msgstr "الشرائح الرئيسية"
+
+msgid "Process Steps"
+msgstr "خطوات العملية"
+
+msgid "Pages"
+msgstr "الصفحات"
+
+msgid "Menus"
+msgstr "القوائم"
+
+msgid "Our History"
+msgstr "تاريخنا"
+
+msgid "Our Values"
+msgstr "قيمنا"
+
+msgid "What We Offer"
+msgstr "ما نقدمه"
+
+msgid "Why Choose VAAM"
+msgstr "لماذا VAAM"
+
+msgid "About VAAM Trading"
+msgstr "حول VAAM Trading"
+
+msgid "About VAAM"
+msgstr "حول VAAM"
+
+msgid "Call Us 24/7"
+msgstr "اتصل بنا 24/7"
+
+msgid "or call us at"
+msgstr "أو اتصل بنا على"

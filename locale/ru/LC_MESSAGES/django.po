@@ -409,3 +409,389 @@ msgstr "Отправить"
 #: templates/core/contact.html
 msgid "What Our Clients Say"
 msgstr "Что говорят наши клиенты"
+
+# === NEW PROCUREMENT STRINGS ===
+
+msgid "End-to-end procurement solutions from product sourcing to doorstep delivery"
+msgstr "Комплексные решения по закупкам: от поиска товара до доставки к вашей двери"
+
+msgid "End-to-end procurement services \u2014 product sourcing, quality control, pricing, logistics and delivery from China"
+msgstr "Полный цикл закупочных услуг — поиск товаров, контроль качества, ценообразование, логистика и доставка из Китая"
+
+msgid "What We Do"
+msgstr "Что мы делаем"
+
+msgid "Comprehensive Procurement Services"
+msgstr "Комплексные закупочные услуги"
+
+msgid "From finding the right supplier to your door \u2014 we handle every step of your supply chain"
+msgstr "От поиска нужного поставщика до вашей двери — мы берём на себя каждый этап цепочки поставок"
+
+msgid "Product Sourcing"
+msgstr "Поиск товаров"
+
+msgid "Quality Control"
+msgstr "Контроль качества"
+
+msgid "Logistics & Delivery"
+msgstr "Логистика и доставка"
+
+msgid "Consultation & Order"
+msgstr "Консультация и оформление заказа"
+
+msgid "Product Research & Selection"
+msgstr "Исследование и подбор товаров"
+
+msgid "Procurement & Import"
+msgstr "Закупка и импорт"
+
+msgid "Delivery & Installation Support"
+msgstr "Доставка и помощь в установке"
+
+msgid "After-Sales Service"
+msgstr "Послепродажное обслуживание"
+
+msgid "We identify the best suppliers across China to match your quality and budget requirements."
+msgstr "Находим лучших поставщиков в Китае, соответствующих вашим требованиям по качеству и бюджету."
+
+msgid "Rigorous inspection of products before shipment to guarantee they meet your specifications."
+msgstr "Строгая проверка товаров перед отгрузкой для гарантии соответствия вашим требованиям."
+
+msgid "International shipping coordination and customs clearance right to your doorstep."
+msgstr "Координация международной доставки и таможенного оформления прямо до вашего порога."
+
+msgid "We listen to your needs carefully and identify the best procurement solutions for you."
+msgstr "Внимательно изучаем ваши потребности и определяем оптимальные решения по закупкам."
+
+msgid "We research suitable products in China and compare quality and price."
+msgstr "Исследуем подходящие товары в Китае и сравниваем качество и цену."
+
+msgid "We source from trusted suppliers and handle international logistics."
+msgstr "Работаем с проверенными поставщиками и занимаемся международной логистикой."
+
+msgid "We inspect products before shipment to ensure there are no defects."
+msgstr "Проверяем товары перед отправкой, чтобы исключить дефекты."
+
+msgid "Products are delivered to the customer and technical support is provided."
+msgstr "Товары доставляются клиенту и обеспечивается техническая поддержка."
+
+msgid "We ensure customer satisfaction with ongoing support, technical help and consultancy."
+msgstr "Обеспечиваем удовлетворённость клиентов через постоянную поддержку, техническую помощь и консультации."
+
+msgid "How We Work"
+msgstr "Как мы работаем"
+
+msgid "Our Step-by-Step Process"
+msgstr "Наш пошаговый процесс"
+
+msgid "A proven workflow designed to take your idea from initial inquiry to successful delivery"
+msgstr "Проверенный алгоритм работы: от первого запроса до успешной доставки"
+
+msgid "Need Products Sourced from China?"
+msgstr "Нужны товары из Китая?"
+
+msgid "Need Products from China?"
+msgstr "Нужны товары из Китая?"
+
+msgid "Tell us what you need \u2014 we'll find it, price it, and deliver it"
+msgstr "Скажите нам, что вам нужно — мы найдём, оценим и доставим"
+
+msgid "Tell us what you need and let us handle the sourcing and delivery"
+msgstr "Скажите, что вам нужно, и мы возьмём на себя поиск и доставку"
+
+msgid "Submit Inquiry"
+msgstr "Отправить запрос"
+
+msgid "Submit Your Product Request"
+msgstr "Отправить запрос на товар"
+
+msgid "Global Product Sourcing & Procurement from China"
+msgstr "Глобальный поиск и закупка товаров из Китая"
+
+msgid "Global Trade Partner"
+msgstr "Глобальный торговый партнёр"
+
+msgid "Global Reach"
+msgstr "Глобальный охват"
+
+msgid "Global Delivery"
+msgstr "Глобальная доставка"
+
+msgid "End-to-End Procurement Solutions"
+msgstr "Комплексные решения по закупкам"
+
+msgid "Sourcing from China and delivering to customers across the globe"
+msgstr "Закупаем в Китае и доставляем клиентам по всему миру"
+
+msgid "From Your Order to Your Door"
+msgstr "От вашего заказа до вашей двери"
+
+msgid "We find the best products from China's vast market"
+msgstr "Находим лучшие товары на огромном китайском рынке"
+
+msgid "We find, negotiate, and deliver the products you need from the Chinese market \u2014 generators, machinery, solar panels, and more."
+msgstr "Находим, согласовываем и доставляем нужные вам товары с китайского рынка — генераторы, оборудование, солнечные панели и многое другое."
+
+msgid "From product research to delivery \u2014 we handle every step of the sourcing process"
+msgstr "От поиска товара до доставки — мы берём на себя каждый этап закупочного процесса"
+
+msgid "Products We Source"
+msgstr "Товары, которые мы поставляем"
+
+msgid "We specialize in sourcing high-quality products from China across these key categories"
+msgstr "Мы специализируемся на поставке высококачественных товаров из Китая по этим ключевым категориям"
+
+msgid "Generators"
+msgstr "Генераторы"
+
+msgid "Solar Panels"
+msgstr "Солнечные панели"
+
+msgid "Machinery & Equipment"
+msgstr "Техника и оборудование"
+
+msgid "Chinese Markets"
+msgstr "Китайские рынки"
+
+msgid "Industrial and portable generators for all power needs \u2014 diesel, gas, and hybrid solutions."
+msgstr "Промышленные и портативные генераторы для всех нужд — дизельные, газовые и гибридные решения."
+
+msgid "High-efficiency solar panels and renewable energy equipment for commercial and residential use."
+msgstr "Высокоэффективные солнечные панели и возобновляемое энергетическое оборудование для коммерческого и жилого использования."
+
+msgid "Construction, agricultural, and industrial machinery from leading Chinese manufacturers."
+msgstr "Строительная, сельскохозяйственная и промышленная техника от ведущих китайских производителей."
+
+msgid "Trusted Partners & Suppliers"
+msgstr "Надёжные партнёры и поставщики"
+
+msgid "Brands"
+msgstr "Бренды"
+
+msgid "Testimonials"
+msgstr "Отзывы"
+
+msgid "Success Stories"
+msgstr "Истории успеха"
+
+msgid "Real projects delivered to satisfied clients across the globe"
+msgstr "Реальные проекты, выполненные для довольных клиентов по всему миру"
+
+msgid "Explore our completed projects and success stories."
+msgstr "Ознакомьтесь с нашими завершёнными проектами и историями успеха."
+
+msgid "Successfully Completed Orders"
+msgstr "Успешно выполненные заказы"
+
+msgid "Successfully sourced and delivered products for clients worldwide"
+msgstr "Успешно найдены и доставлены товары для клиентов по всему миру"
+
+msgid "Completed Orders"
+msgstr "Выполненные заказы"
+
+msgid "Countries"
+msgstr "Страны"
+
+msgid "Countries Served"
+msgstr "Обслуживаемые страны"
+
+msgid "Countries We Deliver To"
+msgstr "Страны доставки"
+
+msgid "Product Inquiry"
+msgstr "Запрос на товар"
+
+msgid "Submit your product sourcing request. We'll find and deliver the products you need from China."
+msgstr "Отправьте запрос на поиск товара. Мы найдём и доставим нужные вам товары из Китая."
+
+msgid "Fill out the form below with details about the product(s) you need. Our team will review your request and contact you with pricing and delivery options."
+msgstr "Заполните форму ниже с подробностями о нужных вам товарах. Наша команда рассмотрит запрос и свяжется с вами с вариантами цен и доставки."
+
+msgid "Full Name"
+msgstr "Полное имя"
+
+msgid "Phone Number"
+msgstr "Номер телефона"
+
+msgid "Company Name"
+msgstr "Название компании"
+
+msgid "Delivery Country"
+msgstr "Страна доставки"
+
+msgid "Product Category"
+msgstr "Категория товара"
+
+msgid "Product Categories"
+msgstr "Категории товаров"
+
+msgid "Please describe in detail what product(s) you're looking for, including specifications if possible."
+msgstr "Подробно опишите, какие товары вам нужны, по возможности с техническими характеристиками."
+
+msgid "Estimated Quantity"
+msgstr "Примерное количество"
+
+msgid "Budget Range"
+msgstr "Бюджет"
+
+msgid "Additional Notes"
+msgstr "Дополнительные примечания"
+
+msgid "Content"
+msgstr "Содержание"
+
+msgid "Product Details"
+msgstr "Детали товара"
+
+msgid "Features"
+msgstr "Характеристики"
+
+msgid "Can't find what you're looking for?"
+msgstr "Не можете найти то, что ищете?"
+
+msgid "Send us your requirements and we'll source it from China for you"
+msgstr "Отправьте нам требования, и мы найдём это для вас в Китае"
+
+msgid "Tell us what you need and our team will research, price, and arrange delivery from China"
+msgstr "Скажите, что вам нужно, и наша команда изучит, оценит и организует доставку из Китая"
+
+msgid "Tell us what you're looking for and we'll handle everything \u2014 from finding the right supplier to delivering the products to your doorstep. Fill out the form and our team will get back to you with a detailed quote."
+msgstr "Скажите, что вы ищете, и мы возьмём на себя всё — от поиска нужного поставщика до доставки товаров к вашей двери. Заполните форму, и наша команда свяжется с вами с подробным предложением."
+
+msgid "News & Updates"
+msgstr "Новости и обновления"
+
+msgid "Insights"
+msgstr "Аналитика"
+
+msgid "Stay informed about global trade trends, sourcing insights and company updates"
+msgstr "Будьте в курсе мировых торговых трендов, новостей о закупках и обновлений компании"
+
+msgid "Stay updated with the latest news on global trade, sourcing trends and company announcements"
+msgstr "Следите за последними новостями мировой торговли, трендами закупок и объявлениями компании"
+
+msgid "Learn about VAAM Trading \u2014 your trusted partner for product sourcing and procurement from China"
+msgstr "Узнайте о VAAM Trading — вашем надёжном партнёре по поиску и закупке товаров из Китая"
+
+msgid "Your trusted partner for global product sourcing and procurement from China"
+msgstr "Ваш надёжный партнёр по глобальному поиску и закупке товаров из Китая"
+
+msgid "Competitive pricing through direct factory partnerships"
+msgstr "Конкурентные цены благодаря прямому сотрудничеству с заводами"
+
+msgid "Dedicated support throughout the process"
+msgstr "Выделенная поддержка на протяжении всего процесса"
+
+msgid "Door-to-door shipping & customs clearance"
+msgstr "Доставка от двери до двери и таможенное оформление"
+
+msgid "End-to-end logistics and shipping worldwide"
+msgstr "Полный цикл логистики и доставки по всему миру"
+
+msgid "Free initial product research & quotation"
+msgstr "Бесплатный первичный поиск товаров и расчёт стоимости"
+
+msgid "Free Research"
+msgstr "Бесплатный поиск"
+
+msgid "Best Pricing"
+msgstr "Лучшие цены"
+
+msgid "Quick Response"
+msgstr "Быстрый ответ"
+
+msgid "No Obligation"
+msgstr "Без обязательств"
+
+msgid "Get a quote with no commitment required"
+msgstr "Получите предложение без каких-либо обязательств"
+
+msgid "Initial product research and pricing is complimentary"
+msgstr "Первичный поиск товаров и расценки предоставляются бесплатно"
+
+msgid "Quality inspection & factory verification"
+msgstr "Контроль качества и проверка завода"
+
+msgid "Rigorous inspection before every shipment"
+msgstr "Строгая проверка перед каждой отправкой"
+
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+msgid "Request a Quote"
+msgstr "Запросить предложение"
+
+msgid "Request Sourcing Quote"
+msgstr "Запросить коммерческое предложение"
+
+msgid "Get Started"
+msgstr "Начать"
+
+msgid "View All Products"
+msgstr "Все товары"
+
+msgid "Browse our full range of products sourced from China. Generators, machinery, solar panels and more."
+msgstr "Ознакомьтесь с нашим полным ассортиментом товаров из Китая. Генераторы, техника, солнечные панели и многое другое."
+
+msgid "Quality products sourced directly from Chinese manufacturers \u2014 generators, machinery, solar panels, and more"
+msgstr "Качественные товары напрямую от китайских производителей — генераторы, техника, солнечные панели и многое другое"
+
+msgid "Ready to Start Your Order?"
+msgstr "Готовы сделать заказ?"
+
+msgid "Terms and Conditions"
+msgstr "Условия и положения"
+
+msgid "Go to slide"
+msgstr "Перейти к слайду"
+
+msgid "Dashboard"
+msgstr "Панель управления"
+
+msgid "Sign Out"
+msgstr "Выйти"
+
+msgid "Statistics"
+msgstr "Статистика"
+
+msgid "Inquiries"
+msgstr "Запросы"
+
+msgid "Messages"
+msgstr "Сообщения"
+
+msgid "Hero Slides"
+msgstr "Главные слайды"
+
+msgid "Process Steps"
+msgstr "Этапы процесса"
+
+msgid "Pages"
+msgstr "Страницы"
+
+msgid "Menus"
+msgstr "Меню"
+
+msgid "Our History"
+msgstr "Наша история"
+
+msgid "Our Values"
+msgstr "Наши ценности"
+
+msgid "What We Offer"
+msgstr "Что мы предлагаем"
+
+msgid "Why Choose VAAM"
+msgstr "Почему VAAM"
+
+msgid "About VAAM Trading"
+msgstr "О VAAM Trading"
+
+msgid "About VAAM"
+msgstr "О VAAM"
+
+msgid "Call Us 24/7"
+msgstr "Звоните 24/7"
+
+msgid "or call us at"
+msgstr "или позвоните нам"

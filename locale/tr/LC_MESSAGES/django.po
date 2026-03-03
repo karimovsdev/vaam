@@ -409,3 +409,389 @@ msgstr "Mesaj Gönder"
 #: templates/core/contact.html
 msgid "What Our Clients Say"
 msgstr "Müşterilerimiz Ne Diyor"
+
+# === NEW PROCUREMENT STRINGS ===
+
+msgid "End-to-end procurement solutions from product sourcing to doorstep delivery"
+msgstr "Ürün tedarikinden kapıya teslimatına kadar uçtan uca temin çözümleri"
+
+msgid "End-to-end procurement services \u2014 product sourcing, quality control, pricing, logistics and delivery from China"
+msgstr "Uçtan uca temin hizmetleri — Çin'den ürün tedariki, kalite kontrol, fiyatlandırma, lojistik ve teslimat"
+
+msgid "What We Do"
+msgstr "Ne Yapıyoruz"
+
+msgid "Comprehensive Procurement Services"
+msgstr "Kapsamlı Tedarik Hizmetleri"
+
+msgid "From finding the right supplier to your door \u2014 we handle every step of your supply chain"
+msgstr "Doğru tedarikçiyi bulmaktan kapınıza teslimatına kadar — tedarik zincirinizin her adımını yönetiyoruz"
+
+msgid "Product Sourcing"
+msgstr "Ürün Tedariki"
+
+msgid "Quality Control"
+msgstr "Kalite Kontrolü"
+
+msgid "Logistics & Delivery"
+msgstr "Lojistik ve Teslimat"
+
+msgid "Consultation & Order"
+msgstr "Danışma ve Sipariş Alma"
+
+msgid "Product Research & Selection"
+msgstr "Ürün Araştırması ve Seçimi"
+
+msgid "Procurement & Import"
+msgstr "Tedarik ve İthalat"
+
+msgid "Delivery & Installation Support"
+msgstr "Teslimat ve Kurulum Desteği"
+
+msgid "After-Sales Service"
+msgstr "Satış Sonrası Hizmet"
+
+msgid "We identify the best suppliers across China to match your quality and budget requirements."
+msgstr "Kalite ve bütçe gereksinimlerinize uygun en iyi Çin tedarikçilerini buluyoruz."
+
+msgid "Rigorous inspection of products before shipment to guarantee they meet your specifications."
+msgstr "Teknik özelliklerinizi karşıladığından emin olmak için sevkiyat öncesi titiz ürün denetimi yapıyoruz."
+
+msgid "International shipping coordination and customs clearance right to your doorstep."
+msgstr "Uluslararası nakliye koordinasyonu ve gümrük işlemlerini kapınıza kadar yönetiyoruz."
+
+msgid "We listen to your needs carefully and identify the best procurement solutions for you."
+msgstr "İhtiyaçlarınızı dikkatlice dinler ve sizin için en uygun temin çözümlerini belirleriz."
+
+msgid "We research suitable products in China and compare quality and price."
+msgstr "Çin'de uygun ürünleri araştırır, kalite ve fiyat karşılaştırması yaparız."
+
+msgid "We source from trusted suppliers and handle international logistics."
+msgstr "Güvenilir tedarikçilerden ürün temin eder ve uluslararası lojistiği yönetiriz."
+
+msgid "We inspect products before shipment to ensure there are no defects."
+msgstr "Herhangi bir uyumsuzluk olmadığından emin olmak için sevkiyat öncesi ürünleri kontrol ederiz."
+
+msgid "Products are delivered to the customer and technical support is provided."
+msgstr "Ürünler müşteriye teslim edilir ve teknik destek sağlanır."
+
+msgid "We ensure customer satisfaction with ongoing support, technical help and consultancy."
+msgstr "Süregelen destek, teknik yardım ve danışmanlık ile müşteri memnuniyetini sağlarız."
+
+msgid "How We Work"
+msgstr "Nasıl Çalışıyoruz"
+
+msgid "Our Step-by-Step Process"
+msgstr "Adım Adım Sürecimiz"
+
+msgid "A proven workflow designed to take your idea from initial inquiry to successful delivery"
+msgstr "İlk taleplerinizden başarılı teslimatına kadar her adımı kapsayan kanıtlanmış bir iş akışı"
+
+msgid "Need Products Sourced from China?"
+msgstr "Çin'den Ürün Temin Etmek İster misiniz?"
+
+msgid "Need Products from China?"
+msgstr "Çin'den Ürüne İhtiyacınız mı Var?"
+
+msgid "Tell us what you need \u2014 we'll find it, price it, and deliver it"
+msgstr "İhtiyacınızı söyleyin — bulalım, fiyatlandıralım ve teslim edelim"
+
+msgid "Tell us what you need and let us handle the sourcing and delivery"
+msgstr "İhtiyacınızı söyleyin, tedarik ve teslimata biz bakalım"
+
+msgid "Submit Inquiry"
+msgstr "Talep Gönder"
+
+msgid "Submit Your Product Request"
+msgstr "Ürün Talebinizi Gönderin"
+
+msgid "Global Product Sourcing & Procurement from China"
+msgstr "Çin'den Global Ürün Tedariki ve Temini"
+
+msgid "Global Trade Partner"
+msgstr "Küresel Ticaret Ortağı"
+
+msgid "Global Reach"
+msgstr "Küresel Erişim"
+
+msgid "Global Delivery"
+msgstr "Küresel Teslimat"
+
+msgid "End-to-End Procurement Solutions"
+msgstr "Uçtan Uca Temin Çözümleri"
+
+msgid "Sourcing from China and delivering to customers across the globe"
+msgstr "Çin'den tedarik edip dünya genelindeki müşterilere teslim ediyoruz"
+
+msgid "From Your Order to Your Door"
+msgstr "Siparişinizden Kapınıza"
+
+msgid "We find the best products from China's vast market"
+msgstr "Çin'in geniş pazarından en iyi ürünleri buluyoruz"
+
+msgid "We find, negotiate, and deliver the products you need from the Chinese market \u2014 generators, machinery, solar panels, and more."
+msgstr "Çin pazarından ihtiyacınız olan ürünleri buluyor, müzakere ediyor ve teslim ediyoruz — jeneratörler, makineler, güneş panelleri ve daha fazlası."
+
+msgid "From product research to delivery \u2014 we handle every step of the sourcing process"
+msgstr "Ürün araştırmasından teslimatına kadar — temin sürecinin her adımını biz yönetiyoruz"
+
+msgid "Products We Source"
+msgstr "Tedarik Ettiğimiz Ürünler"
+
+msgid "We specialize in sourcing high-quality products from China across these key categories"
+msgstr "Bu temel kategorilerde Çin'den yüksek kaliteli ürünler tedarik etme konusunda uzmanlaşıyoruz"
+
+msgid "Generators"
+msgstr "Jeneratörler"
+
+msgid "Solar Panels"
+msgstr "Güneş Panelleri"
+
+msgid "Machinery & Equipment"
+msgstr "Makine ve Ekipman"
+
+msgid "Chinese Markets"
+msgstr "Çin Pazarları"
+
+msgid "Industrial and portable generators for all power needs \u2014 diesel, gas, and hybrid solutions."
+msgstr "Tüm güç ihtiyaçları için endüstriyel ve taşınabilir jeneratörler — dizel, gaz ve hibrit çözümler."
+
+msgid "High-efficiency solar panels and renewable energy equipment for commercial and residential use."
+msgstr "Ticari ve konut kullanımı için yüksek verimli güneş panelleri ve yenilenebilir enerji ekipmanları."
+
+msgid "Construction, agricultural, and industrial machinery from leading Chinese manufacturers."
+msgstr "Önde gelen Çinli üreticilerden inşaat, tarım ve endüstriyel makineler."
+
+msgid "Trusted Partners & Suppliers"
+msgstr "Güvenilir Ortaklar ve Tedarikçiler"
+
+msgid "Brands"
+msgstr "Markalar"
+
+msgid "Testimonials"
+msgstr "Referanslar"
+
+msgid "Success Stories"
+msgstr "Başarı Hikâyeleri"
+
+msgid "Real projects delivered to satisfied clients across the globe"
+msgstr "Dünyanın dört bir yanındaki memnun müşterilere teslim edilen gerçek projeler"
+
+msgid "Explore our completed projects and success stories."
+msgstr "Tamamlanan projelerimizi ve başarı hikâyelerimizi keşfedin."
+
+msgid "Successfully Completed Orders"
+msgstr "Başarıyla Tamamlanan Siparişler"
+
+msgid "Successfully sourced and delivered products for clients worldwide"
+msgstr "Dünya genelindeki müşteriler için başarıyla temin ve teslim edilen ürünler"
+
+msgid "Completed Orders"
+msgstr "Tamamlanan Siparişler"
+
+msgid "Countries"
+msgstr "Ülkeler"
+
+msgid "Countries Served"
+msgstr "Hizmet Verilen Ülkeler"
+
+msgid "Countries We Deliver To"
+msgstr "Teslimat Yaptığımız Ülkeler"
+
+msgid "Product Inquiry"
+msgstr "Ürün Talebi"
+
+msgid "Submit your product sourcing request. We'll find and deliver the products you need from China."
+msgstr "Ürün tedarik talebinizi gönderin. İhtiyacınız olan ürünleri Çin'den bulup teslim edeceğiz."
+
+msgid "Fill out the form below with details about the product(s) you need. Our team will review your request and contact you with pricing and delivery options."
+msgstr "Aşağıdaki formu ihtiyaç duyduğunuz ürün(ler) hakkındaki ayrıntılarla doldurun. Ekibimiz talebinizi inceleyecek ve fiyatlandırma ile teslimat seçenekleriyle sizinle iletişime geçecektir."
+
+msgid "Full Name"
+msgstr "Ad Soyad"
+
+msgid "Phone Number"
+msgstr "Telefon Numarası"
+
+msgid "Company Name"
+msgstr "Şirket Adı"
+
+msgid "Delivery Country"
+msgstr "Teslimat Ülkesi"
+
+msgid "Product Category"
+msgstr "Ürün Kategorisi"
+
+msgid "Product Categories"
+msgstr "Ürün Kategorileri"
+
+msgid "Please describe in detail what product(s) you're looking for, including specifications if possible."
+msgstr "Mümkünse özellikler dahil aradığınız ürün(ler)i ayrıntılı olarak açıklayın."
+
+msgid "Estimated Quantity"
+msgstr "Tahmini Miktar"
+
+msgid "Budget Range"
+msgstr "Bütçe Aralığı"
+
+msgid "Additional Notes"
+msgstr "Ek Notlar"
+
+msgid "Content"
+msgstr "İçerik"
+
+msgid "Product Details"
+msgstr "Ürün Detayları"
+
+msgid "Features"
+msgstr "Özellikler"
+
+msgid "Can't find what you're looking for?"
+msgstr "Aradığınızı bulamıyor musunuz?"
+
+msgid "Send us your requirements and we'll source it from China for you"
+msgstr "Gereksinimlerinizi bize gönderin, Çin'den sizin için tedarik edelim"
+
+msgid "Tell us what you need and our team will research, price, and arrange delivery from China"
+msgstr "İhtiyacınızı söyleyin, ekibimiz araştırsın, fiyatlandırsın ve Çin'den teslimatı ayarlasın"
+
+msgid "Tell us what you're looking for and we'll handle everything \u2014 from finding the right supplier to delivering the products to your doorstep. Fill out the form and our team will get back to you with a detailed quote."
+msgstr "Ne aradığınızı söyleyin, gerisini biz halledelim — doğru tedarikçiyi bulmaktan ürünleri kapınıza teslim etmeye kadar. Formu doldurun, ekibimiz size ayrıntılı bir teklif sunacaktır."
+
+msgid "News & Updates"
+msgstr "Haberler ve Güncellemeler"
+
+msgid "Insights"
+msgstr "Makaleler"
+
+msgid "Stay informed about global trade trends, sourcing insights and company updates"
+msgstr "Küresel ticaret trendleri, tedarik bilgileri ve şirket güncellemelerinden haberdar olun"
+
+msgid "Stay updated with the latest news on global trade, sourcing trends and company announcements"
+msgstr "Küresel ticaret, tedarik trendleri ve şirket duyurularına ilişkin en son haberleri takip edin"
+
+msgid "About Us"
+msgstr "Hakkımızda"
+
+msgid "Learn about VAAM Trading \u2014 your trusted partner for product sourcing and procurement from China"
+msgstr "VAAM Trading hakkında bilgi edinin — Çin'den ürün tedariki ve temini için güvenilir ortağınız"
+
+msgid "Your trusted partner for global product sourcing and procurement from China"
+msgstr "Çin'den küresel ürün tedariki ve temini için güvenilir ortağınız"
+
+msgid "Competitive pricing through direct factory partnerships"
+msgstr "Doğrudan fabrika ortaklıkları ile rekabetçi fiyatlandırma"
+
+msgid "Dedicated support throughout the process"
+msgstr "Süreç boyunca özel destek"
+
+msgid "Door-to-door shipping & customs clearance"
+msgstr "Kapıdan kapıya kargo ve gümrük işlemleri"
+
+msgid "End-to-end logistics and shipping worldwide"
+msgstr "Dünya genelinde uçtan uca lojistik ve nakliye"
+
+msgid "Free initial product research & quotation"
+msgstr "Ücretsiz ilk ürün araştırması ve teklif"
+
+msgid "Free Research"
+msgstr "Ücretsiz Araştırma"
+
+msgid "Best Pricing"
+msgstr "En İyi Fiyat"
+
+msgid "Quick Response"
+msgstr "Hızlı Yanıt"
+
+msgid "No Obligation"
+msgstr "Taahhütsüz"
+
+msgid "Get a quote with no commitment required"
+msgstr "Taahhütsüz teklif alın"
+
+msgid "Initial product research and pricing is complimentary"
+msgstr "İlk ürün araştırması ve fiyatlandırma tamamen ücretsizdir"
+
+msgid "Quality inspection & factory verification"
+msgstr "Kalite denetimi ve fabrika doğrulaması"
+
+msgid "Rigorous inspection before every shipment"
+msgstr "Her sevkiyat öncesi titiz denetim"
+
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+msgid "Request a Quote"
+msgstr "Teklif İste"
+
+msgid "Request Sourcing Quote"
+msgstr "Tedarik Teklifi İste"
+
+msgid "Get A Quote"
+msgstr "Teklif Al"
+
+msgid "Get Started"
+msgstr "Başlayın"
+
+msgid "View All Products"
+msgstr "Tüm Ürünleri Gör"
+
+msgid "Browse our full range of products sourced from China. Generators, machinery, solar panels and more."
+msgstr "Çin'den tedarik edilen ürün yelpazemize göz atın. Jeneratörler, makineler, güneş panelleri ve daha fazlası."
+
+msgid "Quality products sourced directly from Chinese manufacturers \u2014 generators, machinery, solar panels, and more"
+msgstr "Çinli üreticilerden doğrudan tedarik edilen kaliteli ürünler — jeneratörler, makineler, güneş panelleri ve daha fazlası"
+
+msgid "Ready to Start Your Order?"
+msgstr "Siparişinize Başlamaya Hazır mısınız?"
+
+msgid "Send Message"
+msgstr "Mesaj Gönder"
+
+msgid "Terms and Conditions"
+msgstr "Şartlar ve Koşullar"
+
+msgid "Go to slide"
+msgstr "Slayta git"
+
+msgid "Share:"
+msgstr "Paylaş:"
+
+msgid "Dashboard"
+msgstr "Kontrol Paneli"
+
+msgid "Sign Out"
+msgstr "Çıkış Yap"
+
+msgid "Statistics"
+msgstr "İstatistikler"
+
+msgid "Inquiries"
+msgstr "Talepler"
+
+msgid "Messages"
+msgstr "Mesajlar"
+
+msgid "Hero Slides"
+msgstr "Ana Slaytlar"
+
+msgid "Process Steps"
+msgstr "Süreç Adımları"
+
+msgid "Pages"
+msgstr "Sayfalar"
+
+msgid "Menus"
+msgstr "Menüler"
+
+msgid "Our History"
+msgstr "Tarihçemiz"
+
+msgid "Our Values"
+msgstr "Değerlerimiz"
+
+msgid "What We Offer"
+msgstr "Neler Sunuyoruz"
+
+msgid "Why Choose VAAM"
+msgstr "Neden VAAM'ı Seçmelisiniz"
