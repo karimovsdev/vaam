@@ -464,7 +464,7 @@ class Project(models.Model):
 
     def get_absolute_url(self):
         from django.urls import reverse
-        return reverse('core:projects')
+        return reverse('core:project_detail', kwargs={'slug': self.slug})
 
 
 class ProjectImage(models.Model):

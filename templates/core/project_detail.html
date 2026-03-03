@@ -1,0 +1,180 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{{ project.title }} - {{ settings.site_name }}{% endblock %}
+{% block meta_description %}{{ project.short_description }}{% endblock %}
+{% block og_title %}{{ project.title }} - {{ settings.site_name }}{% endblock %}
+{% block og_description %}{{ project.short_description }}{% endblock %}
+{% block og_image %}{% if project.image %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ project.image.url }}">{% endif %}{% endblock %}
+
+{% block content %}
+<!-- PAGE HEADER -->
+<section class="relative py-24 md:py-32 overflow-hidden">
+    <div class="absolute inset-0 bg-dark-900"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-primary-900/40 via-dark-900 to-dark-800"></div>
+    <div class="absolute inset-0 dot-pattern opacity-[0.03]"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 text-center">
+        <div class="flex items-center justify-center gap-3 mb-4">
+            <span class="w-8 h-[2px] bg-primary-400"></span>
+            <span class="text-primary-400 text-sm font-semibold tracking-[0.2em] uppercase">{{ project.category.name }}</span>
+            <span class="w-8 h-[2px] bg-primary-400"></span>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4 max-w-4xl mx-auto leading-tight">{{ project.title }}</h1>
+        <div class="flex justify-center gap-2 mt-6 text-sm">
+            <a href="{% url 'core:home' %}" class="text-white/60 hover:text-white transition">{% trans "Home" %}</a>
+            <span class="text-white/30">/</span>
+            <a href="{% url 'core:projects' %}" class="text-white/60 hover:text-white transition">{% trans "Our Works" %}</a>
+            <span class="text-white/30">/</span>
+            <span class="text-primary-400">{{ project.title }}</span>
+        </div>
+    </div>
+</section>
+
+<!-- PROJECT DETAIL -->
+<section class="section-padding">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
+
+            <!-- LEFT: Images -->
+            <div class="lg:col-span-3">
+                <!-- Main Image -->
+                <div class="rounded-2xl overflow-hidden mb-4 border border-slate-100 shadow-sm">
+                    {% if project.image %}
+                    <img id="main-img" src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-[420px] object-cover">
+                    {% else %}
+                    <div class="w-full h-[420px] bg-gradient-to-br from-primary-100 to-slate-100 flex items-center justify-center">
+                        <i class="fas fa-industry text-6xl text-primary-200"></i>
+                    </div>
+                    {% endif %}
+                </div>
+                <!-- Gallery Thumbnails -->
+                {% if project.images.all %}
+                <div class="grid grid-cols-4 gap-3">
+                    {% if project.image %}
+                    <div class="rounded-xl overflow-hidden border-2 border-primary-300 cursor-pointer hover:opacity-90 transition" onclick="document.getElementById('main-img').src='{{ project.image.url }}'">
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-20 object-cover">
+                    </div>
+                    {% endif %}
+                    {% for img in project.images.all %}
+                    <div class="rounded-xl overflow-hidden border border-slate-100 cursor-pointer hover:border-primary-300 transition" onclick="document.getElementById('main-img').src='{{ img.image.url }}'">
+                        <img src="{{ img.image.url }}" alt="{{ img.alt_text|default:project.title }}" class="w-full h-20 object-cover" loading="lazy">
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- RIGHT: Info -->
+            <div class="lg:col-span-2">
+                <div class="mb-4">
+                    <span class="px-3 py-1 bg-primary-50 text-primary-700 rounded-full text-xs font-semibold">{{ project.category.name }}</span>
+                </div>
+
+                <h2 class="text-2xl font-bold text-slate-900 mb-4 leading-snug">{{ project.title }}</h2>
+                <p class="text-slate-500 text-base leading-relaxed mb-8">{{ project.short_description }}</p>
+
+                <!-- Project Meta -->
+                <div class="space-y-3 mb-8 bg-slate-50 rounded-2xl p-6 border border-slate-100">
+                    {% if project.client %}
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-building text-primary-600 text-xs"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-0.5">{% trans "Client" %}</p>
+                            <p class="text-slate-800 font-medium text-sm">{{ project.client }}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if project.location %}
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-location-dot text-primary-600 text-xs"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-0.5">{% trans "Location" %}</p>
+                            <p class="text-slate-800 font-medium text-sm">{{ project.location }}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if project.date_completed %}
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-primary-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="far fa-calendar-check text-primary-600 text-xs"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-0.5">{% trans "Delivery Date" %}</p>
+                            <p class="text-slate-800 font-medium text-sm">{{ project.date_completed|date:"F Y" }}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <i class="fas fa-circle-check text-emerald-600 text-xs"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-0.5">{% trans "Status" %}</p>
+                            <p class="text-emerald-600 font-semibold text-sm">{% trans "Successfully Delivered" %}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col gap-3">
+                    <a href="{% url 'core:product_inquiry' %}" class="inline-flex items-center justify-center gap-2 bg-primary-600 text-white px-6 py-3.5 rounded-full font-semibold hover:bg-primary-700 transition-all duration-300 shadow-lg shadow-primary-600/20">
+                        <i class="fas fa-clipboard-list text-sm"></i> {% trans "Request Similar Order" %}
+                    </a>
+                    <a href="https://wa.me/{{ settings.whatsapp|default:'994501234567' }}?text={{ project.title|urlencode }}" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 bg-emerald-500 text-white px-6 py-3.5 rounded-full font-semibold hover:bg-emerald-600 transition-all duration-300">
+                        <i class="fab fa-whatsapp text-lg"></i> {% trans "WhatsApp" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full Description -->
+        {% if project.description %}
+        <div class="mt-16 border-t border-slate-100 pt-12">
+            <h3 class="text-2xl font-bold text-slate-900 mb-6">{% trans "Project Details" %}</h3>
+            <div class="text-slate-600 leading-relaxed prose prose-slate max-w-none">{{ project.description|safe }}</div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- RELATED PROJECTS -->
+{% if related_projects %}
+<section class="section-padding bg-slate-50/80">
+    <div class="max-w-7xl mx-auto px-6">
+        <h3 class="text-2xl font-bold text-slate-900 mb-8">{% trans "Related Projects" %}</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for rp in related_projects %}
+            <a href="{% url 'core:project_detail' rp.slug %}" class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-primary-200 transition-all duration-500 hover:shadow-xl block">
+                <div class="relative overflow-hidden h-52">
+                    {% if rp.image %}<img src="{{ rp.image.url }}" alt="{{ rp.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">{% else %}<div class="w-full h-full bg-gradient-to-br from-primary-100 to-primary-50 flex items-center justify-center"><i class="fas fa-image text-4xl text-primary-300"></i></div>{% endif %}
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
+                    <div class="absolute bottom-3 left-3"><span class="px-2 py-0.5 bg-white/90 text-primary-700 rounded-full text-xs font-semibold">{{ rp.category.name }}</span></div>
+                </div>
+                <div class="p-5">
+                    <h4 class="text-base font-bold text-slate-900 mb-2 group-hover:text-primary-700 transition-colors">{{ rp.title }}</h4>
+                    <span class="inline-flex items-center gap-1.5 text-primary-600 text-sm font-semibold group-hover:gap-2.5 transition-all">{% trans "View Details" %} <i class="fas fa-arrow-right text-[10px]"></i></span>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- CTA BANNER -->
+<section class="relative py-16 overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-primary-900"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">{% trans "Ready to Start Your Order?" %}</h2>
+            <p class="text-white/60 text-lg">{% trans "Tell us what you need and let us handle the sourcing and delivery" %}</p>
+        </div>
+        <a href="{% url 'core:product_inquiry' %}" class="inline-flex items-center gap-3 bg-primary-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-primary-400 transition-all duration-300 shadow-xl shadow-primary-500/20 flex-shrink-0"><i class="fas fa-paper-plane"></i> {% trans "Request a Quote" %}</a>
+    </div>
+</section>
+{% endblock %}

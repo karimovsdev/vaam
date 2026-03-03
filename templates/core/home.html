@@ -137,6 +137,44 @@ function heroSlider() {
     </div>
 </section>
 
+<!-- STATS STRIP -->
+{% if statistics %}
+<section class="relative z-10 bg-gradient-to-r from-dark-900 via-dark-800 to-primary-900 py-8">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 rounded-2xl overflow-hidden">
+            {% for stat in statistics %}
+            <div x-data="counter()" data-target="{{ stat.value }}" class="flex items-center gap-4 px-6 py-6 bg-dark-800/80 hover:bg-dark-700/80 transition-colors duration-300 text-white">
+                <div class="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <i class="{{ stat.icon }} text-primary-400 text-lg"></i>
+                </div>
+                <div>
+                    <span class="text-3xl font-extrabold tracking-tight block leading-none" x-text="count + '{{ stat.suffix }}'"></span>
+                    <span class="text-white/60 text-sm font-medium">{{ stat.title }}</span>
+                </div>
+            </div>
+            {% empty %}
+            <div class="flex items-center gap-4 px-6 py-6 bg-dark-800/80 text-white">
+                <div class="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center flex-shrink-0"><i class="fas fa-project-diagram text-primary-400 text-lg"></i></div>
+                <div><span class="text-3xl font-extrabold block">50+</span><span class="text-white/60 text-sm">{% trans "Completed Projects" %}</span></div>
+            </div>
+            <div class="flex items-center gap-4 px-6 py-6 bg-dark-800/80 text-white">
+                <div class="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center flex-shrink-0"><i class="fas fa-globe text-primary-400 text-lg"></i></div>
+                <div><span class="text-3xl font-extrabold block">20+</span><span class="text-white/60 text-sm">{% trans "Countries Served" %}</span></div>
+            </div>
+            <div class="flex items-center gap-4 px-6 py-6 bg-dark-800/80 text-white">
+                <div class="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center flex-shrink-0"><i class="fas fa-calendar-check text-primary-400 text-lg"></i></div>
+                <div><span class="text-3xl font-extrabold block">3+</span><span class="text-white/60 text-sm">{% trans "Years Experience" %}</span></div>
+            </div>
+            <div class="flex items-center gap-4 px-6 py-6 bg-dark-800/80 text-white">
+                <div class="w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center flex-shrink-0"><i class="fas fa-bolt text-primary-400 text-lg"></i></div>
+                <div><span class="text-3xl font-extrabold block">0 MW+</span><span class="text-white/60 text-sm">{% trans "Power Equipment" %}</span></div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
 <!-- PRODUCT CATEGORIES SECTION -->
 <section class="section-padding bg-slate-50/80 relative overflow-hidden">
     <div class="absolute inset-0 dot-pattern opacity-30"></div>
@@ -210,6 +248,43 @@ function heroSlider() {
         </div>
     </div>
 </section>
+
+<!-- FEATURED PRODUCTS SHOWCASE -->
+{% if featured_products_list %}
+<section class="section-padding bg-white relative">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16" x-data="scrollAnimate()" :class="visible&&'animate-fade-up'">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <span class="w-8 h-[2px] bg-primary-500"></span>
+                <span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "Our Products" %}</span>
+                <span class="w-8 h-[2px] bg-primary-500"></span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{% trans "Featured Products We Supply" %}</h2>
+            <p class="text-slate-500 text-lg max-w-2xl mx-auto">{% trans "Certified industrial equipment sourced directly from verified Chinese manufacturers" %}</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for product in featured_products_list %}
+            <div x-data="scrollAnimate()" {% if forloop.counter0 > 0 %}data-delay="{{ forloop.counter0 }}00"{% endif %} :class="visible&&'animate-fade-up'" class="opacity-0 group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-primary-200 transition-all duration-500 hover:shadow-xl hover:shadow-primary-100/30 hover:-translate-y-1">
+                <div class="relative overflow-hidden h-56">
+                    {% if product.image %}<img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">{% else %}<div class="w-full h-full bg-gradient-to-br from-primary-100 to-primary-50 flex items-center justify-center"><i class="fas fa-box text-5xl text-primary-300"></i></div>{% endif %}
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/60 via-transparent to-transparent"></div>
+                    <div class="absolute top-3 left-3"><span class="px-2.5 py-1 bg-primary-600/90 backdrop-blur-sm text-white rounded-full text-[11px] font-bold uppercase tracking-wide">{{ product.category.name }}</span></div>
+                    {% if product.price %}<div class="absolute top-3 right-3"><span class="px-3 py-1 bg-white/90 backdrop-blur-sm text-primary-700 rounded-full text-xs font-bold">{{ product.price }}</span></div>{% endif %}
+                </div>
+                <div class="p-5">
+                    <h3 class="text-base font-bold text-slate-900 mb-2 group-hover:text-primary-700 transition-colors line-clamp-2">{{ product.name }}</h3>
+                    {% if product.short_description %}<p class="text-slate-500 text-xs mb-3 leading-relaxed line-clamp-2">{{ product.short_description|truncatewords:15 }}</p>{% endif %}
+                    <a href="{{ product.get_absolute_url }}" class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold hover:gap-3 transition-all">{% trans "View Details" %} <i class="fas fa-arrow-right text-[10px]"></i></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-12">
+            <a href="{% url 'core:products' %}" class="group inline-flex items-center gap-2 bg-primary-600 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-primary-700 hover:shadow-lg transition-all duration-300">{% trans "Browse All Products" %} <i class="fas fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i></a>
+        </div>
+    </div>
+</section>
+{% endif %}
 
 <!-- ABOUT SECTION -->
 <section class="section-padding">
@@ -365,6 +440,92 @@ function heroSlider() {
 </section>
 {% endif %}
 
+<!-- COMPLETED DELIVERIES / PROJECTS SHOWCASE -->
+{% if home_projects %}
+<section class="section-padding bg-slate-50/80 relative overflow-hidden">
+    <div class="absolute inset-0 dot-pattern opacity-20"></div>
+    <div class="relative max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16" x-data="scrollAnimate()" :class="visible&&'animate-fade-up'">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <span class="w-8 h-[2px] bg-primary-500"></span>
+                <span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "Success Stories" %}</span>
+                <span class="w-8 h-[2px] bg-primary-500"></span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{% trans "Completed Deliveries" %}</h2>
+            <p class="text-slate-500 text-lg max-w-2xl mx-auto">{% trans "Real products successfully delivered to clients across the globe" %}</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for project in home_projects %}
+            <div x-data="scrollAnimate()" {% if forloop.counter0 > 0 %}data-delay="{{ forloop.counter0 }}00"{% endif %} :class="visible&&'animate-fade-up'" class="opacity-0 group relative bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-primary-200 transition-all duration-500 hover:shadow-2xl hover:shadow-primary-100/40 hover:-translate-y-1">
+                <div class="relative overflow-hidden h-60">
+                    {% if project.image %}<img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">{% else %}<div class="w-full h-full bg-gradient-to-br from-primary-100 to-slate-100 flex items-center justify-center"><i class="fas fa-industry text-5xl text-primary-200"></i></div>{% endif %}
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/85 via-dark-900/20 to-transparent"></div>
+                    <div class="absolute top-4 left-4">
+                        <span class="px-3 py-1 bg-primary-600/90 backdrop-blur-sm text-white rounded-full text-xs font-bold">{{ project.category.name }}</span>
+                    </div>
+                    {% if project.location %}
+                    <div class="absolute top-4 right-4">
+                        <span class="px-3 py-1 bg-dark-900/60 backdrop-blur-sm text-white/90 rounded-full text-xs font-medium flex items-center gap-1">
+                            <i class="fas fa-location-dot text-primary-400"></i> {{ project.location }}
+                        </span>
+                    </div>
+                    {% endif %}
+                    <div class="absolute bottom-0 left-0 right-0 p-4">
+                        <h3 class="text-white font-bold text-base leading-snug mb-1.5">{{ project.title }}</h3>
+                        <div class="flex flex-wrap items-center gap-3 text-xs text-white/70">
+                            {% if project.client %}<span class="flex items-center gap-1"><i class="fas fa-building text-primary-400"></i> {{ project.client }}</span>{% endif %}
+                            {% if project.date_completed %}<span class="flex items-center gap-1"><i class="far fa-calendar-check text-primary-400"></i> {{ project.date_completed|date:"M Y" }}</span>{% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <p class="text-slate-500 text-sm leading-relaxed line-clamp-2 mb-3">{{ project.short_description|truncatewords:18 }}</p>
+                    <a href="{% url 'core:project_detail' project.slug %}" class="inline-flex items-center gap-1.5 text-primary-600 text-sm font-semibold hover:gap-2.5 transition-all">{% trans "View Project" %} <i class="fas fa-arrow-right text-[10px]"></i></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-12">
+            <a href="{% url 'core:projects' %}" class="group inline-flex items-center gap-2 bg-primary-600 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-primary-700 hover:shadow-lg transition-all duration-300">{% trans "View All Completed Orders" %} <i class="fas fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i></a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- TESTIMONIALS -->
+{% if testimonials %}
+<section class="section-padding bg-white relative">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16" x-data="scrollAnimate()" :class="visible&&'animate-fade-up'">
+            <div class="flex items-center justify-center gap-3 mb-4">
+                <span class="w-8 h-[2px] bg-primary-500"></span>
+                <span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "Client Feedback" %}</span>
+                <span class="w-8 h-[2px] bg-primary-500"></span>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{% trans "What Our Clients Say" %}</h2>
+            <p class="text-slate-500 text-lg max-w-2xl mx-auto">{% trans "Trusted by businesses across the globe" %}</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {% for testimonial in testimonials %}
+            <div x-data="scrollAnimate()" {% if forloop.counter0 > 0 %}data-delay="{{ forloop.counter0 }}00"{% endif %} :class="visible&&'animate-fade-up'" class="opacity-0 group bg-slate-50 rounded-2xl p-7 border border-slate-100 hover:border-primary-100 hover:bg-white hover:shadow-xl hover:shadow-primary-100/20 transition-all duration-300">
+                <div class="flex gap-1 mb-4">
+                    {% for i in "12345" %}{% if forloop.counter <= testimonial.rating %}<i class="fas fa-star text-amber-400 text-sm"></i>{% else %}<i class="fas fa-star text-slate-200 text-sm"></i>{% endif %}{% endfor %}
+                </div>
+                <p class="text-slate-600 leading-relaxed mb-6 italic">&ldquo;{{ testimonial.content }}&rdquo;</p>
+                <div class="flex items-center gap-3">
+                    {% if testimonial.photo %}<img src="{{ testimonial.photo.url }}" alt="{{ testimonial.name }}" class="w-12 h-12 rounded-full object-cover border-2 border-primary-100">{% else %}<div class="w-12 h-12 rounded-full bg-primary-100 flex items-center justify-center text-primary-600 font-bold text-lg">{{ testimonial.name|slice:":1" }}</div>{% endif %}
+                    <div>
+                        <h5 class="font-bold text-slate-900 text-sm">{{ testimonial.name }}</h5>
+                        <p class="text-slate-400 text-xs">{{ testimonial.position }}{% if testimonial.company %} &mdash; {{ testimonial.company }}{% endif %}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
 <!-- CTA + INQUIRY FORM -->
 <section id="inquiry-form" class="relative py-20 overflow-hidden">
     <div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-primary-900"></div>
@@ -485,62 +646,6 @@ function heroSlider() {
         </div>
     </div>
 </section>
-
-<!-- STATS COUNTER -->
-{% if statistics %}
-<section class="section-padding bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-            {% for stat in statistics %}
-            <div class="text-center" x-data="counter()" data-target="{{ stat.value }}">
-                <div class="w-14 h-14 mx-auto mb-4 bg-{% cycle 'primary' 'accent' %}-50 rounded-2xl flex items-center justify-center text-{% cycle 'primary' 'accent' %}-600 text-xl"><i class="{{ stat.icon }}"></i></div>
-                <span class="text-4xl md:text-5xl font-extrabold text-slate-900 block tracking-tight" x-text="count + '{{ stat.suffix }}'"></span>
-                <span class="text-slate-500 text-sm font-medium mt-2 block">{{ stat.title }}</span>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-</section>
-{% endif %}
-
-<!-- PROJECTS SECTION -->
-{% if featured_projects %}
-<section class="section-padding bg-slate-50/80 relative overflow-hidden">
-    <div class="absolute inset-0 dot-pattern opacity-20"></div>
-    <div class="relative max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
-            <div class="flex items-center justify-center gap-3 mb-4">
-                <span class="w-8 h-[2px] bg-primary-500"></span>
-                <span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "Success Stories" %}</span>
-                <span class="w-8 h-[2px] bg-primary-500"></span>
-            </div>
-            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{% trans "Successfully Completed Orders" %}</h2>
-            <p class="text-slate-500 text-lg max-w-2xl mx-auto">{% trans "Real projects delivered to satisfied clients across the globe" %}</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {% for project in featured_projects %}
-            <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-primary-200 transition-all duration-500 hover:shadow-xl hover:shadow-primary-100/30">
-                <div class="relative overflow-hidden h-56">
-                    {% if project.image %}<img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">{% else %}<div class="w-full h-full bg-gradient-to-br from-primary-100 to-primary-50 flex items-center justify-center"><i class="fas fa-image text-4xl text-primary-300"></i></div>{% endif %}
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent"></div>
-                    <div class="absolute bottom-4 left-4"><span class="px-3 py-1 bg-white/90 backdrop-blur-sm text-primary-700 rounded-full text-xs font-semibold">{{ project.category.name }}</span></div>
-                    {% if project.location %}<div class="absolute top-4 right-4"><span class="px-3 py-1 bg-dark-900/60 backdrop-blur-sm text-white/90 rounded-full text-xs font-medium"><i class="fas fa-location-dot mr-1"></i>{{ project.location }}</span></div>{% endif %}
-                </div>
-                <div class="p-6">
-                    <h3 class="text-lg font-bold text-slate-900 mb-2 group-hover:text-primary-700 transition-colors">{{ project.title }}</h3>
-                    <p class="text-slate-500 text-sm mb-4">{{ project.short_description|truncatewords:15 }}</p>
-                    <div class="flex flex-wrap gap-3 text-xs text-slate-400">
-                        {% if project.client %}<span><i class="fas fa-building mr-1"></i> {{ project.client }}</span>{% endif %}
-                        {% if project.date_completed %}<span><i class="far fa-calendar-check mr-1"></i> {{ project.date_completed|date:"M Y" }}</span>{% endif %}
-                    </div>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        <div class="text-center mt-12"><a href="{% url 'core:projects' %}" class="group inline-flex items-center gap-2 bg-primary-600 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-primary-700 hover:shadow-lg transition-all duration-300">{% trans "View All Projects" %} <i class="fas fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i></a></div>
-    </div>
-</section>
-{% endif %}
 
 <!-- BRANDS / PARTNERS -->
 {% if brands %}

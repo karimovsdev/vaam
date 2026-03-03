@@ -49,6 +49,22 @@ def home(request):
         for slide in slides
     ])
 
+    # Build home_projects: featured first, fill with recent if needed
+    featured_ids = list(
+        Project.objects.filter(is_active=True, is_featured=True).values_list('id', flat=True)[:6]
+    )
+    home_projects = list(
+        Project.objects.filter(is_active=True, is_featured=True).select_related('category')[:6]
+    )
+    if len(home_projects) < 3:
+        extra = list(
+            Project.objects.filter(is_active=True)
+            .exclude(id__in=featured_ids)
+            .select_related('category')
+            .order_by('-created_at')[:6 - len(home_projects)]
+        )
+        home_projects = home_projects + extra
+
     context = {
         'active_page': 'home',
         'slides': slides,
@@ -58,8 +74,10 @@ def home(request):
         'services': Service.objects.filter(is_active=True)[:3],
         'process_steps': ProcessStep.objects.filter(is_active=True)[:4],
         'statistics': Statistic.objects.filter(is_active=True)[:4],
-        'featured_projects': Project.objects.filter(is_active=True, is_featured=True).select_related('category')[:3],
+        'home_projects': home_projects,
+        'featured_products_list': Product.objects.filter(is_active=True, is_featured=True).select_related('category')[:6],
         'latest_news': News.objects.filter(is_published=True).select_related('category')[:3],
+        'testimonials': Testimonial.objects.filter(is_active=True)[:4],
         'brands': Brand.objects.filter(is_active=True),
         'countries': Country.objects.filter(is_active=True),
         'product_categories': ProductCategory.objects.filter(is_active=True),
@@ -146,6 +164,23 @@ def projects(request):
         'page_obj': page_obj,
     }
     return render(request, 'core/projects.html', context)
+
+
+def project_detail(request, slug):
+    project = get_object_or_404(
+        Project.objects.select_related('category').prefetch_related('images'),
+        slug=slug, is_active=True
+    )
+    related_projects = Project.objects.filter(
+        is_active=True, category=project.category
+    ).exclude(pk=project.pk).select_related('category')[:3]
+
+    context = {
+        'active_page': 'projects',
+        'project': project,
+        'related_projects': related_projects,
+    }
+    return render(request, 'core/project_detail.html', context)
 
 
 def news_list(request):
