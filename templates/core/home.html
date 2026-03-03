@@ -81,7 +81,7 @@ function heroSlider() {
     </div>
     {% endif %}
     <div class="absolute bottom-0 left-0 right-0 z-20">
-        <div class="max-w-7xl mx-auto px-6 pb-10 flex items-end justify-between">
+        <div class="max-w-7xl mx-auto px-6 pb-36 flex items-end justify-between">
             <div class="flex items-center gap-3">
                 <template x-for="j in totalSlides"><button @click="goTo(j-1)" :aria-label="'{% trans "Go to slide" %} ' + j" class="transition-all duration-300 rounded-full" :class="currentSlide===j-1 ? 'w-10 h-2 bg-primary-400' : 'w-2 h-2 bg-white/30 hover:bg-white/60'"></button></template>
             </div>
@@ -89,6 +89,50 @@ function heroSlider() {
                 <button @click="prev()" aria-label="{% trans 'Previous slide' %}" class="w-11 h-11 rounded-full border border-white/20 text-white/70 flex items-center justify-center hover:bg-white/10 hover:text-white transition-all duration-300"><i class="fas fa-arrow-left text-sm"></i></button>
                 <button @click="next();resetAutoplay()" aria-label="{% trans 'Next slide' %}" class="w-11 h-11 rounded-full border border-white/20 text-white/70 flex items-center justify-center hover:bg-white/10 hover:text-white transition-all duration-300"><i class="fas fa-arrow-right text-sm"></i></button>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURE BOXES -->
+<section class="relative -mt-24 z-30 pb-0">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {% for feature in features %}
+            <div x-data="scrollAnimate()" {% if forloop.counter0 > 0 %}data-delay="{{ forloop.counter0|add:'00' }}"{% endif %} :class="visible&&'animate-fade-up'" class="opacity-0 group bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 hover:border-primary-200 hover:shadow-primary-100/50 transition-all duration-500">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 flex-shrink-0 bg-{% cycle 'primary' 'accent' %}-50 text-{% cycle 'primary' 'accent' %}-600 rounded-xl flex items-center justify-center text-lg group-hover:bg-{% cycle 'primary' 'accent' %}-600 group-hover:text-white transition-all duration-300"><i class="{{ feature.icon }}"></i></div>
+                    <div>
+                        <h4 class="text-sm font-bold text-slate-900 mb-1">{{ feature.title }}</h4>
+                        <p class="text-slate-500 text-xs leading-relaxed">{{ feature.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="group bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 animate-fade-up">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 flex-shrink-0 bg-primary-50 text-primary-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-search-dollar"></i></div>
+                    <div><h4 class="text-sm font-bold text-slate-900 mb-1">{% trans "Product Sourcing" %}</h4><p class="text-slate-500 text-xs leading-relaxed">{% trans "We find the best products from China's vast market" %}</p></div>
+                </div>
+            </div>
+            <div class="group bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 animate-fade-up">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 flex-shrink-0 bg-accent-50 text-accent-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-tags"></i></div>
+                    <div><h4 class="text-sm font-bold text-slate-900 mb-1">{% trans "Best Pricing" %}</h4><p class="text-slate-500 text-xs leading-relaxed">{% trans "Competitive pricing through direct factory partnerships" %}</p></div>
+                </div>
+            </div>
+            <div class="group bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 animate-fade-up">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 flex-shrink-0 bg-primary-50 text-primary-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-shield-alt"></i></div>
+                    <div><h4 class="text-sm font-bold text-slate-900 mb-1">{% trans "Quality Control" %}</h4><p class="text-slate-500 text-xs leading-relaxed">{% trans "Rigorous inspection before every shipment" %}</p></div>
+                </div>
+            </div>
+            <div class="group bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 animate-fade-up">
+                <div class="flex items-start gap-4">
+                    <div class="w-12 h-12 flex-shrink-0 bg-accent-50 text-accent-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-ship"></i></div>
+                    <div><h4 class="text-sm font-bold text-slate-900 mb-1">{% trans "Global Delivery" %}</h4><p class="text-slate-500 text-xs leading-relaxed">{% trans "End-to-end logistics and shipping worldwide" %}</p></div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -159,50 +203,6 @@ function heroSlider() {
                     <a href="tel:{{ settings.phone }}" class="inline-flex items-center gap-2 border border-slate-200 text-slate-700 px-7 py-3 rounded-full text-sm font-semibold hover:border-primary-300 hover:text-primary-700 transition-all duration-300"><i class="fas fa-phone text-primary-500 text-xs"></i> {% trans "Call Us 24/7" %}</a>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- FEATURE BOXES -->
-<section class="relative -mt-12 z-30 pb-8">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {% for feature in features %}
-            <div x-data="scrollAnimate()" {% if forloop.counter0 > 0 %}data-delay="{{ forloop.counter0|add:'00' }}"{% endif %} :class="visible&&'animate-fade-up'" class="opacity-0 group bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 hover:border-primary-200 hover:shadow-primary-100/50 transition-all duration-500">
-                <div class="flex items-start gap-4">
-                    <div class="w-12 h-12 flex-shrink-0 bg-{% cycle 'primary' 'accent' %}-50 text-{% cycle 'primary' 'accent' %}-600 rounded-xl flex items-center justify-center text-lg group-hover:bg-{% cycle 'primary' 'accent' %}-600 group-hover:text-white transition-all duration-300"><i class="{{ feature.icon }}"></i></div>
-                    <div>
-                        <h4 class="text-sm font-bold text-slate-900 mb-1">{{ feature.title }}</h4>
-                        <p class="text-slate-500 text-xs leading-relaxed">{{ feature.description }}</p>
-                    </div>
-                </div>
-            </div>
-            {% empty %}
-            <div class="group bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 animate-fade-up">
-                <div class="flex items-start gap-4">
-                    <div class="w-12 h-12 flex-shrink-0 bg-primary-50 text-primary-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-search-dollar"></i></div>
-                    <div><h4 class="text-sm font-bold text-slate-900 mb-1">{% trans "Product Sourcing" %}</h4><p class="text-slate-500 text-xs leading-relaxed">{% trans "We find the best products from China's vast market" %}</p></div>
-                </div>
-            </div>
-            <div class="group bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 animate-fade-up">
-                <div class="flex items-start gap-4">
-                    <div class="w-12 h-12 flex-shrink-0 bg-accent-50 text-accent-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-tags"></i></div>
-                    <div><h4 class="text-sm font-bold text-slate-900 mb-1">{% trans "Best Pricing" %}</h4><p class="text-slate-500 text-xs leading-relaxed">{% trans "Competitive pricing through direct factory partnerships" %}</p></div>
-                </div>
-            </div>
-            <div class="group bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 animate-fade-up">
-                <div class="flex items-start gap-4">
-                    <div class="w-12 h-12 flex-shrink-0 bg-primary-50 text-primary-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-shield-alt"></i></div>
-                    <div><h4 class="text-sm font-bold text-slate-900 mb-1">{% trans "Quality Control" %}</h4><p class="text-slate-500 text-xs leading-relaxed">{% trans "Rigorous inspection before every shipment" %}</p></div>
-                </div>
-            </div>
-            <div class="group bg-white rounded-2xl p-6 shadow-xl shadow-slate-200/50 border border-slate-100 animate-fade-up">
-                <div class="flex items-start gap-4">
-                    <div class="w-12 h-12 flex-shrink-0 bg-accent-50 text-accent-600 rounded-xl flex items-center justify-center text-lg"><i class="fas fa-ship"></i></div>
-                    <div><h4 class="text-sm font-bold text-slate-900 mb-1">{% trans "Global Delivery" %}</h4><p class="text-slate-500 text-xs leading-relaxed">{% trans "End-to-end logistics and shipping worldwide" %}</p></div>
-                </div>
-            </div>
-            {% endfor %}
         </div>
     </div>
 </section>
