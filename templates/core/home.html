@@ -175,116 +175,157 @@ function heroSlider() {
 </section>
 {% endif %}
 
-<!-- PRODUCT CATEGORIES SECTION -->
+<!-- FEATURED PRODUCTS SLIDER -->
 <section class="section-padding bg-slate-50/80 relative overflow-hidden">
     <div class="absolute inset-0 dot-pattern opacity-30"></div>
     <div class="relative max-w-7xl mx-auto px-6">
-        <div class="text-center mb-10" x-data="scrollAnimate()" :class="visible&&'animate-fade-up'">
-            <div class="flex items-center justify-center gap-3 mb-3">
-                <span class="w-8 h-[2px] bg-primary-500"></span>
-                <span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "What We Source" %}</span>
-                <span class="w-8 h-[2px] bg-primary-500"></span>
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+            <div>
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="w-8 h-[2px] bg-primary-500"></span>
+                    <span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "Our Products" %}</span>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-1">{% trans "Featured Products We Supply" %}</h2>
+                <p class="text-slate-500 text-sm">{% trans "Certified industrial equipment sourced directly from verified Chinese manufacturers" %}</p>
             </div>
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">{% trans "Product Categories" %}</h2>
-            <p class="text-slate-500 text-base max-w-2xl mx-auto">{% trans "We specialize in sourcing high-quality products from China across these key categories" %}</p>
+            <div class="flex items-center gap-2 flex-shrink-0">
+                <button id="prod-prev" aria-label="{% trans 'Previous' %}" class="w-10 h-10 rounded-full border border-slate-200 bg-white text-slate-600 flex items-center justify-center hover:bg-primary-600 hover:text-white hover:border-primary-600 transition-all duration-300"><i class="fas fa-arrow-left text-sm"></i></button>
+                <button id="prod-next" aria-label="{% trans 'Next' %}" class="w-10 h-10 rounded-full border border-slate-200 bg-white text-slate-600 flex items-center justify-center hover:bg-primary-600 hover:text-white hover:border-primary-600 transition-all duration-300"><i class="fas fa-arrow-right text-sm"></i></button>
+            </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {% for category in product_categories %}
-            <div x-data="scrollAnimate()" {% if forloop.counter0 > 0 %}data-delay="{{ forloop.counter0 }}00"{% endif %} :class="visible&&'animate-fade-up'" class="opacity-0 group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-primary-200 transition-all duration-500 hover:shadow-xl hover:shadow-primary-100/30">
-                <div class="relative overflow-hidden h-48">
-                    {% if category.image %}<img src="{{ category.image.url }}" alt="{{ category.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">{% else %}<div class="w-full h-full bg-gradient-to-br from-primary-100 to-primary-50 flex items-center justify-center"><i class="{{ category.icon|default:'fas fa-box' }} text-5xl text-primary-300"></i></div>{% endif %}
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent"></div>
-                    <div class="absolute bottom-4 left-4">
-                        <div class="w-11 h-11 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center text-primary-600">
-                            <i class="{{ category.icon|default:'fas fa-box' }}"></i>
-                        </div>
+
+        <!-- Slider Track -->
+        <div class="overflow-hidden" id="prod-slider-viewport">
+            <div class="flex gap-5 transition-transform duration-500 ease-out" id="prod-slider-track">
+                {% for product in featured_products_list %}
+                <div class="flex-shrink-0 w-[calc(33.333%-14px)] md:w-[calc(33.333%-14px)] sm:w-[calc(50%-10px)] max-sm:w-[85vw] group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-primary-200 transition-all duration-500 hover:shadow-xl hover:shadow-primary-100/30 hover:-translate-y-1">
+                    <div class="relative overflow-hidden h-52">
+                        {% if product.image %}<img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">{% else %}<div class="w-full h-full bg-gradient-to-br from-primary-100 to-primary-50 flex items-center justify-center"><i class="fas fa-box text-5xl text-primary-300"></i></div>{% endif %}
+                        <div class="absolute inset-0 bg-gradient-to-t from-dark-900/60 via-transparent to-transparent"></div>
+                        {% if product.category %}<div class="absolute top-3 left-3"><span class="px-2.5 py-1 bg-primary-600/90 backdrop-blur-sm text-white rounded-full text-[11px] font-bold uppercase tracking-wide">{{ product.category.name }}</span></div>{% endif %}
+                        {% if product.price %}<div class="absolute top-3 right-3"><span class="px-3 py-1 bg-white/90 backdrop-blur-sm text-primary-700 rounded-full text-xs font-bold">{{ product.price }}</span></div>{% endif %}
+                    </div>
+                    <div class="p-5">
+                        <h3 class="text-base font-bold text-slate-900 mb-2 group-hover:text-primary-700 transition-colors line-clamp-2">{{ product.name }}</h3>
+                        {% if product.short_description %}<p class="text-slate-500 text-xs mb-3 leading-relaxed line-clamp-2">{{ product.short_description }}</p>{% endif %}
+                        <a href="{{ product.get_absolute_url }}" class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold hover:gap-3 transition-all">{% trans "View Details" %} <i class="fas fa-arrow-right text-[10px]"></i></a>
                     </div>
                 </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-slate-900 mb-2 group-hover:text-primary-700 transition-colors">{{ category.name }}</h3>
-                    <p class="text-slate-500 text-sm mb-4 leading-relaxed">{{ category.description|truncatewords:20 }}</p>
-                    <a href="{% url 'core:products' %}?category={{ category.slug }}" class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold hover:gap-3 transition-all">{% trans "View Products" %} <i class="fas fa-arrow-right text-[10px]"></i></a>
+                {% empty %}
+                {% for i in "123" %}
+                <div class="flex-shrink-0 w-[calc(33.333%-14px)] group bg-white rounded-2xl overflow-hidden border border-slate-100 animate-fade-up">
+                    <div class="relative overflow-hidden h-52"><div class="w-full h-full bg-gradient-to-br from-primary-100 to-primary-50 flex items-center justify-center"><i class="fas fa-box text-5xl text-primary-300"></i></div></div>
+                    <div class="p-5"><h3 class="text-base font-bold text-slate-900 mb-2">{% trans "Sample Product" %}</h3><a href="{% url 'core:products' %}" class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold">{% trans "View Details" %} <i class="fas fa-arrow-right text-[10px]"></i></a></div>
                 </div>
+                {% endfor %}
+                {% endfor %}
             </div>
-            {% empty %}
-            <!-- Fallback categories when none exist in DB -->
-            <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-primary-200 transition-all duration-500 hover:shadow-xl hover:shadow-primary-100/30 animate-fade-up">
-                <div class="relative overflow-hidden h-56">
-                    <div class="w-full h-full bg-gradient-to-br from-amber-100 to-amber-50 flex items-center justify-center"><i class="fas fa-bolt text-5xl text-amber-400"></i></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent"></div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">{% trans "Generators" %}</h3>
-                    <p class="text-slate-500 text-sm mb-4 leading-relaxed">{% trans "Industrial and portable generators for all power needs — diesel, gas, and hybrid solutions." %}</p>
-                    <a href="{% url 'core:products' %}" class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold hover:gap-3 transition-all">{% trans "View Products" %} <i class="fas fa-arrow-right text-[10px]"></i></a>
-                </div>
-            </div>
-            <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-primary-200 transition-all duration-500 hover:shadow-xl hover:shadow-primary-100/30 animate-fade-up">
-                <div class="relative overflow-hidden h-56">
-                    <div class="w-full h-full bg-gradient-to-br from-slate-200 to-slate-100 flex items-center justify-center"><i class="fas fa-cogs text-5xl text-slate-400"></i></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent"></div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">{% trans "Machinery & Equipment" %}</h3>
-                    <p class="text-slate-500 text-sm mb-4 leading-relaxed">{% trans "Construction, agricultural, and industrial machinery from leading Chinese manufacturers." %}</p>
-                    <a href="{% url 'core:products' %}" class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold hover:gap-3 transition-all">{% trans "View Products" %} <i class="fas fa-arrow-right text-[10px]"></i></a>
-                </div>
-            </div>
-            <div class="group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-primary-200 transition-all duration-500 hover:shadow-xl hover:shadow-primary-100/30 animate-fade-up">
-                <div class="relative overflow-hidden h-56">
-                    <div class="w-full h-full bg-gradient-to-br from-emerald-100 to-emerald-50 flex items-center justify-center"><i class="fas fa-solar-panel text-5xl text-emerald-400"></i></div>
-                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent"></div>
-                </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold text-slate-900 mb-2">{% trans "Solar Panels" %}</h3>
-                    <p class="text-slate-500 text-sm mb-4 leading-relaxed">{% trans "High-efficiency solar panels and renewable energy equipment for commercial and residential use." %}</p>
-                    <a href="{% url 'core:products' %}" class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold hover:gap-3 transition-all">{% trans "View Products" %} <i class="fas fa-arrow-right text-[10px]"></i></a>
-                </div>
-            </div>
-            {% endfor %}
         </div>
-        <div class="text-center mt-12">
+
+        <!-- Dots -->
+        <div class="flex justify-center gap-2 mt-6" id="prod-dots"></div>
+
+        <div class="text-center mt-8">
             <a href="{% url 'core:products' %}" class="group inline-flex items-center gap-2 bg-primary-600 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-primary-700 hover:shadow-lg transition-all duration-300">{% trans "View All Products" %} <i class="fas fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i></a>
         </div>
     </div>
 </section>
 
-<!-- FEATURED PRODUCTS SHOWCASE -->
-{% if featured_products_list %}
-<section class="section-padding bg-white relative">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-10" x-data="scrollAnimate()" :class="visible&&'animate-fade-up'">
-            <div class="flex items-center justify-center gap-3 mb-3">
-                <span class="w-8 h-[2px] bg-primary-500"></span>
-                <span class="text-primary-600 text-sm font-semibold tracking-[0.15em] uppercase">{% trans "Our Products" %}</span>
-                <span class="w-8 h-[2px] bg-primary-500"></span>
-            </div>
-            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-3">{% trans "Featured Products We Supply" %}</h2>
-            <p class="text-slate-500 text-base max-w-2xl mx-auto">{% trans "Certified industrial equipment sourced directly from verified Chinese manufacturers" %}</p>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {% for product in featured_products_list %}
-            <div x-data="scrollAnimate()" {% if forloop.counter0 > 0 %}data-delay="{{ forloop.counter0 }}00"{% endif %} :class="visible&&'animate-fade-up'" class="opacity-0 group bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-primary-200 transition-all duration-500 hover:shadow-xl hover:shadow-primary-100/30 hover:-translate-y-1">
-                <div class="relative overflow-hidden h-48">
-                    {% if product.image %}<img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy">{% else %}<div class="w-full h-full bg-gradient-to-br from-primary-100 to-primary-50 flex items-center justify-center"><i class="fas fa-box text-5xl text-primary-300"></i></div>{% endif %}
-                    <div class="absolute inset-0 bg-gradient-to-t from-dark-900/60 via-transparent to-transparent"></div>
-                    <div class="absolute top-3 left-3"><span class="px-2.5 py-1 bg-primary-600/90 backdrop-blur-sm text-white rounded-full text-[11px] font-bold uppercase tracking-wide">{{ product.category.name }}</span></div>
-                    {% if product.price %}<div class="absolute top-3 right-3"><span class="px-3 py-1 bg-white/90 backdrop-blur-sm text-primary-700 rounded-full text-xs font-bold">{{ product.price }}</span></div>{% endif %}
-                </div>
-                <div class="p-5">
-                    <h3 class="text-base font-bold text-slate-900 mb-2 group-hover:text-primary-700 transition-colors line-clamp-2">{{ product.name }}</h3>
-                    {% if product.short_description %}<p class="text-slate-500 text-xs mb-3 leading-relaxed line-clamp-2">{{ product.short_description|truncatewords:15 }}</p>{% endif %}
-                    <a href="{{ product.get_absolute_url }}" class="inline-flex items-center gap-2 text-primary-600 text-sm font-semibold hover:gap-3 transition-all">{% trans "View Details" %} <i class="fas fa-arrow-right text-[10px]"></i></a>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        <div class="text-center mt-12">
-            <a href="{% url 'core:products' %}" class="group inline-flex items-center gap-2 bg-primary-600 text-white px-8 py-3.5 rounded-full font-semibold hover:bg-primary-700 hover:shadow-lg transition-all duration-300">{% trans "Browse All Products" %} <i class="fas fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i></a>
-        </div>
-    </div>
-</section>
-{% endif %}
+<script>
+(function() {
+    function initProductSlider() {
+        const track = document.getElementById('prod-slider-track');
+        const viewport = document.getElementById('prod-slider-viewport');
+        const dotsWrap = document.getElementById('prod-dots');
+        if (!track) return;
+
+        const cards = Array.from(track.children);
+        const total = cards.length;
+        if (total === 0) return;
+
+        // Determine visible count based on viewport width
+        function getVisible() {
+            const w = window.innerWidth;
+            if (w < 640) return 1;
+            if (w < 1024) return 2;
+            return 3;
+        }
+
+        let current = 0;
+        let visible = getVisible();
+        let maxIndex = Math.max(0, total - visible);
+        let autoTimer = null;
+
+        // Update card widths dynamically
+        function updateCardWidths() {
+            visible = getVisible();
+            maxIndex = Math.max(0, total - visible);
+            const gap = 20;
+            const vw = viewport.offsetWidth;
+            const cardW = (vw - gap * (visible - 1)) / visible;
+            cards.forEach(c => { c.style.width = cardW + 'px'; c.style.minWidth = cardW + 'px'; });
+            track.style.gap = gap + 'px';
+        }
+
+        // Build dots
+        function buildDots() {
+            dotsWrap.innerHTML = '';
+            const pageCount = maxIndex + 1;
+            for (let i = 0; i < pageCount; i++) {
+                const d = document.createElement('button');
+                d.className = 'rounded-full transition-all duration-300 h-2 ' + (i === current ? 'w-8 bg-primary-500' : 'w-2 bg-slate-300 hover:bg-slate-400');
+                d.addEventListener('click', () => goTo(i));
+                dotsWrap.appendChild(d);
+            }
+        }
+
+        function goTo(idx) {
+            current = Math.max(0, Math.min(idx, maxIndex));
+            const gap = 20;
+            const cardW = cards[0] ? cards[0].offsetWidth : 0;
+            const offset = current * (cardW + gap);
+            track.style.transform = 'translateX(-' + offset + 'px)';
+            buildDots();
+        }
+
+        function next() { goTo(current < maxIndex ? current + 1 : 0); }
+        function prev() { goTo(current > 0 ? current - 1 : maxIndex); }
+
+        function startAuto() { autoTimer = setInterval(next, 4000); }
+        function stopAuto() { clearInterval(autoTimer); }
+
+        document.getElementById('prod-next').addEventListener('click', () => { stopAuto(); next(); startAuto(); });
+        document.getElementById('prod-prev').addEventListener('click', () => { stopAuto(); prev(); startAuto(); });
+
+        // Touch swipe
+        let touchX = 0;
+        viewport.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; stopAuto(); }, { passive: true });
+        viewport.addEventListener('touchend', e => {
+            const diff = touchX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) diff > 0 ? next() : prev();
+            startAuto();
+        }, { passive: true });
+
+        updateCardWidths();
+        buildDots();
+        goTo(0);
+        startAuto();
+
+        window.addEventListener('resize', () => {
+            updateCardWidths();
+            maxIndex = Math.max(0, total - getVisible());
+            if (current > maxIndex) current = maxIndex;
+            buildDots();
+            goTo(current);
+        });
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initProductSlider);
+    } else {
+        initProductSlider();
+    }
+})();
+</script>
 
 <!-- ABOUT SECTION -->
 <section class="section-padding">
