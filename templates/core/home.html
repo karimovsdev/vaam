@@ -4,6 +4,37 @@
 
 {% block title %}{{ settings.site_name }} - {% trans "Global Product Sourcing & Procurement from China" %}{% endblock %}
 
+{% block extra_head %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "{{ settings.site_name|escapejs }}",
+  "url": "{{ request.scheme }}://{{ request.get_host }}/",
+  {% if settings.logo %}"logo": "{{ request.scheme }}://{{ request.get_host }}{{ settings.logo.url }}",{% endif %}
+  "contactPoint": [{
+    "@type": "ContactPoint",
+    "telephone": "{{ settings.phone|escapejs }}",
+    "contactType": "customer service",
+    "availableLanguage": ["English", "Russian", "Turkish", "Arabic"]
+  }]{% if settings.address %},
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "{{ settings.address|escapejs }}"
+  }{% endif %}{% if settings.facebook or settings.linkedin or settings.instagram or settings.youtube %},
+  "sameAs": [{% if settings.facebook %}"{{ settings.facebook }}"{% if settings.linkedin or settings.instagram or settings.youtube %},{% endif %}{% endif %}{% if settings.linkedin %}"{{ settings.linkedin }}"{% if settings.instagram or settings.youtube %},{% endif %}{% endif %}{% if settings.instagram %}"{{ settings.instagram }}"{% if settings.youtube %},{% endif %}{% endif %}{% if settings.youtube %}"{{ settings.youtube }}"{% endif %}]{% endif %}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "{{ settings.site_name|escapejs }}",
+  "url": "{{ request.scheme }}://{{ request.get_host }}/"
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <!-- HERO SLIDER -->
 <script>

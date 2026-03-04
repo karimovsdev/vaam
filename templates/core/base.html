@@ -1,5 +1,6 @@
 {% load static %}
 {% load i18n %}
+{% load seo_tags %}
 {% get_current_language as CURRENT_LANGUAGE %}
 <!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE }}" dir="{% if LANGUAGE_CODE == 'ar' %}rtl{% else %}ltr{% endif %}" class="scroll-smooth">
@@ -22,8 +23,14 @@
     <meta name="twitter:title" content="{% block tw_title %}{{ settings.meta_title|default:settings.site_name }}{% endblock %}">
     <meta name="twitter:description" content="{% block tw_description %}{{ settings.meta_description|default:'Global product sourcing and procurement from China. Generators, machinery, solar panels and more.' }}{% endblock %}">
     {% block tw_image %}{% if settings.logo %}<meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ settings.logo.url }}">{% endif %}{% endblock %}
-    <!-- Canonical -->
-    <link rel="canonical" href="{{ request.build_absolute_uri }}">
+    <!-- Canonical (query params excluded) -->
+    <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+    <!-- hreflang: multilingual SEO -->
+    {% get_available_languages as available_languages %}
+    {% for lang_code, lang_name in available_languages %}
+    <link rel="alternate" hreflang="{{ lang_code }}" href="{% alternate_url lang_code %}">
+    {% endfor %}
+    <link rel="alternate" hreflang="x-default" href="{% alternate_url 'en' %}">
     <title>{% block title %}{{ settings.site_name }}{% endblock %}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
