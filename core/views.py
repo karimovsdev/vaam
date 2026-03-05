@@ -28,14 +28,13 @@ logger = logging.getLogger('core')
 # ---------------------------------------------------------------------------
 
 def _send_mail_async(subject, message):
-    """Send a mail_managers notification in a background thread so the view
-    returns immediately without waiting for SMTP."""
+    """Send a mail_managers notification in a background thread."""
     def _send():
         try:
-            mail_managers(subject=subject, message=message, fail_silently=True)
+            mail_managers(subject=subject, message=message, fail_silently=False)
         except Exception:
             logger.exception('Background email send failed')
-    t = threading.Thread(target=_send, daemon=True)
+    t = threading.Thread(target=_send, daemon=False)
     t.start()
 
 def _get_company_info():
