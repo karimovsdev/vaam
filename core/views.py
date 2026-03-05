@@ -4,6 +4,7 @@ import threading
 
 from django.conf import settings as django_settings
 from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.core.paginator import Paginator
@@ -26,63 +27,6 @@ logger = logging.getLogger('core')
 # ---------------------------------------------------------------------------
 # Email helpers
 # ---------------------------------------------------------------------------
-
-def _field_row(label, value):
-    if not value:
-        return ''
-    return (
-        f'<tr>'
-        f'<td style="padding:10px 0;border-bottom:1px solid #f0f2f5;vertical-align:top;">'
-        f'<span style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.6px;font-weight:700;">{label}</span>'
-        f'<div style="font-size:15px;color:#111;font-weight:500;margin-top:4px;">{value}</div>'
-        f'</td></tr>'
-    )
-
-
-def _email_html(badge, intro, rows_html):
-    return f"""<!DOCTYPE html>
-<html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
-<body style="margin:0;padding:0;background:#eef0f4;font-family:Arial,Helvetica,sans-serif;">
-<table width="100%" cellpadding="0" cellspacing="0" style="background:#eef0f4;padding:36px 16px;">
-  <tr><td align="center">
-    <table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;">
-
-      <!-- HEADER -->
-      <tr><td style="background:#0d1117;border-radius:14px 14px 0 0;padding:28px 40px 24px;text-align:center;">
-        <div style="font-size:30px;font-weight:900;color:#fff;letter-spacing:-1px;">
-          <span style="color:#00c896;">V</span>AAM
-        </div>
-        <div style="color:#6e7a8a;font-size:11px;letter-spacing:3px;text-transform:uppercase;margin-top:4px;">Global Trade Solutions</div>
-      </td></tr>
-
-      <!-- BADGE -->
-      <tr><td style="background:#00c896;padding:12px 40px;text-align:center;">
-        <span style="color:#fff;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;">{badge}</span>
-      </td></tr>
-
-      <!-- BODY -->
-      <tr><td style="background:#fff;padding:32px 40px 28px;">
-        <p style="color:#555;font-size:14px;margin:0 0 24px;line-height:1.6;">{intro}</p>
-        <table width="100%" cellpadding="0" cellspacing="0">
-          {rows_html}
-        </table>
-      </td></tr>
-
-      <!-- FOOTER -->
-      <tr><td style="background:#0d1117;border-radius:0 0 14px 14px;padding:18px 40px;text-align:center;">
-        <p style="color:#4a5568;font-size:12px;margin:0;">© 2025 VAAM Global &nbsp;·&nbsp; vaamglobal.com</p>
-      </td></tr>
-
-    </table>
-  </td></tr>
-</table>
-</body></html>"""
-
-
-def _text_block(label, value):
-    return f'{label}: {value}\n' if value else ''
-
 
 def _send_html_email_async(subject, html_message, text_message):
     """Send an HTML email to MANAGERS in a background thread."""
@@ -314,26 +258,17 @@ def contact(request):
         if form.is_valid():
             obj = form.save()
             # Notify site managers via email
-            rows = (
-                _field_row('Full Name', obj.full_name)
-                + _field_row('Email', f'<a href="mailto:{obj.email}" style="color:#00c896;text-decoration:none;">{obj.email}</a>')
-                + _field_row('Phone', obj.phone)
-                + _field_row('Subject', obj.subject)
-            )
-            if obj.message:
-                rows += (
-                    '<tr><td style="padding:14px 0 0;">'
-                    '<span style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.6px;font-weight:700;">Message</span>'
-                    f'<div style="background:#f7f9fc;border-left:3px solid #00c896;padding:12px 16px;margin-top:8px;'
-                    f'border-radius:0 6px 6px 0;font-size:14px;color:#333;line-height:1.6;">{obj.message}</div>'
-                    '</td></tr>'
-                )
+            ctx = {
+                'full_name': obj.full_name,
+                'email': obj.email,
+                'phone': obj.phone,
+                'subject': obj.subject,
+                'message': obj.message,
+            }
             _send_html_email_async(
                 subject=f'New Contact Message: {obj.subject}',
-                html_message=_email_html(
-                    badge='New Contact Message',
-                    intro='A new contact message has been submitted via the website.',
-                    rows_html=rows,
+                html_message=render_to_string(
+                    'emails/contact_notification.html', ctx
                 ),
                 text_message=(
                     f'Name: {obj.full_name}\n'
@@ -376,41 +311,28 @@ def product_inquiry(request):
         if form.is_valid():
             obj = form.save()
             # Notify site managers
-            rows = (
-                _field_row('Product', product_name or obj.product_description[:80])
-                + _field_row('Full Name', obj.full_name)
-                + _field_row('Email', f'<a href="mailto:{obj.email}" style="color:#00c896;text-decoration:none;">{obj.email}</a>')
-                + _field_row('Phone', obj.phone)
-                + _field_row('Company', obj.company_name)
-                + _field_row('Delivery Country', str(obj.delivery_country))
-                + _field_row('Quantity', obj.quantity)
-                + _field_row('Budget', obj.budget_range)
-            )
-            if obj.product_description:
-                rows += (
-                    '<tr><td style="padding:14px 0 0;">'
-                    '<span style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.6px;font-weight:700;">Description</span>'
-                    f'<div style="background:#f7f9fc;border-left:3px solid #00c896;padding:12px 16px;margin-top:8px;'
-                    f'border-radius:0 6px 6px 0;font-size:14px;color:#333;line-height:1.6;">{obj.product_description}</div>'
-                    '</td></tr>'
-                )
-            if obj.additional_notes:
-                rows += (
-                    '<tr><td style="padding:10px 0 0;">'
-                    '<span style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.6px;font-weight:700;">Notes</span>'
-                    f'<div style="background:#f7f9fc;border-left:3px solid #00c896;padding:12px 16px;margin-top:8px;'
-                    f'border-radius:0 6px 6px 0;font-size:14px;color:#333;line-height:1.6;">{obj.additional_notes}</div>'
-                    '</td></tr>'
-                )
+            inq_ctx = {
+                'product_name': product_name or obj.product_description[:80],
+                'full_name': obj.full_name,
+                'email': obj.email,
+                'phone': obj.phone,
+                'company_name': obj.company_name,
+                'delivery_country': str(obj.delivery_country),
+                'quantity': obj.quantity,
+                'budget_range': obj.budget_range,
+                'product_description': obj.product_description,
+                'additional_notes': obj.additional_notes,
+            }
             _send_html_email_async(
-                subject=f'New Product Inquiry: {product_name or obj.delivery_country}',
-                html_message=_email_html(
-                    badge='New Product Inquiry',
-                    intro='A new product inquiry has been submitted via the website.',
-                    rows_html=rows,
+                subject=(
+                    f'New Product Inquiry: '
+                    f'{product_name or obj.delivery_country}'
+                ),
+                html_message=render_to_string(
+                    'emails/inquiry_notification.html', inq_ctx
                 ),
                 text_message=(
-                    f'Product: {product_name or obj.product_description[:80]}\n'
+                    f'Product: {inq_ctx["product_name"]}\n'
                     f'Name: {obj.full_name}\n'
                     f'Email: {obj.email}\n'
                     f'Phone: {obj.phone}\n'
