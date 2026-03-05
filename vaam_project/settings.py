@@ -171,6 +171,7 @@ ANYMAIL = {
 
 DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'VAAM Global <info@vaamglobal.com>')
 SERVER_EMAIL = os.environ.get('SERVER_EMAIL', 'info@vaamglobal.com')
+EMAIL_SUBJECT_PREFIX = ''
 CONTACT_NOTIFICATION_EMAIL = os.environ.get('CONTACT_NOTIFICATION_EMAIL', 'info@vaamglobal.com')
 
 # MANAGERS receives mail_managers() notifications (contact form, inquiries)
