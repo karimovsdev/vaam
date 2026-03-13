@@ -120,7 +120,15 @@
         [dir="rtl"] .group-hover\:translate-x-1:hover { transform: translateX(-0.25rem); }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-    {% if settings.favicon %}<link rel="icon" type="image/png" href="{{ settings.favicon.url }}">{% else %}<link rel="icon" type="image/png" href="{% static 'images/logo/vaam-logo.png' %}">{% endif %}
+    {% if settings.favicon %}
+    <link rel="icon" type="image/png" href="{{ settings.favicon.url }}">
+    {% else %}
+    <link rel="icon" type="image/svg+xml" href="{% static 'images/logo/vaam-favicon.svg' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/logo/favicon.ico' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/logo/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/logo/favicon-16x16.png' %}">
+    {% endif %}
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/logo/apple-touch-icon.png' %}">
     <meta name="theme-color" content="#059669">
     <meta name="format-detection" content="telephone=no">
     {% block extra_head %}{% endblock %}
@@ -180,7 +188,7 @@
                     {% if settings.logo %}
                     <img src="{{ settings.logo.url }}" alt="{{ settings.site_name }}" class="h-9 w-auto max-w-[165px] object-contain transition-all duration-300 group-hover:opacity-85 group-hover:scale-[1.03]">
                     {% else %}
-                    <img src="{% static 'images/logo/vaam-logo.png' %}" alt="VAAM" class="h-9 w-auto max-w-[165px] object-contain transition-all duration-300 group-hover:opacity-85 group-hover:scale-[1.03]">
+                    <img src="{% static 'images/logo/vaam-logo-horizontal.svg' %}" alt="VAAM" class="h-9 w-auto max-w-[165px] object-contain transition-all duration-300 group-hover:opacity-85 group-hover:scale-[1.03]">
                     {% endif %}
                 </a>
 
@@ -412,7 +420,7 @@
                     {% elif settings.logo %}
                     <img src="{{ settings.logo.url }}" alt="{{ settings.site_name }}" class="h-10 mb-5 brightness-200">
                     {% else %}
-                    <img src="{% static 'images/logo/vaam-logo.png' %}" alt="VAAM" class="h-10 mb-5 brightness-200">
+                    <img src="{% static 'images/logo/vaam-logo-horizontal-white.svg' %}" alt="VAAM" class="h-10 mb-5">
                     {% endif %}
                     <p class="text-slate-400 text-sm leading-relaxed mb-6">{{ settings.site_description|default:'Your trusted partner for product sourcing and procurement from China. Generators, machinery, industrial equipment and more.' }}</p>
                     <div class="flex gap-2">

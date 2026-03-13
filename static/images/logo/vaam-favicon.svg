@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-labelledby="vaam-fav-title">
+  <title id="vaam-fav-title">VAAM</title>
+  <g transform="translate(16,16)">
+    <!-- NORTH POINTER -->
+    <polygon points="0,-14.5 -1.5,-10.2 0,-10.8" fill="#1e293b"/>
+    <polygon points="0,-14.5  1.5,-10.2 0,-10.8" fill="#334155"/>
+
+    <!-- LEFT ARM (EMERALD) -->
+    <polygon points="-7.5,-10.2 -3.2,-10.2 0,6.6 -1.2,8.5" fill="#10b981"/>
+    <polygon points="-3.2,-10.2 0,6.6 0,3.8 -2,-8.3" fill="#064e3b"/>
+
+    <!-- RIGHT ARM (GOLD) -->
+    <polygon points="7.5,-10.2 3.2,-10.2 0,6.6 1.2,8.5" fill="#fbbf24"/>
+    <polygon points="3.2,-10.2 0,6.6 0,3.8 2,-8.3" fill="#78350f"/>
+
+    <!-- SOUTH POINTER -->
+    <polygon points="0,14.5 -1.5,8.5 0,9.3" fill="#1e293b"/>
+    <polygon points="0,14.5  1.5,8.5 0,9.3" fill="#334155"/>
+  </g>
+</svg>
