@@ -15,14 +15,14 @@
     <meta property="og:title" content="{% block og_title %}{{ settings.meta_title|default:settings.site_name }}{% endblock %}">
     <meta property="og:description" content="{% block og_description %}{{ settings.meta_description|default:'Global product sourcing and procurement from China. Generators, machinery, solar panels and more.' }}{% endblock %}">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
-    {% block og_image %}{% if settings.logo %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ settings.logo.url }}">{% endif %}{% endblock %}
+    {% block og_image %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo/vaam-logo-horizontal.svg' %}">{% endblock %}
     <meta property="og:site_name" content="{{ settings.site_name }}">
     <meta property="og:locale" content="{{ LANGUAGE_CODE }}">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{% block tw_title %}{{ settings.meta_title|default:settings.site_name }}{% endblock %}">
     <meta name="twitter:description" content="{% block tw_description %}{{ settings.meta_description|default:'Global product sourcing and procurement from China. Generators, machinery, solar panels and more.' }}{% endblock %}">
-    {% block tw_image %}{% if settings.logo %}<meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ settings.logo.url }}">{% endif %}{% endblock %}
+    {% block tw_image %}<meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo/vaam-logo-horizontal.svg' %}">{% endblock %}
     <!-- Canonical (query params excluded) -->
     <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
     <!-- hreflang: multilingual SEO -->
@@ -120,14 +120,10 @@
         [dir="rtl"] .group-hover\:translate-x-1:hover { transform: translateX(-0.25rem); }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
-    {% if settings.favicon %}
-    <link rel="icon" type="image/png" href="{{ settings.favicon.url }}">
-    {% else %}
     <link rel="icon" type="image/svg+xml" href="{% static 'images/logo/vaam-favicon.svg' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'images/logo/favicon.ico' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/logo/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/logo/favicon-16x16.png' %}">
-    {% endif %}
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/logo/apple-touch-icon.png' %}">
     <meta name="theme-color" content="#059669">
     <meta name="format-detection" content="telephone=no">
@@ -185,11 +181,7 @@
 
                 <!-- Logo -->
                 <a href="{% url 'core:home' %}" class="flex-shrink-0 group">
-                    {% if settings.logo %}
-                    <img src="{{ settings.logo.url }}" alt="{{ settings.site_name }}" class="h-9 w-auto max-w-[165px] object-contain transition-all duration-300 group-hover:opacity-85 group-hover:scale-[1.03]">
-                    {% else %}
                     <img src="{% static 'images/logo/vaam-logo-horizontal.svg' %}" alt="VAAM" class="h-9 w-auto max-w-[165px] object-contain transition-all duration-300 group-hover:opacity-85 group-hover:scale-[1.03]">
-                    {% endif %}
                 </a>
 
                 <!-- Spacer -->
@@ -415,13 +407,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-10 border-b border-white/10">
                 <div>
-                    {% if settings.logo_white %}
-                    <img src="{{ settings.logo_white.url }}" alt="{{ settings.site_name }}" class="h-10 mb-5">
-                    {% elif settings.logo %}
-                    <img src="{{ settings.logo.url }}" alt="{{ settings.site_name }}" class="h-10 mb-5 brightness-200">
-                    {% else %}
                     <img src="{% static 'images/logo/vaam-logo-horizontal-white.svg' %}" alt="VAAM" class="h-10 mb-5">
-                    {% endif %}
                     <p class="text-slate-400 text-sm leading-relaxed mb-6">{{ settings.site_description|default:'Your trusted partner for product sourcing and procurement from China. Generators, machinery, industrial equipment and more.' }}</p>
                     <div class="flex gap-2">
                         {% if settings.facebook %}<a href="{{ settings.facebook }}" target="_blank" class="w-9 h-9 rounded-xl bg-white/5 flex items-center justify-center hover:bg-primary-600 text-slate-400 hover:text-white transition-all duration-300"><i class="fab fa-facebook-f text-sm"></i></a>{% endif %}
@@ -491,7 +477,7 @@
         "@type": "Organization",
         "name": "{{ settings.site_name|default:'VAAM Import and Export Trading' }}",
         "url": "{{ request.scheme }}://{{ request.get_host }}",
-        {% if settings.logo %}"logo": "{{ request.scheme }}://{{ request.get_host }}{{ settings.logo.url }}",{% endif %}
+        "logo": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/logo/vaam-logo-horizontal.svg' %}",
         "contactPoint": {
             "@type": "ContactPoint",
             "telephone": "{{ settings.phone|default:'+994 50 123 45 67' }}",
